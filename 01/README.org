@@ -1,0 +1,9 @@
+** Exercise 1.1
+   
+   #+BEGIN_QUOTE
+   Review the documentation for your compiler and determine what file
+   naming convention it uses. Compile and run the main program from page 2.
+   #+END_QUOTE
+   
+   [[http://labor-liber.org/en/gnu-linux/development/extensions][GCC and File Extensions]]
+   [[https://msdn.microsoft.com/en-us/library/3awe4781.aspx][File Types Created for Visual C++ Projects]]
