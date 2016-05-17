@@ -21,5 +21,5 @@
    #+INCLUDE: "./ex01_02.cc" src C
 
 *** Linux
+    [[https://www.dropbox.com/s/eg7qibypfx8x41l/fig01_02a.png?dl=0]]
 
-    https://www.dropbox.com/s/eg7qibypfx8x41l/fig01_02.png?dl=0
