@@ -17,3 +17,5 @@
    rerun your program to see how your system treats a failure
    indicator from main.
    #+END_QUOTE
+
+   #+INCLUDE: "./ex01_02.cc" src C
