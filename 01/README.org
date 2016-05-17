@@ -2,8 +2,18 @@
    
    #+BEGIN_QUOTE
    Review the documentation for your compiler and determine what file
-   naming convention it uses. Compile and run the main program from page 2.
+   naming convention it uses. Compile and run the main program from
+   page 2.
    #+END_QUOTE
    
 - [[http://labor-liber.org/en/gnu-linux/development/extensions][GCC and File Extensions]]
 - [[https://msdn.microsoft.com/en-us/library/3awe4781.aspx][File Types Created for Visual C++ Projects]]
+  
+** Exercise 1.2
+
+   #+BEGIN_QUOTE
+   Change the program to return -1. A return value of -1 is often
+   treated as an indicator that the program failed. Recompile and
+   rerun your program to see how your system treats a failure
+   indicator from main.
+   #+END_QUOTE
