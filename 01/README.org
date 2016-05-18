@@ -27,6 +27,8 @@
    
 *** Linux
     [[./img/fig01_02a.png]]
+    
+    255 means "Exit status out of range".
 
 *** Windows
     [[./img/fig01_02b.png]]
