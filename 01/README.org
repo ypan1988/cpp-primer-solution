@@ -95,3 +95,27 @@ int main()
   return 0;
 }
    #+END_SRC
+** Exercise 1.6
+
+   #+BEGIN_QUOTE
+   Explain whether the following program fragment is legal.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C
+std::cout << "The sum of " << v1;
+          << " and " << v2;
+          << " is " << v1 + v2 << std::endl;
+   #+END_SRC
+
+   #+BEGIN_QUOTE
+   If the program is legal, what does it do? If the program is not
+   legal, why not? How would you fix it?
+   #+END_QUOTE
+
+   It is illegal. The spare semicolons should be removed.
+
+   #+BEGIN_SRC C
+std::cout << "The sum of " << v1 
+          << " and " << v2 
+          << " is " << v1 + v2 << std::endl;
+   #+END_SRC
