@@ -18,7 +18,12 @@
    indicator from main.
    #+END_QUOTE
 
-   #+INCLUDE: "./ex01_02.cc" src C
+   #+BEGIN_SRC C
+   int main()
+   {
+     return -1;
+   }
+   #+END_SRC
 
 *** Linux
     [[./img/fig01_02a.png]]
