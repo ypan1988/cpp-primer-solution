@@ -27,5 +27,7 @@
    
 *** Linux
     [[./img/fig01_02a.png]]
-    
+
+*** Windows
+    [[./img/fig01_02b.png]]
     
