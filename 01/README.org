@@ -314,3 +314,15 @@ int main()
 }
    #+END_SRC
 
+** Exercise 1.14
+
+   #+BEGIN_QUOTE
+   Compare and contrast the loops that used a for with those using a
+   while. Are there advantages or disadvantages to using either form?
+   #+END_QUOTE
+
+   The main difference between the ~for~'s and the ~while~'s is a
+   matter of pragmatics: we usually use ~for~ when there is a known
+   number of iterations, and use ~while~ constructs when the number of
+   iterations in not known in advance.
+   
