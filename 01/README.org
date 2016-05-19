@@ -259,3 +259,58 @@ for (int i = -100; i <= 100; ++i)
    The ~for~ loop sums the numbers from from -100 to 100. The final
    value of ~sum~ is zero.
 
+** Exercise 1.13
+
+   #+BEGIN_QUOTE
+   Rewrite the exercises from § 1.4.1 (p. 13) using for loops.
+   #+END_QUOTE
+
+   ex01_09:
+   
+   #+BEGIN_SRC C
+#include <iostream>
+
+int main()
+{
+  int sum = 0;
+  for (int val = 50; val <= 100; ++val)
+    sum += val;                 // assigns sum + val to sum  
+  std::cout << "Sum of 50 to 100 inclusive is "
+            << sum << std::endl;
+
+  return 0;
+}
+   #+END_SRC
+
+   ex01_10:
+   
+   #+BEGIN_SRC C
+#include <iostream>
+
+int main()
+{
+  for (int val = 10; val >= 0; --val)
+    std::cout << val << std::endl;
+ 
+  return 0;
+}
+   #+END_SRC
+
+   ex01_11:
+   
+   #+BEGIN_SRC C
+#include <iostream>
+
+int main()
+{
+  std::cout << "Enter two numbers(v1 < v2):" << std::endl;
+  int v1 = 0, v2 = 0;
+  std::cin >> v1 >> v2;
+
+  for (int val = v1; val <= v2; ++val)
+    std::cout << val << std::endl;
+  
+  return 0;
+}
+   #+END_SRC
+
