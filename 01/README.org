@@ -243,3 +243,19 @@ int main()
 }
    #+END_SRC
 
+** Exercise 1.12
+
+   #+BEGIN_QUOTE
+   What does the following ~for~ loop do? What is the final value of
+   ~sum~?
+   #+END_QUOTE
+
+   #+BEGIN_SRC C
+int sum = 0;
+for (int i = -100; i <= 100; ++i)
+    sum += i;
+   #+END_SRC
+
+   The ~for~ loop sums the numbers from from -100 to 100. The final
+   value of ~sum~ is zero.
+
