@@ -140,3 +140,32 @@ int main()
    #+END_SRC
 
    [[./img/fig01_07.png]]
+
+** Exercise 1.8
+
+   #+BEGIN_QUOTE
+   Indicate which, if any, of the following output statements are
+   legal: 
+   #+END_QUOTE
+
+   #+BEGIN_SRC C
+std::cout << "/*";
+std::cout << "*/";
+std::cout << /* "*/" */;
+std::cout << /*  "*/" /* "/*"  */;
+   #+END_SRC
+
+   #+BEGIN_QUOTE
+   After you’ve predicted what will happen, test your answers by
+   compiling a program with each of these statements. Correct any
+   errors you encounter.
+   #+END_QUOTE
+
+   The third statement is wrong.
+   [[./img/fig01_08.png]]
+
+   It can be fixed by adding a quote:
+   #+BEGIN_SRC C
+std::cout << /* "*/" */";
+   #+END_SRC
+   
