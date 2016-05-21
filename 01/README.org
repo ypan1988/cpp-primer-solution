@@ -495,3 +495,38 @@ int main()
   return 0;
 }
    #+END_SRC
+
+** Exercise 1.23
+
+   #+BEGIN_QUOTE
+   Write a program that reads several transactions and counts how many
+   transactions occur for each ISBN .
+   #+END_QUOTE
+
+   #+BEGIN_SRC C
+#include <iostream>
+#include "Sales_item.h"
+
+int main()
+{
+  Sales_item currItem, item;
+
+  if (std::cin >> currItem) {
+    int cnt = 1;
+    while (std::cin >> item) {
+      if (item.isbn() == currItem.isbn())
+        ++cnt;
+      else {
+        std::cout << currItem.isbn() << " occurs "
+                  << cnt << " times " << std::endl;
+        currItem = item;
+        cnt = 1;          
+      }
+    } // while loop ends here
+    std::cout << currItem.isbn() << " occurs "
+              << cnt << " times " << std::endl;
+  }
+
+  return 0;
+}
+   #+END_SRC
