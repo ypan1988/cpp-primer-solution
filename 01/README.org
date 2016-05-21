@@ -466,3 +466,32 @@ int main()
   return 0;
 }
    #+END_SRC
+
+** Exercise 1.22
+
+   #+BEGIN_QUOTE
+   Write a program that reads several transactions for the same
+   ISBN. Write the sum of all the transactions that were read.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C
+#include <iostream>
+#include "Sales_item.h"
+
+int main()
+{
+  Sales_item total;
+
+  if (std::cin >> total) {
+    Sales_item trans;
+    while (std::cin >> trans)
+      total += trans;
+    std::cout << total << std::endl;
+  } else {
+    std::cerr << "No Data?!" << std::endl;
+    return -1;
+  }
+
+  return 0;
+}
+   #+END_SRC
