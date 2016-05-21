@@ -544,7 +544,7 @@ int main()
 ** Exercise 1.25
 
    #+BEGIN_QUOTE
-   Using the Sales_item.h header from the Web site, compile and
+   Using the ~Sales_item.h~ header from the Web site, compile and
    execute the bookstore program presented in this section.
    #+END_QUOTE
 
@@ -581,6 +581,6 @@ int main()
 }
    #+END_SRC
 
-   [[./img/fig01_25]]
+   [[./img/fig01_25.png]]
 
    
