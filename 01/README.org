@@ -359,3 +359,17 @@ int main()
   return 0;
 }
    #+END_SRC
+
+** Exercise 1.17
+   
+   #+BEGIN_QUOTE
+   What happens in the program presented in this section if the input
+   values are all equal? What if there are no duplicated values?
+   #+END_QUOTE
+
+   If the input values are all equal, the program will print a line
+   which shows the number of the value you input.
+
+   If there are no duplicated values, the program will print a line
+   when different values input.
+
