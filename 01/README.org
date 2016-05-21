@@ -530,3 +530,14 @@ int main()
   return 0;
 }
    #+END_SRC
+
+** Exercise 1.24
+
+   #+BEGIN_QUOTE
+   Test the previous program by giving multiple transactions
+   representing multiple ISBN s. The records for each ISBN should be
+   grouped together.
+   #+END_QUOTE
+
+   [[./img/fig01_24.png]]
+   
