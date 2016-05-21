@@ -373,3 +373,12 @@ int main()
    If there are no duplicated values, the program will print a line
    when different values input.
 
+** Exercise 1.18
+
+   #+BEGIN_QUOTE
+   Compile and run the program from this section giving it only equal
+   values as input. Run it again giving it values in which no number
+   is repeated.
+   #+END_QUOTE
+
+   [[./img/fig01_18.png]]
