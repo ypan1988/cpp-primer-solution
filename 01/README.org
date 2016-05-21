@@ -420,7 +420,7 @@ int main()
 
    #+BEGIN_QUOTE
    http://www.informit.com/title/032174113 contains a copy of
-   Sales_item.h in the Chapter 1 code directory. Copy that file to
+   ~Sales_item.h~ in the Chapter 1 code directory. Copy that file to
    your working directory. Use it to write a program that reads a set
    of book sales transactions, writing each transaction to the
    standard output.
@@ -444,3 +444,25 @@ int main()
    Test the program using data/book_sales.
 
    [[./img/fig01_20.png]]
+
+** Exercise 1.21
+   
+   #+BEGIN_QUOTE
+   Write a program that reads two ~Sales_item~ objects that have the
+   same ISBN and produces their sum.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C
+#include <iostream>
+#include "Sales_item.h"
+
+int main()
+{
+  Sales_item item1, item2;
+
+  std::cin >> item1 >> item2;   // read a pair of transactions
+  std::cout << item1 + item2 << std::endl; // print their sum
+
+  return 0;
+}
+   #+END_SRC
