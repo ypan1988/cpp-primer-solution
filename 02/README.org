@@ -33,3 +33,34 @@
    single. The precision offered by ~long double~ usually is
    unnecessary and often entails considerable run-time cost.
 
+** Exercise 2.3
+
+   #+BEGIN_QUOTE
+   What output will the following code produce?
+   #+END_QUOTE
+
+   #+BEGIN_SRC C
+unsigned u = 10, u2 = 42;
+std::cout << u2 - u << std::endl;
+std::cout << u - u2 << std::endl;
+int i = 10, i2 = 42;
+std::cout << i2 - i << std::endl;
+std::cout << i - i2 << std::endl;
+ 
+std::cout << i - u << std::endl;
+std::cout << u - i << std::endl;
+   #+END_SRC
+
+   #+BEGIN_SRC C++ :include <iostream>
+unsigned u = 10, u2 = 42;
+std::cout << u2 - u << std::endl;
+std::cout << u - u2 << std::endl;
+int i = 10, i2 = 42;
+std::cout << i2 - i << std::endl;
+std::cout << i - i2 << std::endl;
+ 
+std::cout << i - u << std::endl;
+std::cout << u - i << std::endl;
+   #+END_SRC
+
+   
