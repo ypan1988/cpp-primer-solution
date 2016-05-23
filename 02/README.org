@@ -16,3 +16,20 @@
 
    A float type represents single-precision values; a double type
    represents double-precision values.
+
+** Exercise 2.2
+
+   #+BEGIN_QUOTE
+   To calculate a mortgage payment, what types would you use for the
+   rate, principal, and payment? Explain why you selected each type.
+   #+END_QUOTE
+
+   ~double~.
+
+   Use ~double~ for floating-point computations; ~float~ usually does
+   not have enough precision, and the cost of double-precision
+   calculations versus single-precision is negligible. In fact, on
+   some machines, double-precision operations are faster than
+   single. The precision offered by ~long double~ usually is
+   unnecessary and often entails considerable run-time cost.
+
