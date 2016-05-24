@@ -97,4 +97,18 @@ std::cout << u - i << std::endl;
       + 10u: unsigned integer literal, type is unsigned
       + 10.: double-precision floating-point literal, type is double
       + 10e-2: double-precision floating-point literal, type is double
- 
+
+** Exercise 2.6
+   
+   #+BEGIN_QUOTE
+   What, if any, are the differences between the following
+   definitions:
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+int month = 9, day = 7;
+int month = 09, day = 07;
+   #+END_SRC
+
+   In the first line, both 9 and 7 are integer literals in decimal.
+   In the second line, 09 is invalid, 07 is a integer literal in octal.
