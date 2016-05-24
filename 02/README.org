@@ -92,3 +92,9 @@ std::cout << u - i << std::endl;
       + 3.14f: single-precision floating-point literal, type is float
       + 3.14L: extended-precision floating-point literal, type is long double
         
+   4. 10, 10u, 10., 10e-2
+      + 10: integer literal, type is signed
+      + 10u: unsigned integer literal, type is unsigned
+      + 10.: double-precision floating-point literal, type is double
+      + 10e-2: double-precision floating-point literal, type is double
+ 
