@@ -84,5 +84,11 @@ std::cout << u - i << std::endl;
       + 10u: unsigned integer literal, type is unsigned
       + 10L: integer literal, type is long
       + 10uL: unsigned integer literal, type is unsigned long
-      + 012: integer literal(octal), type is signed
-      + 0xC: integer literal(hexadecimal), type is signed 
+      + 012: integer literal (octal), type is signed
+      + 0xC: integer literal (hexadecimal), type is signed 
+
+   3. 3.14, 3.14f, 3.14L
+      + 3.14: double-precision floating-point literal, type is double
+      + 3.14f: single-precision floating-point literal, type is float
+      + 3.14L: extended-precision floating-point literal, type is long double
+        
