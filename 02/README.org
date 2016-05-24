@@ -60,5 +60,22 @@ std::cout << u - i << std::endl;
    not, study this section until you understand what the problem is.
    #+END_QUOTE
 
-   Please refer to ex02_03
+   Please refer to ex02_03.
 
+** Exercise 2.5
+
+   #+BEGIN_QUOTE
+   Determine the type of each of the following literals. Explain the
+   differences among the literals in each of the four examples:
+   (a) 'a', L'a', "a", L"a"
+   (b) 10, 10u, 10L, 10uL, 012, 0xC
+   (c) 3.14, 3.14f, 3.14L
+   (d) 10, 10u, 10., 10e-2
+   #+END_QUOTE
+
+   (a) 
+   ~'a'~   // character literal, type is ~char~ 
+   ~L'a'~  // wide character literal, type is ~wchar_t~
+   ~"a"~   // character string literal, type is array of constant ~char~s
+   ~L"a"~  // wide character string literal, type is array of constant
+   ~wchar_t~s 
