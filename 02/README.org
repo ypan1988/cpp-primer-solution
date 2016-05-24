@@ -129,3 +129,22 @@ int month = 09, day = 07;
    3. error: invalid suffix "f" on integer constant
    4. 3.14, type is long double
 
+** Exercise 2.8
+   
+   #+BEGIN_QUOTE
+   Using escape sequences, write a program to print ~2M~ followed by a
+   newline. Modify the program to print ~2~, then a tab, then an ~M~,
+   followed by a newline.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+
+int main()
+{
+  std::cout << "2M\n";
+  std::cout << "2\tM\n";
+
+  return 0;
+}
+   #+END_SRC
