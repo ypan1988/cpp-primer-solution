@@ -67,13 +67,13 @@ std::cout << u - i << std::endl;
    #+BEGIN_QUOTE
    Determine the type of each of the following literals. Explain the
    differences among the literals in each of the four examples:
-   1) 'a', L'a', "a", L"a"
-   2) 10, 10u, 10L, 10uL, 012, 0xC
-   3) 3.14, 3.14f, 3.14L
-   4) 10, 10u, 10., 10e-2
+   a. 'a', L'a', "a", L"a"
+   b. 10, 10u, 10L, 10uL, 012, 0xC
+   c. 3.14, 3.14f, 3.14L
+   d. 10, 10u, 10., 10e-2
    #+END_QUOTE
 
-   1)
+   a.
    + 'a': character literal, type is char 
    + L'a': wide character literal, type is wchar_t
    + "a": character string literal, type is array of constant char 
