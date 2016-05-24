@@ -73,13 +73,10 @@ std::cout << u - i << std::endl;
    (d) 10, 10u, 10., 10e-2
    #+END_QUOTE
 
-   (a)\\ 
-   ~'a'~   // character literal, type is ~char~
-   
-   L~'a'~  // wide character literal, type is ~wchar_t~
-   
-   ~"a"~   // character string literal, type is array of constant
-   ~char~s
-   
-   L~"a"~  // wide character string literal, type is array of constant
+   (a)
+   + 'a'   // character literal, type is ~char~ 
+   + L'a'  // wide character literal, type is ~wchar_t~
+   + "a"   // character string literal, type is array of constant
+   ~char~s 
+   + L"a"  // wide character string literal, type is array of constant
    ~wchar_t~s 
