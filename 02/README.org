@@ -77,6 +77,6 @@ std::cout << u - i << std::endl;
    + 'a'   // character literal, type is ~char~ 
    + L'a'  // wide character literal, type is ~wchar_t~
    + "a"   // character string literal, type is array of constant
-   ~char~s 
+     ~char~ s 
    + L"a"  // wide character string literal, type is array of constant
-   ~wchar_t~s 
+     ~wchar_t~ s
