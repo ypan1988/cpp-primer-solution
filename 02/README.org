@@ -52,3 +52,13 @@ std::cout << u - i << std::endl;
    #+END_SRC
    
    [[./img/fig02_03.png]]
+
+** Exercise 2.4
+
+   #+BEGIN_QUOTE
+   Write a program to check whether your predictions were correct. If
+   not, study this section until you understand what the problem is.
+   #+END_QUOTE
+
+   Please refer to ex02_03
+
