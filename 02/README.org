@@ -110,5 +110,22 @@ int month = 9, day = 7;
 int month = 09, day = 07;
    #+END_SRC
 
-   In the first line, both 9 and 7 are integer literals in decimal.
-   In the second line, 09 is invalid, 07 is a integer literal in octal.
+   In the first line, both 9 and 7 are integer literals in
+   decimal. While in the second line, 09 is invalid and 07 is a
+   integer literal in octal.
+
+** Exercise 2.7
+   
+   #+BEGIN_QUOTE
+   What values do these literals represent? What type does each have?
+   1. "Who goes with F\145rgus?\012"
+   2. 3.14e1L
+   3. 1024f
+   4. 3.14L
+   #+END_QUOTE
+
+   1. Who goes with Fergus?\n, type is array of constant chars
+   2. 31.4, type is double
+   3. error: invalid suffix "f" on integer constant
+   4. 3.14, type is long double
+
