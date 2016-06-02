@@ -5,6 +5,23 @@ What is a virtual member?
 #+END_QUOTE
   
 The base class defines as ~virtual~ those functions it expects its derived
-classes to override. 
+classes to override.
+ 
+** Exercise 15.2 
 
+#+BEGIN_QUOTE
+How does the ~protected~ access specifier differ from ~private~?
+#+END_QUOTE
+
+Like any other code that uses the base class, a derived class may access the
+~public~ members of its base class but may not access the ~private~ members.
+However, sometimes a base class has members that it wants to let its derived
+classes use while still prohibiting access to those same members by other users.
+We specify such members after a ~protected~ access specifier.
+
+** Exercise 15.3
+
+#+BEGIN_QUOTE
+Define your own versions of the ~Quote~ class and the ~print_total~ function.
+#+END_QUOTE
 
