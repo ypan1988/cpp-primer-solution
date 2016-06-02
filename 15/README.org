@@ -25,3 +25,19 @@ We specify such members after a ~protected~ access specifier.
 Define your own versions of the ~Quote~ class and the ~print_total~ function.
 #+END_QUOTE
 
+** Exercise 15.4
+
+#+BEGIN_QUOTE
+Which of the following declarations, if any, are incorrect? Explain why.
+#+END_QUOTE
+
+#+BEGIN_SRC C++
+class Base { ... };
+(a) class Derived : public Derived { ... };
+(b) class Derived : private Base { ... };
+(c) class Derived : public Base;
+#+END_SRC
+
++ (a) error: it is impossible to derive a class from itself
++ (b) error: it is a definition instead of a declaration
++ (c) error: derivation lists can's appear here
