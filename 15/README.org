@@ -1,0 +1,10 @@
+** Exercise 15.1
+
+#+BEGIN_QUOTE
+What is a virtual member?
+#+END_QUOTE
+  
+The base class defines as ~virtual~ those functions it expects its derived
+classes to override. 
+
+
