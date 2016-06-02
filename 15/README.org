@@ -41,3 +41,20 @@ class Base { ... };
 + (a) error: it is impossible to derive a class from itself
 + (b) error: it is a definition instead of a declaration
 + (c) error: derivation lists can's appear here
+
+** Exercise 15.5
+
+#+BEGIN_QUOTE
+Define your own version of the ~Bulk_quote~ class
+#+END_QUOTE
+
+** Exercise 15.8
+
+#+BEGIN_QUOTE
+Define static type and dynamic type.
+#+END_QUOTE
+
+The static type of an expression is always known at compile time -- it is the
+type with which a variable is declared or that an expression yields. The dynamic
+type is the type of the object in memory that the variable or expression
+represents. The dynamic type may not be known until run time.
