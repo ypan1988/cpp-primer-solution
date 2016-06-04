@@ -24,3 +24,13 @@ double Bulk_quote::net_price(size_t cnt) const
   else
     return cnt * price;
 }
+
+// use discounted price for up to a specified number of items
+// additional items priced at normal, undiscounted price
+double Lim_quote::net_price(size_t cnt) const
+{
+  if (cnt <= max_qty)
+    return cnt * (1 - discount) * price;
+  else
+    return cnt * price - max_qty * discount * price;
+}

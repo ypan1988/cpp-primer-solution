@@ -145,6 +145,42 @@ int main()
 
 [[./img/fig15_06.png]]
 
+** Exercise 15.7
+
+#+BEGIN_QUOTE
+Define a class that implements a limited discount strategy, which applies a
+discount to books purchased up to a given limit. If the number of copies exceeds
+that limit, the normal price applies to those purchased beyond the limit.
+#+END_QUOTE
+
+~Lim_quote~ class:
+#+BEGIN_SRC C++
+class Lim_quote : public Quote { // Lim_quote inherits from Quote
+  public:
+    Lim_quote() = default;
+  Lim_quote(const std::string& book, double p, std::size_t qty, double disc) :
+    Quote(book, p), max_qty(qty), discount(disc) { }
+
+    // overrides the base version in order to implement limited discount policy
+    double net_price(std::size_t) const override;
+
+  private:
+    std::size_t max_qty = 0;      // maximum purchase for the discount to apply
+    double discount = 0.0;        // fractional discount to apply
+};
+
+// use discounted price for up to a specified number of items
+// additional items priced at normal, undiscounted price
+double Lim_quote::net_price(size_t cnt) const
+{
+  if (cnt <= max_qty)
+    return cnt * (1 - discount) * price;
+  else
+    return cnt * price - max_qty * discount * price;
+}
+#+BEGIN_SRC
+
+
 ** Exercise 15.8
 
 #+BEGIN_QUOTE
