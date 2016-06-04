@@ -178,9 +178,9 @@ double Lim_quote::net_price(size_t cnt) const
   else
     return cnt * price - max_qty * discount * price;
 }
-#+BEGIN_SRC
+#+END_SRC
 
-
+* Exercises Section 15.2.3
 ** Exercise 15.8
 
 #+BEGIN_QUOTE
