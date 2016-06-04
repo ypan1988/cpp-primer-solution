@@ -1,3 +1,4 @@
+* Exercises Section 15.2.1
 ** Exercise 15.1
 
 #+BEGIN_QUOTE
@@ -24,6 +25,78 @@ We specify such members after a ~protected~ access specifier.
 #+BEGIN_QUOTE
 Define your own versions of the ~Quote~ class and the ~print_total~ function.
 #+END_QUOTE
+
+Quote.h:
+#+BEGIN_SRC C++
+#ifndef QUOTE_H
+#define QUOTE_H
+
+#include <iostream>
+#include <string>
+
+class Quote {
+  public:
+    Quote() = default;            // = default see 7.1.4 (p.264)
+  Quote(const std::string &book, double sales_price) :
+    bookNo(book), price(sales_price) { }
+
+    std::string isbn() const { return bookNo; }
+
+    // returns the total sales price for the specified number of items
+    // derived classes will override and apply different discount algorithms
+    virtual double net_price(std::size_t n) const
+    { return n * price; }
+
+    virtual ~Quote() = default;   // dynamic binding for the destructor
+
+  private:
+    std::string bookNo;           // ISBN number of this item
+
+  protected:
+    double price = 0.0;           // normal, undiscounted price 
+};
+
+double print_total(std::ostream &os, const Quote &item, size_t n);
+
+#endif
+#+END_SRC
+
+Quote.cc:
+#+BEGIN_SRC C++
+#include "Quote.h"
+
+#include <iostream>
+using std::ostream;
+using std::endl;
+
+// calculate and print the price for the give number if copies, applying any
+// discount
+double print_total(ostream &os, const Quote &item, size_t n)
+{
+  // depending on the type of the object bound to the item parameter
+  // calls either Quote::net_price or Bulk_quote::net_price
+  double ret = item.net_price(n);
+  os << "ISBN: " << item.isbn() // calls Quote::isbn
+     << " # sold@ "<< n << " total due: " << ret << endl;
+  return ret;
+}
+#+END_SRC
+
+ex15_03.cc:
+#+BEGIN_SRC C++
+#include <iostream>
+using std::cout;
+
+#include "Quote.h"
+
+int main()
+{
+  Quote base("0-201-82470-1", 50);
+  print_total(cout, base, 10);  // calls Quotes::net_price
+
+  return 0;
+}
+#+END_SRC
 
 ** Exercise 15.4
 
@@ -58,3 +131,11 @@ The *static* type of an expression is always known at compile time -- it is the
 type with which a variable is declared or that an expression yields. The *dynamic*
 type is the type of the object in memory that the variable or expression
 represents. The dynamic type may not be known until run time.
+
+** Exercise 15.9
+
+#+BEGIN_QUOTE
+When is it possible for an expression’s static type to differ from its dynamic
+type? Give three examples in which the static and dynamic type differ.
+#+END_QUOTE
+
