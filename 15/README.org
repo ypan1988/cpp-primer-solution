@@ -26,14 +26,8 @@ We specify such members after a ~protected~ access specifier.
 Define your own versions of the ~Quote~ class and the ~print_total~ function.
 #+END_QUOTE
 
-Quote.h:
+~Quote~ class:
 #+BEGIN_SRC C++
-#ifndef QUOTE_H
-#define QUOTE_H
-
-#include <iostream>
-#include <string>
-
 class Quote {
   public:
     Quote() = default;            // = default see 7.1.4 (p.264)
@@ -55,20 +49,10 @@ class Quote {
   protected:
     double price = 0.0;           // normal, undiscounted price 
 };
-
-double print_total(std::ostream &os, const Quote &item, size_t n);
-
-#endif
 #+END_SRC
 
-Quote.cc:
+~print_total~ function:
 #+BEGIN_SRC C++
-#include "Quote.h"
-
-#include <iostream>
-using std::ostream;
-using std::endl;
-
 // calculate and print the price for the give number if copies, applying any
 // discount
 double print_total(ostream &os, const Quote &item, size_t n)
@@ -79,22 +63,6 @@ double print_total(ostream &os, const Quote &item, size_t n)
   os << "ISBN: " << item.isbn() // calls Quote::isbn
      << " # sold@ "<< n << " total due: " << ret << endl;
   return ret;
-}
-#+END_SRC
-
-ex15_03.cc:
-#+BEGIN_SRC C++
-#include <iostream>
-using std::cout;
-
-#include "Quote.h"
-
-int main()
-{
-  Quote base("0-201-82470-1", 50);
-  print_total(cout, base, 10);  // calls Quotes::net_price
-
-  return 0;
 }
 #+END_SRC
 
@@ -119,6 +87,40 @@ class Base { ... };
 
 #+BEGIN_QUOTE
 Define your own version of the ~Bulk_quote~ class
+#+END_QUOTE
+
+~Bulk_quote~ class:
+#+BEGIN_SRC C++
+class Bulk_quote : public Quote { // Bulk_quote inherits from Quote
+ public:
+  Bulk_quote() = default;
+ Bulk_quote(const std::string& book, double p, std::size_t qty, double disc) :
+  Quote(book, p), min_qty(qty), discount(disc) { }
+
+  // overrides the base version in order to implement the bulk purchase discount
+  // policy
+  double net_price(std::size_t) const override;
+
+ private:
+  std::size_t min_qty = 0;      // minimum purchase for the discount to apply
+  double discount = 0.0;        // fractional discount to apply
+};
+
+// if the specified number of items are purchased, use the discounted price
+double Bulk_quote::net_price(size_t cnt) const
+{
+  if (cnt >= min_qty)
+    return cnt * (1 - discount) * price;
+  else
+    return cnt * price;
+}
+#+END_SRC
+
+** Exercise 15.6
+
+#+BEGIN_QUOTE
+Test your ~print_total~ function from the exercises in § 15.2.1 (p. 595) by
+passing both ~Quote~ and ~Bulk_quote~ objects o that function.
 #+END_QUOTE
 
 ** Exercise 15.8

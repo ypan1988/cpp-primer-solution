@@ -15,3 +15,12 @@ double print_total(ostream &os, const Quote &item, size_t n)
      << " # sold@ "<< n << " total due: " << ret << endl;
   return ret;
 }
+
+// if the specified number of items are purchased, use the discounted price
+double Bulk_quote::net_price(size_t cnt) const
+{
+  if (cnt >= min_qty)
+    return cnt * (1 - discount) * price;
+  else
+    return cnt * price;
+}
