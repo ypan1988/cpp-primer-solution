@@ -1,7 +1,7 @@
 #include <iostream>
 using std::cout;
 
-#include "Quote.h"
+#include "Quote1.h"
 
 int main()
 {
