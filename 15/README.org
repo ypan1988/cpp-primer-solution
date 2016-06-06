@@ -241,7 +241,7 @@ Add a virtual ~debug~ function to your ~Quote~ class hierarchy that displays the
 data members of the respective classes.
 #+END_QUOTE
 
-Add virtual ~debug~ functions(Quote1.h):
+Add virtual ~debug~ functions (Quote1.h):
 #+BEGIN_SRC C++
 class Quote {
   public:
@@ -301,7 +301,7 @@ class Lim_quote : public Quote { // Lim_quote inherits from Quote
 };
 #+END_SRC
 
-Add virtual ~debug~ functions(Quote1.cc):
+Add virtual ~debug~ functions (Quote1.cc):
 #+BEGIN_SRC C++
 void Quote::debug() const
 {
