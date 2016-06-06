@@ -26,7 +26,7 @@ We specify such members after a ~protected~ access specifier.
 Define your own versions of the ~Quote~ class and the ~print_total~ function.
 #+END_QUOTE
 
-~Quote~ class:
+Define ~Quote~ class (Quote1.h):
 #+BEGIN_SRC C++
 class Quote {
   public:
@@ -51,7 +51,7 @@ class Quote {
 };
 #+END_SRC
 
-~print_total~ function:
+Define ~print_total~ function (Quote1.cc):
 #+BEGIN_SRC C++
 // calculate and print the price for the give number if copies, applying any
 // discount
@@ -81,9 +81,9 @@ class Base { ... };
 (c) class Derived : public Base;
 #+END_SRC
 
-+ (a) error: it is impossible to derive a class from itself
-+ (b) error: it is a definition instead of a declaration
-+ (c) error: derivation lists can's appear here
++ (a) error: it is impossible to derive a class from itself.
++ (b) error: it is a definition instead of a declaration.
++ (c) error: derivation lists can's appear here, should be "class Derived;".
 
 ** Exercise 15.5
 
@@ -91,7 +91,7 @@ class Base { ... };
 Define your own version of the ~Bulk_quote~ class
 #+END_QUOTE
 
-~Bulk_quote~ class:
+Define ~Bulk_quote~ class (Quote1.h):
 #+BEGIN_SRC C++
 class Bulk_quote : public Quote { // Bulk_quote inherits from Quote
  public:
@@ -107,7 +107,10 @@ class Bulk_quote : public Quote { // Bulk_quote inherits from Quote
   std::size_t min_qty = 0;      // minimum purchase for the discount to apply
   double discount = 0.0;        // fractional discount to apply
 };
+#+END_SRC
 
+Define ~Bulk_quote~ class (Quote1.cc):
+#+BEGIN_SRC C++
 // if the specified number of items are purchased, use the discounted price
 double Bulk_quote::net_price(size_t cnt) const
 {
@@ -153,7 +156,7 @@ discount to books purchased up to a given limit. If the number of copies exceeds
 that limit, the normal price applies to those purchased beyond the limit.
 #+END_QUOTE
 
-~Lim_quote~ class:
+Define ~Lim_quote~ class (Quote1.h):
 #+BEGIN_SRC C++
 class Lim_quote : public Quote { // Lim_quote inherits from Quote
   public:
@@ -168,7 +171,10 @@ class Lim_quote : public Quote { // Lim_quote inherits from Quote
     std::size_t max_qty = 0;      // maximum purchase for the discount to apply
     double discount = 0.0;        // fractional discount to apply
 };
+#+END_SRC
 
+Define ~Lim_quote~ class (Quote1.cc):
+#+BEGIN_SRC C++
 // use discounted price for up to a specified number of items
 // additional items priced at normal, undiscounted price
 double Lim_quote::net_price(size_t cnt) const
@@ -235,6 +241,7 @@ Add a virtual ~debug~ function to your ~Quote~ class hierarchy that displays the
 data members of the respective classes.
 #+END_QUOTE
 
+Add virtual ~debug~ functions(Quote1.h):
 #+BEGIN_SRC C++
 class Quote {
   public:
@@ -294,6 +301,7 @@ class Lim_quote : public Quote { // Lim_quote inherits from Quote
 };
 #+END_SRC
 
+Add virtual ~debug~ functions(Quote1.cc):
 #+BEGIN_SRC C++
 void Quote::debug() const
 {
