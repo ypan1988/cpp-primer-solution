@@ -324,3 +324,14 @@ void Lim_quote::debug() const
        << "discount = " << this->discount << endl;
 }
 #+END_SRC
+
+** Exercise 15.12 
+
+#+BEGIN_QUOTE
+Is it ever useful to declare a member function as both ~override~ and ~final~?
+Why or why not?
+#+END_QUOTE
+
+Yes. It is useful. ~override~ explicitly note that a derived class intends a
+member function to override a virtual that it inherits. ~final~ is used to
+prevent a class from being used as a base.
