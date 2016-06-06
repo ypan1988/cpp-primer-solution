@@ -1,6 +1,7 @@
 #include "Quote1.h"
 
 #include <iostream>
+using std::cout;
 using std::ostream;
 using std::endl;
 
@@ -16,6 +17,13 @@ double print_total(ostream &os, const Quote &item, size_t n)
   return ret;
 }
 
+void Quote::debug() const
+{
+  cout << "Data members of the class: " << endl
+       << "bookNo = " << this->bookNo << endl
+       << "price = " << this->price << endl;
+}
+
 // if the specified number of items are purchased, use the discounted price
 double Bulk_quote::net_price(size_t cnt) const
 {
@@ -23,6 +31,13 @@ double Bulk_quote::net_price(size_t cnt) const
     return cnt * (1 - discount) * price;
   else
     return cnt * price;
+}
+
+void Bulk_quote::debug() const
+{
+  Quote::debug();
+  cout << "min_qty = " << this->min_qty << endl
+       << "discount = " << this->discount << endl;
 }
 
 // use discounted price for up to a specified number of items
@@ -33,4 +48,11 @@ double Lim_quote::net_price(size_t cnt) const
     return cnt * (1 - discount) * price;
   else
     return cnt * price - max_qty * discount * price;
+}
+
+void Lim_quote::debug() const
+{
+  Quote::debug();
+  cout << "max_qty = " << this->max_qty << endl
+       << "discount = " << this->discount << endl;
 }

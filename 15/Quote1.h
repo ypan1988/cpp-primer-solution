@@ -17,6 +17,8 @@ class Quote {
     virtual double net_price(std::size_t n) const
     { return n * price; }
 
+    virtual void debug() const;
+
     virtual ~Quote() = default;   // dynamic binding for the destructor
 
   private:
@@ -36,6 +38,8 @@ class Bulk_quote : public Quote { // Bulk_quote inherits from Quote
     // policy
     double net_price(std::size_t) const override;
 
+    void debug() const override;
+
   private:
     std::size_t min_qty = 0;      // minimum purchase for the discount to apply
     double discount = 0.0;        // fractional discount to apply
@@ -49,6 +53,8 @@ class Lim_quote : public Quote { // Lim_quote inherits from Quote
 
     // overrides the base version in order to implement limited discount policy
     double net_price(std::size_t) const override;
+
+    void debug() const override;
 
   private:
     std::size_t max_qty = 0;      // maximum purchase for the discount to apply
