@@ -234,7 +234,8 @@ Recalling the discussion from §8.1 (p. 311), explain how the program on page 31
 that passed an ~ifstream~ to the ~Sales_data~ read function works.
 #+END_QUOTE
 
-* Exercises 15.3
+
+* Exercises Section 15.3
 ** Exercise 15.11
 #+BEGIN_QUOTE
 Add a virtual ~debug~ function to your ~Quote~ class hierarchy that displays the
@@ -325,6 +326,7 @@ void Lim_quote::debug() const
 }
 #+END_SRC
 
+
 ** Exercise 15.12 
 
 #+BEGIN_QUOTE
@@ -335,3 +337,28 @@ Why or why not?
 Yes. It is useful. ~override~ explicitly note that a derived class intends a
 member function to override a virtual that it inherits. ~final~ is used to
 prevent a class from being used as a base.
+
+** Exercise 15.13
+#+BEGIN_QUOTE
+Given the following classes, explain each ~print~ function:
+#+END_QUOTE
+
+#+BEGIN_SRC C++
+class base {
+public:
+  string name() { return basename; }
+  virtual void print(ostream &os) { os << basename; }
+private:
+  string basename;
+};
+class derived : public base {
+public:
+  void print(ostream &os) { print(os); os << " " << i; }
+private:
+  int i;
+};
+#+END_SRC
+
+#+BEGIN_QUOTE
+If there is a problem in this code, how would you fix it?
+#+END_QUOTE
