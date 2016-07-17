@@ -386,3 +386,7 @@ p = &dd3;       //  dd3 has type Derived_from_Protected
 + p = &dd1;       // legal
 + p = &dd2;       // illegal
 + p = &dd3;       // illegal
+
+For any given point in your code, if a ~public~ member of the base class would
+be accessible, then the derived-to-base conversion is also accessible, and not
+otherwise.
