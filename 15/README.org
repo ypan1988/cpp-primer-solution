@@ -363,7 +363,7 @@ private:
 If there is a problem in this code, how would you fix it?
 #+END_QUOTE
 
-*  Exercise Section 15.5
+* Exercise Section 15.5
 **  Exercise 15.18
 #+BEGIN_QUOTE
 Given the classes from page 612 and page 613, and assuming each object has the
@@ -390,3 +390,17 @@ p = &dd3;       //  dd3 has type Derived_from_Protected
 For any given point in your code, if a ~public~ member of the base class would
 be accessible, then the derived-to-base conversion is also accessible, and not
 otherwise.
+
+**  Exercise 15.19
+#+BEGIN_QUOTE
+Assume that each of the classes from page 612 and page 613 has a member function
+of the form:
+#+END_QUOTE
+
+#+BEGIN_SRC C++
+void memfcn(Base &b) { b = *this; }
+#+END_SRC
+
+#+BEGIN_QUOTE
+For each class, determine whether this function would be legal.
+#+END_QUOTE
