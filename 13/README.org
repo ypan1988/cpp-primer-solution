@@ -9,8 +9,29 @@ to the class type and any additional parameters have *default values*.
 
 Copy initialization ordinarily uses the copy constructor (or the move
 constructor), and it happens when we
-+ Define variables using an =
-+ Pass an object as an argument to a parameter of nonreference type
-+ Return an object from a function that has a nonreference return type
-+ Brace initialize the elements in an array or the members of an aggregate class
++ Define variables using an =;
++ Pass an object as an argument to a parameter of nonreference type;
++ Return an object from a function that has a nonreference return type;
++ Brace initialize the elements in an array or the members of an aggregate class;
 + Some class types also use copy initialization for the objects they allocate.
+
+** Exercise 13.2
+#+BEGIN_QUOTE
+Explain why the following declaration is illegal:
+#+END_QUOTE
+
+#+BEGIN_SRC C++
+Sales_data::Sales_data(Sales_data rhs);
+#+END_SRC
+
+The fact that the copy constructor is used to initialize nonreference parameters
+of class type explains why the copy constructor’s own parameter must be a
+reference. If that parameter were not a reference (the declaration in this
+question), then the call would never succeed -- to call the copy constructor,
+we’d need to use the copy constructor to copy the argument, but to copy the
+argument, we’d need to call the copy constructor, and so on indefinitely.
+
+** Exercise 13.3
+#+BEGIN_QUOTE
+What happens when we copy a ~StrBlob~? What about ~StrBlobPtr~s?
+#+END_QUOTE
