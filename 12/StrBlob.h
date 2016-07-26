@@ -7,12 +7,7 @@
 #include <memory>
 #include <exception>
 
-// forward declaration needed for friend declaration in StrBlob
-class StrBlobPtr;
-
 class StrBlob {
-    friend class StrBlobPtr;
-
   public:
     typedef std::vector<std::string>::size_type size_type;
 
@@ -33,11 +28,6 @@ class StrBlob {
     std::string& back();
     const std::string& front() const;
     const std::string& back() const;
-
-
-    // interface to StrBlobPtr
-    StrBlobPtr begin();         // can't be defined until StrBlobPtr is
-    StrBlobPtr end();
 
   private:
     std::shared_ptr<std::vector<std::string>> data;
