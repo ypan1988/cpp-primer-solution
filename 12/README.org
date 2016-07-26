@@ -137,3 +137,13 @@ int main()
   return 0;
 }
 #+END_SRC
+** Exercise 12.3
+#+BEGIN_QUOTE
+Does this class need ~const~ versions of ~push_back~ and ~pop_back~? If so, add
+them. If not, why aren’t they needed?
+#+END_QUOTE
+
+No. "You can certainly do this if you want to, but there doesn't seem to be any
+logical reason. The compiler doesn't complain because this doesn't modify ~data~
+(which is a pointer) but rather the thing ~data~ points to, which is perfectly
+legal to do with a ~const~ pointer."
