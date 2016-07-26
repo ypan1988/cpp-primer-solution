@@ -26,7 +26,7 @@ Sales_data::Sales_data(Sales_data rhs);
 
 The fact that the copy constructor is used to initialize nonreference parameters
 of class type explains why the copy constructor’s own parameter must be a
-reference. If that parameter were not a reference (the declaration in this
+reference. If that parameter were not a reference (like the declaration in this
 question), then the call would never succeed -- to call the copy constructor,
 we’d need to use the copy constructor to copy the argument, but to copy the
 argument, we’d need to call the copy constructor, and so on indefinitely.
