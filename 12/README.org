@@ -251,3 +251,19 @@ int main()
   return 0;
 }
 #+END_SRC
+** Exercise 12.8
+#+BEGIN_QUOTE
+Explain what if anything is wrong with the following function.
+#+END_QUOTE
+
+#+BEGIN_SRC C++
+bool b() {
+    int* p = new int;
+    // ...
+    return p;
+}
+#+END_SRC
+
+In this question, ~p~ was the only pointer to the memory allocated. Once
+function ~b~ returns, ~p~ will be converted to a ~bool~ and the program has no
+way to free that memory. As a result, "memory leak" will occur.
