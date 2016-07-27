@@ -163,3 +163,91 @@ that ~vector~ to another function that reads the standard input to give values
 to the elements. Pass the ~vector~ to another function to print the values that
 were read. Remember to ~delete~ the ~vector~ at the appropriate time.
 #+END_QUOTE
+
+#+BEGIN_SRC C++
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
+#include <vector>
+using std::vector;
+
+vector<int>* factory()
+{
+  return new vector<int>{};
+}
+
+vector<int>* read_factory(vector<int>* vec)
+{
+  int value;
+  while (cin >> value) {
+    vec->push_back(value);
+  }
+
+  return vec;
+}
+
+void print_factory(vector<int>* vec)
+{
+  for (auto i : *vec)
+    cout << i << endl;
+}
+
+int main()
+{
+  vector<int>* vec = read_factory(factory());
+  print_factory(vec);
+  delete vec;
+
+  return 0;
+}
+#+END_SRC
+
+** Exercise 12.7
+#+BEGIN_QUOTE
+Redo the previous exercise, this time using ~shared_ptr~.
+#+END_QUOTE
+
+#+BEGIN_SRC C++
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
+#include <vector>
+using std::vector;
+
+#include <memory>
+using std::make_shared;
+using std::shared_ptr;
+
+shared_ptr<vector<int>> factory()
+{
+  return make_shared<vector<int>>();
+}
+
+shared_ptr<vector<int>> read_factory(shared_ptr<vector<int>> vec)
+{
+  int value;
+  while (cin >> value) {
+    vec->push_back(value);
+  }
+
+  return vec;
+}
+
+void print_factory(shared_ptr<vector<int>> vec)
+{
+  for (auto i : *vec)
+    cout << i << endl;
+}
+
+int main()
+{
+  shared_ptr<vector<int>> vec = read_factory(factory());
+  print_factory(vec);
+
+  return 0;
+}
+#+END_SRC
