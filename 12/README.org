@@ -267,3 +267,49 @@ bool b() {
 In this question, ~p~ was the only pointer to the memory allocated. Once
 function ~b~ returns, ~p~ will be converted to a ~bool~ and the program has no
 way to free that memory. As a result, "memory leak" will occur.
+
+* Exercises Section 12.1.3
+** Exercise 12.10
+#+BEGIN_QUOTE
+Explain whether the following call to the ~process~ function defined on page 464
+is correct. If not, how would you correct the call?
+#+END_QUOTE
+
+#+BEGIN_SRC C++
+shared_ptr<int> p(new int(42));
+process(shared_ptr<int>(p));
+#+END_SRC
+
+Correct.
+
+** Exercise 12.11
+#+BEGIN_QUOTE
+What would happen if we called ~process~ as follows?
+#+END_QUOTE
+
+#+BEGIN_SRC C++
+process(shared_ptr<int>(p.get()));
+#+END_SRC
+
+In this call, we passed a temporary ~shared_ptr~ to ~process~. That temporary is
+destroyed when the expression in which the call appears finishes. The memory to
+which the temporary points is freed when the temporary is destroyed.
+
+** Exercise 12.12
+#+BEGIN_QUOTE
+Using the declarations of ~p~ and ~sp~ explain each of the following calls to
+~process~. If the call is legal, explain what it does. If the call is illegal,
+explain why:
+#+END_QUOTE
+
+#+BEGIN_SRC C++
+auto p = new int();
+auto sp = make_shared<int>();
+#+END_SRC
+
+#+BEGIN_QUOTE
+1. process(sp);
+2. process(new int());
+3. process(p);
+4. process(shared_ptr<int>(p));
+#+END_QUOTE
