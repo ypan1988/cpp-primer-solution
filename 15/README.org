@@ -325,8 +325,6 @@ void Lim_quote::debug() const
        << "discount = " << this->discount << endl;
 }
 #+END_SRC
-
-
 ** Exercise 15.12 
 
 #+BEGIN_QUOTE
@@ -362,6 +360,7 @@ private:
 #+BEGIN_QUOTE
 If there is a problem in this code, how would you fix it?
 #+END_QUOTE
+
 
 * Exercise Section 15.5
 ** Exercise 15.18
@@ -404,6 +403,7 @@ void memfcn(Base &b) { b = *this; }
 #+BEGIN_QUOTE
 For each class, determine whether this function would be legal.
 #+END_QUOTE
+
 
 * Exercise Section 15.6
 ** Exercise 15.23
