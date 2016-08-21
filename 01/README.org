@@ -342,6 +342,7 @@ int main()
 
    Okay :) 
 
+* Exercises Section 1.4.3
 ** Exercise 1.16
    
    #+BEGIN_QUOTE
