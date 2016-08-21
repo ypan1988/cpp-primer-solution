@@ -122,6 +122,7 @@ std::cout << "The sum of " << v1
           << " is " << v1 + v2 << std::endl;
    #+END_SRC
 
+* Exercises Section 1.3
 ** Exercise 1.7
 
    #+BEGIN_QUOTE
@@ -171,6 +172,7 @@ std::cout << /*  "*/" /* "/*"  */;
 std::cout << /* "*/" */";
    #+END_SRC
    
+* Exercises Section 1.4.1
 ** Exercise 1.9
 
    #+BEGIN_QUOTE
