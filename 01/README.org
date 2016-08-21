@@ -247,6 +247,7 @@ int main()
 }
    #+END_SRC
    
+* Exercises Section 1.4.2
 ** Exercise 1.12
 
    #+BEGIN_QUOTE
