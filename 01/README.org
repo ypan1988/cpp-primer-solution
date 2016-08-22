@@ -550,6 +550,7 @@ int main()
 
    [[./img/fig01_24.png]]
    
+* Exercises Section 1.6
 ** Exercise 1.25
 
    #+BEGIN_QUOTE
