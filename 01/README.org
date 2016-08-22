@@ -423,6 +423,7 @@ int main()
 }
    #+END_SRC
 
+* Exercises Section 1.5.1
 ** Exercise 1.20
 
    #+BEGIN_QUOTE
