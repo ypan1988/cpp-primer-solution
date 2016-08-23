@@ -161,7 +161,7 @@ int main()
    + (c) double salary = wage = 9999.99;
    + (d) int i = 3.14;
    #+END_QUOTE
-
+   
    + (a) Wrong. The variable input_value should be defined first.
    #+BEGIN_SRC C++
 int input_value; 
@@ -170,13 +170,13 @@ std::cin >> input_value;
    + (b) Wrong. The compiler will not let us list initialize variables
      of build-in typeif the initializer might lead to the loss of
      information.
-#+BEGIN_SRC C++
+   #+BEGIN_SRC C++
 double i = {3.14};
-#+END_SRC
+   #+END_SRC
    + (c) Wrong. The variable wage should be defined first.
-#+BEGIN_SRC C++
+   #+BEGIN_SRC C++
 double wage = 9999.99;
 double salary = 9999.99;
-#+END_SRC   
+   #+END_SRC   
    + (d) Okay.
 
