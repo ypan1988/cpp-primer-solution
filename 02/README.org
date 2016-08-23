@@ -156,27 +156,27 @@ int main()
    #+BEGIN_QUOTE
    Explain the following definitions. For those that are illegal,
    explain what's wrong and how to correct it.
-   1. std::cin << int input_value;
-   2. int i = { 3.14 };
-   3. double salary = wage = 9999.99;
-   4. int i = 3.14;
+   + (a) std::cin << int input_value;
+   + (b) int i = { 3.14 };
+   + (c) double salary = wage = 9999.99;
+   + (d) int i = 3.14;
    #+END_QUOTE
 
-   + Wrong. The variable input_value should be defined first.
+   + (a) Wrong. The variable input_value should be defined first.
    #+BEGIN_SRC C++
-int input_value;
+int input_value; 
 std::cin >> input_value;
    #+END_SRC
-   + Wrong. The compiler will not let us list initialize variables of
-     build-in typeif the initializer might lead to the loss of
+   + (b) Wrong. The compiler will not let us list initialize variables
+     of build-in typeif the initializer might lead to the loss of
      information.
 #+BEGIN_SRC C++
 double i = {3.14};
 #+END_SRC
-   + Wrong. The variable wage should be defined first.
+   + (c) Wrong. The variable wage should be defined first.
 #+BEGIN_SRC C++
 double wage = 9999.99;
 double salary = 9999.99;
 #+END_SRC   
-   + Okay.
+   + (d) Okay.
 
