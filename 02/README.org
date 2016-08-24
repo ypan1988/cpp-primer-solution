@@ -153,30 +153,49 @@ int main()
    #+END_SRC
 * Exercises Section 2.2.1
 ** Exercise 2.9
-   #+BEGIN_QUOTE
-   Explain the following definitions. For those that are illegal,
-   explain what's wrong and how to correct it.
-   + (a) std::cin << int input_value;
-   + (b) int i = { 3.14 };
-   + (c) double salary = wage = 9999.99;
-   + (d) int i = 3.14;
-   #+END_QUOTE
+#+BEGIN_QUOTE
+Explain the following definitions. For those that are illegal,
+explain what's wrong and how to correct it.
++ (a) std::cin << int input_value;
++ (b) int i = { 3.14 };
++ (c) double salary = wage = 9999.99;
++ (d) int i = 3.14;
+#+END_QUOTE
    
-   + (a) Wrong. The variable input_value should be defined first.
-   #+BEGIN_SRC C++
-int input_value; 
-std::cin >> input_value;
-   #+END_SRC
-   + (b) Wrong. The compiler will not let us list initialize variables
-     of build-in typeif the initializer might lead to the loss of
-     information.
-   #+BEGIN_SRC C++
-double i = {3.14};
-   #+END_SRC
-   + (c) Wrong. The variable wage should be defined first.
-   #+BEGIN_SRC C++
-double wage = 9999.99;
-double salary = 9999.99;
-   #+END_SRC   
-   + (d) Okay.
+      + (a) Wrong. The variable input_value should be defined first.
+        #+BEGIN_SRC C++
+        int input_value; 
+        std::cin >> input_value;
+        #+END_SRC
+        + (b) Wrong. The compiler will not let us list initialize variables
+          of build-in typeif the initializer might lead to the loss of
+          information.
+          #+BEGIN_SRC C++
+          double i = {3.14};
+          #+END_SRC
+          + (c) Wrong. The variable wage should be defined first.
+          #+BEGIN_SRC C++
+          double wage = 9999.99;
+          double salary = 9999.99;
+          #+END_SRC   
+          + (d) Okay.
 
+** Exercise 2.10
+#+BEGIN_QUOTE
+What are the initial values, if any, of each of the following variables?
+#+END_QUOTE
+#+BEGIN_SRC C++
+std::string global_str;
+int global_int;
+int main()
+{
+    int local_int;
+    std::string local_str;
+}
+#+END_SRC
+Variables of build-in type defined outside any function body are initialized to
+zero. The value of an uninitialized variable of build-in type is undefined. Most
+classes let us define objects without explicit initializers. Here the initial
+value of ~global_str~ is an empty string; the initial value of ~global_int~ is
+zero; the value of ~local_int~ is undefined; the initial value of ~local_str~ is
+an empty string.
