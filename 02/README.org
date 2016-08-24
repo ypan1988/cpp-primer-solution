@@ -167,18 +167,17 @@ explain what's wrong and how to correct it.
         int input_value; 
         std::cin >> input_value;
         #+END_SRC
-        + (b) Wrong. The compiler will not let us list initialize variables
-          of build-in typeif the initializer might lead to the loss of
-          information.
-          #+BEGIN_SRC C++
-          double i = {3.14};
-          #+END_SRC
-          + (c) Wrong. The variable wage should be defined first.
-          #+BEGIN_SRC C++
-          double wage = 9999.99;
-          double salary = 9999.99;
-          #+END_SRC   
-          + (d) Okay.
+      + (b) Wrong. The compiler will not let us list initialize variables of
+        build-in typeif the initializer might lead to the loss of information.
+        #+BEGIN_SRC C++
+        double i = {3.14};
+        #+END_SRC
+      + (c) Wrong. The variable wage should be defined first.
+        #+BEGIN_SRC C++
+        double wage = 9999.99;
+        double salary = 9999.99;
+        #+END_SRC   
+      + (d) Okay.
 
 ** Exercise 2.10
 #+BEGIN_QUOTE
