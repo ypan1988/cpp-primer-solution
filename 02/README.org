@@ -198,3 +198,19 @@ classes let us define objects without explicit initializers. Here the initial
 value of ~global_str~ is an empty string; the initial value of ~global_int~ is
 zero; the value of ~local_int~ is undefined; the initial value of ~local_str~ is
 an empty string.
+* Exercises Section 2.2.2
+** Exercise 2.11
+#+BEGIN_QUOTE
+Explain whether each of the following is a declaration or a
+definition:
++ (a) extern int ix = 1024;
++ (b) int iy;
++ (c) extern int iz;
+#+END_QUOTE
++ (a) definition. Any declaration that includes an explicit initializer is a
+  definition. We can provide an initializer on a variable defined as ~extern~,
+  but doing so overrides the ~extern~. An ~extern~ that has an initializer is a
+  definition.
++ (b) definition.
++ (c) declaration. To obtain a declaration that is not also a definition, we add
+  the ~extern~ keyword and may not provide an explicit initializer
