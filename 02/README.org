@@ -267,4 +267,4 @@ for (int i = 0; i != 10; ++i)
 sum += i;
 std::cout << i << " " << sum << std::endl;
 #+END_SRC
-45
+100 45
