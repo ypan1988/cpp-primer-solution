@@ -295,3 +295,13 @@ explain what they do.
 + (b) valid. convert an int to double, change the value of d and r2. 
 + (c) valid. convert an double to int.
 + (d) valid. convert an double to int, change the value of i and r1.
+** Exercise 2.17
+#+BEGIN_QUOTE
+What does the following code print?
+#+END_QUOTE
+#+BEGIN_SRC C++
+int i, &ri = i;
+i = 5; ri = 10;
+std::cout << i << " " << ri << std::endl;
+#+END_SRC
+10 10
