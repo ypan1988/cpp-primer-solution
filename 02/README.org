@@ -281,3 +281,17 @@ Which of the following definitions, if any, are invalid? Why?
 + (b) invalid. initializer must be an object.
 + (c) valid.
 + (d) invalid. a reference must be initialized.
+** Exercise 2.16
+#+BEGIN_QUOTE
+Which, if any, of the following assignments are invalid? If they are valid,
+explain what they do.
++ int i = 0, &r1 = i; double d = 0, &r2 = d;
++ (a) r2 = 3.14159;
++ (b) r2 = r1;
++ (c) i = r2;
++ (d) r1 = d;
+#+END_QUOTE
++ (a) valid. assigning to r2 actually assigns to d. 
++ (b) valid. convert an int to double, change the value of d and r2. 
++ (c) valid. convert an double to int.
++ (d) valid. convert an double to int, change the value of i and r1.
