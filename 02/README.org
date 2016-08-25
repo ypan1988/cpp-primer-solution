@@ -215,6 +215,21 @@ definition:
 + (c) declaration. To obtain a declaration that is not also a definition, we add
   the ~extern~ keyword and may not provide an explicit initializer
 * Exercises Section 2.2.3
+** Exercise 2.12
+#+BEGIN_QUOTE
+Explain whether each of the following is a declaration or a
+definition:
++ (a) extern int ix = 1024;
++ (b) int iy;
++ (c) extern int iz;
+#+END_QUOTE
++ (a) definition. Any declaration that includes an explicit initializer is a
+  definition. We can provide an initializer on a variable defined as ~extern~,
+  but doing so overrides the ~extern~. An ~extern~ that has an initializer is a
+  definition.
++ (b) definition.
++ (c) declaration. To obtain a declaration that is not also a definition, we add
+  the ~extern~ keyword and may not provide an explicit initializer
 #+BEGIN_QUOTE
 Which, if any, of the following names are invalid?
 + (a) int double = 3.14;
@@ -228,3 +243,28 @@ Which, if any, of the following names are invalid?
 and the underscore character. The language imposes no limit on name
 length. Identifiers must begin wih either a letter or an underscore. Identifiers
 are case-sensitive; upper- and lowercase letters are distinct.
+* Exercises Section 2.2.4
+** Exercise 2.13
+#+BEGIN_QUOTE
+What is the value of j in the following program?
+#+END_QUOTE
+#+BEGIN_SRC C++
+int i = 42;
+int main()
+{
+int i = 100;
+int j = i;
+}
+#+END_SRC
+100
+** Exercise 2.14
+#+BEGIN_QUOTE
+Is the following program legal? If so, what values are printed?
+#+END_QUOTE
+#+BEGIN_SRC C++
+int i = 100, sum = 0;
+for (int i = 0; i != 10; ++i)
+sum += i;
+std::cout << i << " " << sum << std::endl;
+#+END_SRC
+45
