@@ -373,3 +373,13 @@ if so, why.
 + (b) illegal. The initializer should be the address of a double.
 
 + (c) legal.
+
+** Exercise 2.22
+#+BEGIN_QUOTE
+Assuming p is a pointer to int, explain the following code:
++ if (p) // ...
++ if (*p) // ...
+#+END_QUOTE
++ if (p) // the condition evaluates as false when p has value nullptr or 0.
++ if (*p) // the condition evaluetes as true when the object p points to has
+  a nonzero value.
