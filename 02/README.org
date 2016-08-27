@@ -305,3 +305,29 @@ i = 5; ri = 10;
 std::cout << i << " " << ri << std::endl;
 #+END_SRC
 10 10
+* Exercises Section 2.3.2
+** Exercise 2.18
+#+BEGIN_QUOTE
+Write code to change the value of a pointer. Write code to change the
+value to which the pointer points.
+#+END_QUOTE
+
+#+BEGIN_SRC C++
+#include <iostream>
+
+int main()
+{
+  int ival1 = 42, ival2 = 1024;
+  int *p1 = &ival1, *p2 = &ival2;
+
+  std::cout << ival1 << " " << *p1 << std::endl;
+  p1 = p2;			// change the value of a pointer
+  std::cout << *p1 << std::endl;
+
+  std::cout << ival2 << " " << *p2 << std::endl;
+  *p2 = 0;			// change the value to which the pointer points
+  std::cout << *p2 << std::endl;
+
+  return 0;
+} 
+#+END_SRC
