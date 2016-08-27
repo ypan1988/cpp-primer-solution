@@ -405,3 +405,14 @@ The type void* is a special pointer type that can hold the address of any
 object, hence the initialization of ~p~ is legal. The types must match because
 the type of the pointer is used to infer the type of the object to which the
 pointer points, so the initialization of ~lp~ is illegal.
+* Exercises Section 2.3.3
+** Exercise 2.25
+#+BEGIN_QUOTE
+Determine the types and values of each of the following variables.
++ (a) int* ip, &r = ip;
++ (b) int i, *ip = 0;
++ (c) int* ip, ip2;
+#+END_QUOTE
++ (a) ip is a pointer to int, r is reference to the pointer ip.
++ (b) i is an int, ip is a pointer to int.
++ (c) ip is a pointer to int, ip2 is an int.
