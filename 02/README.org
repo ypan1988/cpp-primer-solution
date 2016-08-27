@@ -331,3 +331,16 @@ int main()
   return 0;
 } 
 #+END_SRC
+
+** Exercise 2.19
+#+BEGIN_QUOTE
+Explain the key differences between pointers and references.
+#+END_QUOTE
+Both pointers and references give indirect accesss to other objects. However,
+there are important differences in how they do so. The most important is that a
+reference is not an object. Once we have defined a reference, there is no way to
+make that reference refer to a different object. When we use a reference, we
+always get the object to which the reference was initially bound. There is no
+such identity between a pointer and the address that it holds. As with any other
+(nonreference) variable, when we assign to a pointer, we give the pointer itself
+a new value. Assignment makes the pointer point to a different object.
