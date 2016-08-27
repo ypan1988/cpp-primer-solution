@@ -355,3 +355,21 @@ int *p1 = &i;
 *p1 = *p1 * *p1;
 #+END_SRC
 Initialize p1 to hold the address of i and change value of i to 1764 (42 * 42).
+
+** Exercise 2.21
+#+BEGIN_QUOTE
+Explain each of the following definitions. Indicate whether any are illegal and,
+if so, why.
++ int i = 0;
++ (a) double* dp = &i;
++ (b) int *ip = i;
++ (c) int *p = &i;
+#+END_QUOTE
++ (a) illegal. The types must match because the type of the pointer is used to
+  infer the type of the object to which the pointer points. If a pointer
+  addressed an object of another type, operations performed on the underlying
+  object would fail.
+
++ (b) illegal. The initializer should be the address of a double.
+
++ (c) legal.
