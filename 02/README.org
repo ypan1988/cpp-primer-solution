@@ -376,10 +376,32 @@ if so, why.
 
 ** Exercise 2.22
 #+BEGIN_QUOTE
-Assuming p is a pointer to int, explain the following code:
+Assuming ~p~ is a pointer to ~int~, explain the following code:
 + if (p) // ...
 + if (*p) // ...
 #+END_QUOTE
 + if (p) // the condition evaluates as false when p has value nullptr or 0.
 + if (*p) // the condition evaluetes as true when the object p points to has
   a nonzero value.
+
+** Exercise 2.23
+#+BEGIN_QUOTE
+Given a pointer ~p~, can you determine whether ~p~ points to a valid object? If
+so, how? If not, why not?
+#+END_QUOTE
+No. Under most compilers, when we use an uninitialized pointer, the bits in the
+memory in which the pointer resides are used as an address. Using an
+uninitialized pointer is a request to access a supposed object at that supposed
+location. There is no way to distinguish a valid address from an invalid one
+formed from the bits that happen to be in the memory in which the pointer was
+allocated.
+
+** Exercise 2.24
+#+BEGIN_QUOTE
+Why is the initialization of ~p~ legal but that of ~lp~ illegal?
++ int i = 42; void *p = &i; long *lp = &i;
+#+END_QUOTE
+The type void* is a special pointer type that can hold the address of any
+object, hence the initialization of ~p~ is legal. The types must match because
+the type of the pointer is used to infer the type of the object to which the
+pointer points, so the initialization of ~lp~ is illegal.
