@@ -344,3 +344,14 @@ always get the object to which the reference was initially bound. There is no
 such identity between a pointer and the address that it holds. As with any other
 (nonreference) variable, when we assign to a pointer, we give the pointer itself
 a new value. Assignment makes the pointer point to a different object.
+
+** Exercise 2.20
+#+BEGIN_QUOTE
+What does the following program do?
+#+END_QUOTE
+#+BEGIN_SRC C++
+int i = 42;
+int *p1 = &i;
+*p1 = *p1 * *p1;
+#+END_SRC
+Initialize p1 to hold the address of i and change value of i to 1764 (42 * 42).
