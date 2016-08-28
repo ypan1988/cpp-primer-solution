@@ -418,7 +418,7 @@ Determine the types and values of each of the following variables.
 + (c) ip is a pointer to int, ip2 is an int.
 * Exercises Section 2.4
 ** Exercise 2.26
-#+BEGIN_QUOTE
++#+BEGIN_QUOTE
 Which of the following are legal? For those that are illegal, explain why.
 + (a) const int buf;
 + (b) int cnt = 0;
@@ -430,3 +430,23 @@ Which of the following are legal? For those that are illegal, explain why.
 + (c) legal.
 + (d) illegal. sz is const and we cannot change its value.
 
+* Exercises Section 2.4.2
+** Exercise 2.27
+#+BEGIN_QUOTE
+Which of the following initializations are legal? Explain why.
++ (a) int i = -1, &r = 0;
++ (b) int *const p2 = &i2;
++ (c) const int i = -1, &r = 0;
++ (d) const int *const p3 = &i2;
++ (e) const int *p1 = &i2;
++ (f) const int &const r2;
++ (g) const int i2 = i, &r = i;
+#+END_QUOTE
++ (a) illegal. initializer for r must be an object.
++ (b) legal.
++ (c) legal. we can initialize a reference to const from any expression that can
+  be converted to the type of the reference.
++ (d) legal.
++ (e) legal.
++ (f) illegal. r2 is a reference which cannot be const.
++ (g) legal.
