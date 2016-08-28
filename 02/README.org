@@ -416,3 +416,17 @@ Determine the types and values of each of the following variables.
 + (a) ip is a pointer to int, r is reference to the pointer ip.
 + (b) i is an int, ip is a pointer to int.
 + (c) ip is a pointer to int, ip2 is an int.
+* Exercises Section 2.4
+** Exercise 2.26
+#+BEGIN_QUOTE
+Which of the following are legal? For those that are illegal, explain why.
++ (a) const int buf;
++ (b) int cnt = 0;
++ (c) const int sz = cnt;
++ (d) ++cnt; ++sz;
+#+END_QUOTE  
++ (a) illegal. buf is uninitialized const.
++ (b) legal.
++ (c) legal.
++ (d) illegal. sz is const and we cannot change its value.
+
