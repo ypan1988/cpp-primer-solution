@@ -418,7 +418,7 @@ Determine the types and values of each of the following variables.
 + (c) ip is a pointer to int, ip2 is an int.
 * Exercises Section 2.4
 ** Exercise 2.26
-+#+BEGIN_QUOTE
+#+BEGIN_QUOTE
 Which of the following are legal? For those that are illegal, explain why.
 + (a) const int buf;
 + (b) int cnt = 0;
