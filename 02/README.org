@@ -484,3 +484,17 @@ are legal? Explain why.
 + (e) illegal. p2 is a const pointer.
 + (f) illegal. ic is a const int.
 
+
+* Exercises Section 2.4.3
+** Exercise 2.30
+#+BEGIN_QUOTE
+For each of the following declarations indicate whether the object
+being declared has top-level or low-level ~const~.
+#+END_QUOTE
+#+BEGIN_SRC C++
+const int v2 = 0; int v1 = v2;
+int *p1 = &v1, &r1 = v1;
+const int *p2 = &v2, *const p3 = &i, &r2 = v2;
+#+END_SRC
+~v2~ has a top-level const, ~p2~ has a low-level const, ~p3~ has both
+a top-level and low-level ~const~.
