@@ -604,3 +604,8 @@ decltype(a = b) d = a;
 a is an int. b is an int. c is an int. d is int&. a = 3, b = 4, c = 3, d = 3.
 
 ** Exercise 2.38
+#+BEGIN_QUOTE
+Describe the differences in type deduction between ~decltype~ and ~auto~. Give
+an example of an expression where ~auto~ and ~decltype~ will deduce the same
+type and an example where they will deduce differing types.
+#+END_QUOTE
