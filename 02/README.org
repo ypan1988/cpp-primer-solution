@@ -577,8 +577,8 @@ int. k2 is const int&.
 * Exercises Section 2.5.3
 ** Exercise 2.36
 #+BEGIN_QUOTE
-In the following code, determine the type of each variable and the
-value each variable has when the code finishes:
+In the following code, determine the type of each variable and the value each
+variable has when the code finishes:
 #+END_QUOTE
 #+BEGIN_SRC C++
 int a = 3, b = 4;
@@ -587,8 +587,20 @@ decltype((b)) d = a;
 ++c;
 ++d;
 #+END_SRC
-a is an int. b is an int. c is an int. d is int&. a = 4, b = 4, c = 4,
-d = 4.
+a is an int. b is an int. c is an int. d is int&. a = 4, b = 4, c = 4, d = 4.
 
 ** Exercise 2.37
+#+BEGIN_QUOTE
+Assignment is an example of an expression that yields a reference type. The type
+is a reference to the type of the left-hand operand.  That is, if i is an int,
+then the type of the expression i = x is int&. Using that knowledge, determine
+the type and value of each variable in this code:
+#+END_QUOTE
+#+BEGIN_SRC C++
+int a = 3, b = 4;
+decltype(a) c = a;
+decltype(a = b) d = a;
+#+END_SRC
+a is an int. b is an int. c is an int. d is int&. a = 3, b = 4, c = 3, d = 3.
 
+** Exercise 2.38
