@@ -484,7 +484,6 @@ are legal? Explain why.
 + (e) illegal. p2 is a const pointer.
 + (f) illegal. ic is a const int.
 
-
 * Exercises Section 2.4.3
 ** Exercise 2.30
 #+BEGIN_QUOTE
@@ -562,3 +561,16 @@ assignments to check whether your predictions in the previous exercise
 were correct. If not, study the examples until you can convince
 yourself you know what led you to the wrong conclusion.
 #+END_QUOTE 
+** Exercise 2.35
+#+BEGIN_QUOTE
+Determine the types deduced in each of the following definitions. Once
+you've figured out the types, write a program to see whether you were
+correct.
+#+END_QUOTE
+#+BEGIN_SRC C++
+const int i = 42;
+auto j = i; const auto &k = i; auto *p = &i;
+const auto j2 = i, &k2 = i;
+#+END_SRC
+j is an int. k is a const int&. p is a const in*. j2 is a const
+int. k2 is const int&.
