@@ -534,3 +534,22 @@ illegal.
 #+BEGIN_SRC C++
 int null = 0, *p = nullptr;
 #+END_SRC
+
+* Exercises Section 2.5.2
+** Exercise 2.33
+#+BEGIN_QUOTE
+Using the variable definitions from this section, determine what
+happens in each of these assignments:
+#+END_QUOTE
+#+BEGIN_SRC C++
+a = 42; b = 42; c = 42;
+d = 42; e = 42; g = 42;
+#+END_SRC
+#+BEGIN_SRC C++
+a = 42;  // okay. a is an int. assigns 42 to a.
+b = 42;  // okay. b is an int. assigns 42 to b.
+c = 42;  // okay. c is an int. assigns 42 to c.
+d = 42;  // error. d is an int*.
+e = 42;  // error. e is an const int*.
+f = 42;  // error. f is an const int.
+#+END_SRC
