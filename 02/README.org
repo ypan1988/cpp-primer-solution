@@ -520,3 +520,17 @@ p1 = p3; p2 = p3;
 + p1 = p3;  // illegal. ~p3~ has a low-level const but ~p1~ doesn't.
 + p2 = p3; // legal. ~p2~ and ~p3~ have the same low-level const
   qualification.
+
+* Exercises Section 2.4.4
+** Exercise 2.32
+#+BEGIN_QUOTE
+Is the following code legal or not? If not, how might you make it
+legal?
+#+END_QUOTE
+#+BEGIN_SRC C++
+int null = 0, *p = null;
+#+END_SRC
+illegal.
+#+BEGIN_SRC C++
+int null = 0, *p = nullptr;
+#+END_SRC
