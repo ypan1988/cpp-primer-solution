@@ -609,6 +609,14 @@ Describe the differences in type deduction between ~decltype~ and ~auto~. Give
 an example of an expression where ~auto~ and ~decltype~ will deduce the same
 type and an example where they will deduce differing types.
 #+END_QUOTE
+The way ~decltype~ handles top-level ~const~ and references differs subtly from
+the way ~auto~ does. When the expression to which we apply ~decltype~ is a
+varaible, ~decltype~ returns the type of that variable, including top-level
+~const~ and references. When we apply ~decltype~ to an expression that is not a
+varible, we get the type that expression yields. Another important difference
+between ~decltype~ and ~auto~ is that the deduction done by ~decltype~ depends
+on the form if its given expression.
+
 * Exercises Section 2.6.1
 ** Exercise 2.39
 #+BEGIN_QUOTE
@@ -635,3 +643,11 @@ struct Sales_data {
   double revenue = 0.0;
 };
 #+END_SRC
+
+* Exercises Section 2.6.2
+** Exercise 2.41
+#+BEGIN_QUOTE
+Use your Sales_data class to rewrite the exercises in § 1.5.1 (p. 22),
+§ 1.5.2 (p. 24), and § 1.6 (p. 25). For now, you should define your
+~Sales_data~ class in the same file as your ~main~ function.
+#+END_QUOTE
