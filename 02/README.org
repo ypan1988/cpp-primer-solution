@@ -609,3 +609,17 @@ Describe the differences in type deduction between ~decltype~ and ~auto~. Give
 an example of an expression where ~auto~ and ~decltype~ will deduce the same
 type and an example where they will deduce differing types.
 #+END_QUOTE
+* Exercises Section 2.6.1
+** Exercise 2.39
+#+BEGIN_QUOTE
+Compile the following program to see what happens when you forget the semicolon
+after a class definition. Remember the message for future reference.
+#+END_QUOTE
+#+BEGIN_SRC C++
+struct Foo { /* empty */ } // Note: no semicolon
+int main()
+{
+return 0;
+}
+#+END_SRC
+ex02_39.cc:1:26: error: expected ';' after struct definition
