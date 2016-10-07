@@ -1,34 +1,3 @@
-* Exercises Section 3.1
-** Exercise 3.1
-   
-   #+BEGIN_QUOTE
-   Rewrite the exercises from § 1.4.1 (p. 13) and § 2.6.2 (p. 76) with appropriate
-   ~using~ declarations.
-   #+END_QUOTE
-   
-   § 1.4.1
-   #+BEGIN_SRC C++
-#include <iostream>
-using std::cout;
-using std::endl;
-
-int main()
-{
-  int sum = 0, val = 1;
-  // keep executing the while as long as val is less than or equal to 10
-  while (val <= 10) {
-    sum += val;                 // assigns sum + val to sum
-    ++val;                      // add 1 to val
-  }
-  cout << "Sum of 1 to 10 inclusive is "
-       << sum << endl;
-
-  return 0;
-}
-   #+END_SRC
-   
-   § 2.6.2
-   #+BEGIN_SRC C++
 #include <iostream>
 #include <string>
 #include "Sales_data.h"
@@ -73,4 +42,3 @@ int main()
     return -1;			// indicate failure
   }
 }
-   #+END_SRC
