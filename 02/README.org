@@ -616,7 +616,17 @@ varaible, ~decltype~ returns the type of that variable, including top-level
 varible, we get the type that expression yields. Another important difference
 between ~decltype~ and ~auto~ is that the deduction done by ~decltype~ depends
 on the form if its given expression.
+#+BEGIN_SRC C++
+int i = 0, &r = i;
 
+// same
+auto a = i;  // a is an int 
+decltype(i) b = i;  // b is an int
+
+// differnet
+auto c = r;  // c has type int (r is an alias for i, which has type int)
+decltype(r) d = i;  // d has type int& and is bound to i
+#+END_SRC
 * Exercises Section 2.6.1
 ** Exercise 2.39
 #+BEGIN_QUOTE
