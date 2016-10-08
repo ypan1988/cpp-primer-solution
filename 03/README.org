@@ -120,3 +120,16 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+** Exercise 3.3
+
+   #+BEGIN_QUOTE
+   Explain how whitespace characters are handled in the ~string~ input operator
+   and in the ~getline~ function.
+   #+END_QUOTE
+
+   The ~string~ input operator reads and discards any leading whitespace (e.g.,
+   spaces, newlines, tabs). It then reads characters untill the next whitespace
+   character is encountered. Sometimes we do not want to ignore the whitespace
+   in our input. In such cases, we can use the ~getline~ function instead of the
+   >> operator.
