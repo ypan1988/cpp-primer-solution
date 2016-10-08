@@ -143,6 +143,8 @@ int main()
    is longer.
    #+END_QUOTE
 
+   - read two ~strings~ and report whether the ~strings~ are equal. If not,
+     report which of the two is larger.
    #+BEGIN_SRC C++
 #include <string>
 using std::string;
@@ -167,6 +169,8 @@ int main()
 }   
    #+END_SRC
 
+   - whether the ~strings~ have the same length, and if not, report which
+   is longer.
    #+BEGIN_SRC C++
 #include <string>
 using std::string;
@@ -191,7 +195,7 @@ int main()
 }   
    #+END_SRC
 
-   ** Exercise 3.5
+** Exercise 3.5
    
    #+BEGIN_QUOTE
    Write a program to read strings from the standard input, concatenating what
@@ -199,6 +203,7 @@ int main()
    the program to separate adjacent input strings by a space.
    #+END_QUOTE
 
+   - concatenated string
    #+BEGIN_SRC C++
 #include <string>
 using std::string;
@@ -218,6 +223,7 @@ int main()
 }   
    #+END_SRC
 
+   - separate adjacent input strings by a space
    #+BEGIN_SRC C++
 #include <string>
 using std::string;
