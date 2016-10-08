@@ -74,3 +74,15 @@ int main()
   }
 }
    #+END_SRC
+   
+* Exercises Section 3.2.2
+** Exercise 3.2
+
+   #+BEGIN_QUOTE
+   Write a program to read the standard input a line at a time. Modify your
+   program to read a word at a time.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+   
+   #+END_SRC
