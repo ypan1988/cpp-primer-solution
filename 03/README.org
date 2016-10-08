@@ -133,3 +133,12 @@ int main()
    character is encountered. Sometimes we do not want to ignore the whitespace
    in our input. In such cases, we can use the ~getline~ function instead of the
    >> operator.
+
+** Exercise 3.4
+
+   #+BEGIN_QUOTE
+   Write a program to read two ~strings~ and report whether the ~strings~ are
+   equal. If not, report which of the two is larger. Now, change the program to
+   report whether the ~strings~ have the same length, and if not, report which
+   is longer.
+   #+END_QUOTE
