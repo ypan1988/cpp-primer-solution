@@ -169,8 +169,8 @@ int main()
 }   
    #+END_SRC
 
-   - whether the ~strings~ have the same length, and if not, report which
-   is longer.
+   - whether the ~strings~ have the same length, and if not, report which is
+     longer.
    #+BEGIN_SRC C++
 #include <string>
 using std::string;
@@ -203,7 +203,7 @@ int main()
    the program to separate adjacent input strings by a space.
    #+END_QUOTE
 
-   - concatenated string
+   - print the concatenated string
    #+BEGIN_SRC C++
 #include <string>
 using std::string;
