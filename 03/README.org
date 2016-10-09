@@ -242,3 +242,27 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 3.2.3
+** Exercise 3.6
+
+   #+BEGIN_QUOTE
+   Use a range ~for~ to change all the characters in a ~string~ to X.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <string>
+using std::string;
+
+#include <iostream>
+using std::cout; using std::endl;
+
+int main()
+{
+  string s("Hello World!!!");
+  for (auto &c : s) c = 'X';
+  cout << s << endl;
+
+  return 0;
+}   
+   #+END_SRC
