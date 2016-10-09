@@ -266,3 +266,31 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+** Exercise 3.7
+   #+BEGIN_QUOTE
+   What would happen if you define the loop control variable in the previous
+   exercise as type ~char~? Predict the results and then change your program to
+   use a ~char~ to see if you were right.
+   #+END_QUOTE
+
+   Nothing will be changed after the for loop when the control variable is
+   defined as ~char~. If we want to change the value of the characters in a
+   string, we must define the loop variable as a reference type.
+
+   #+BEGIN_SRC C++
+#include <string>
+using std::string;
+
+#include <iostream>
+using std::cout; using std::endl;
+
+int main()
+{
+  string s("Hello World!!!");
+  for (char c : s) c = 'X';
+  cout << s << endl;
+
+  return 0;
+}   
+   #+END_SRC
