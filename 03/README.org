@@ -393,3 +393,14 @@ int main()
 }   
    #+END_SRC
 
+** Exercise 3.11 
+   #+BEGIN_QUOTE
+   Is the following range ~for~ legal? If so, what is the type of ~c~?
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+const string s = "Keep out!";
+for (auto &c : s) { /* ... */ }
+   #+END_SRC
+
+   Yes, the type of ~c~ is const char&, and we cannot assign a new value to ~c~.
