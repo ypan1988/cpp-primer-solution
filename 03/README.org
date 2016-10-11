@@ -294,3 +294,52 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+** Exercise 3.8
+   #+BEGIN_QUOTE
+   Rewrite the program in the first exercise, first using a ~while~ and again
+   using a traditional ~for~ loop. Which of the three approaches do you prefer
+   and why?
+   #+END_QUOTE
+
+   while:
+   #+BEGIN_SRC C++
+#include <string>
+using std::string;
+
+#include <iostream>
+using std::cout; using std::endl;
+
+int main()
+{
+  string s("Hello World!!!");
+
+  decltype(s.size()) index = 0;
+  while (index != s.size())
+    s[index++] = 'X';
+
+  cout << s << endl;
+
+  return 0;
+}   
+   #+END_SRC
+   
+   for:
+   #+BEGIN_SRC C++
+#include <string>
+using std::string;
+
+#include <iostream>
+using std::cout; using std::endl;
+
+int main()
+{
+  string s("Hello World!!!");
+  for (decltype(s.size()) index = 0; index != s.size(); ++index)
+    s[index] = 'X';
+
+  cout << s << endl;
+
+  return 0;
+}   
+   #+END_SRC
