@@ -447,3 +447,29 @@ for (auto &c : s) { /* ... */ }
    + (f) v6 has ten default-initialized elements.
    + (g) v7 has ten elements with value "hi".
 
+* Exercises Section 3.3.2
+** Exercise 3.14
+
+   #+BEGIN_QUOTE
+   Write a program to read a sequence of ints from cin and store those values in
+   a vector.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin;
+
+#include <vector>
+using std::vector;
+
+int main()
+{
+  int i;
+  vector<int> v1;
+
+  while (cin >> i)
+    v1.push_back(i);
+
+  return 0;
+}   
+   #+END_SRC
