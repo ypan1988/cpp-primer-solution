@@ -404,3 +404,22 @@ for (auto &c : s) { /* ... */ }
    #+END_SRC
 
    Yes, the type of ~c~ is const char&, and we cannot assign a new value to ~c~.
+
+* Exercises Section 3.3.1
+** Exercise 3.12
+
+   #+BEGIN_QUOTE
+   Which, if any, of the following vector definitions are in error? For those
+   that are legal, explain what the definition does. For those that are not
+   legal, explain why they are illegal.
+
+   + (a) vector<vector<int>> ivec;
+   + (b) vector<string> svec = ivec;
+   + (c) vector<string> svec(10, "null");
+   #+END_QUOTE
+   
+   + (a) legal, define a empty vector ivec that holds objects of type
+     vector<int>.
+   + (b) illegal, svec holds strings, not vector<int>.
+   + (c) legal, define a vector svec that holds ten strings; each element is
+     "null".
