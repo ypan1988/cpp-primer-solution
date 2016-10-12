@@ -451,8 +451,8 @@ for (auto &c : s) { /* ... */ }
 ** Exercise 3.14
 
    #+BEGIN_QUOTE
-   Write a program to read a sequence of ints from cin and store those values in
-   a vector.
+   Write a program to read a sequence of ~int~s from ~cin~ and store those
+   values in a ~vector~.
    #+END_QUOTE
 
    #+BEGIN_SRC C++
@@ -472,4 +472,32 @@ int main()
 
   return 0;
 }   
+   #+END_SRC
+
+** Exercise 3.15
+
+   #+BEGIN_QUOTE
+   Repeat the previous program but read ~strings~ this time.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin;
+
+#include <string>
+using std::string;
+
+#include <vector>
+using std::vector;
+
+int main()
+{
+  string s;
+  vector<string> v2;
+
+  while (cin >> s)
+    v2.push_back(s);
+
+  return 0;
+}
    #+END_SRC
