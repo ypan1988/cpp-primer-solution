@@ -641,3 +641,37 @@ vector<int> v2{42, 42, 42, 42, 42, 42, 42, 42, 42, 42};
 vector<int> v3;
 for (int i = 0; i != 10; ++i) v3.push_back(42);
    #+END_SRC
+
+** Exercise 3.20
+   #+BEGIN_QUOTE
+   Read a set of integers into a ~vector~. Print the sum of each pair of
+   adjacent elements. Change your program so that it prints the sum of the first
+   and last elements, followed by the sum of the second and second-to-last, and
+   so on.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+#include <vector>
+using std::vector;
+
+int main()
+{
+  int i;
+  vector<int> ivec;
+  while (cin >> i)
+    ivec.push_back(i);
+
+  for (decltype(ivec.size()) index = 0; index != ivec.size() - 1; ++index)
+    cout << ivec[index] + ivec[index + 1] << " ";
+  cout << endl;
+
+  for (decltype(ivec.size()) index = 0; index != ivec.size()/2; ++index)
+    cout << ivec[index] + ivec[ivec.size() - 1 - index] << " ";
+  cout << endl;
+
+  return 0;
+}   
+   #+END_SRC
