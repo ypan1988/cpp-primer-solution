@@ -2,11 +2,11 @@
 ** Exercise 3.1
    
    #+BEGIN_QUOTE
-   Rewrite the exercises from § 1.4.1 (p. 13) and § 2.6.2 (p. 76) with appropriate
+   Rewrite the exercises from Â§ 1.4.1 (p. 13) and Â§ 2.6.2 (p. 76) with appropriate
    ~using~ declarations.
    #+END_QUOTE
    
-   § 1.4.1
+   Â§ 1.4.1
    #+BEGIN_SRC C++
 #include <iostream>
 using std::cout;
@@ -27,7 +27,7 @@ int main()
 }
    #+END_SRC
    
-   § 2.6.2
+   Â§ 2.6.2
    #+BEGIN_SRC C++
 #include <iostream>
 #include <string>
@@ -508,7 +508,7 @@ int main()
    #+BEGIN_QUOTE
    Write a program to print the size and contents of the ~vector~s from exercise
    3.13. Check whether your answers to that exercise were correct. If not,
-   restudy § 3.3.1 (p. 97) until you understand why you were wrong.
+   restudy Â§ 3.3.1 (p. 97) until you understand why you were wrong.
    #+END_QUOTE
 
    #+BEGIN_SRC C++
@@ -612,4 +612,19 @@ int main()
   
   return 0;
 }   
+   #+END_SRC
+
+** Exercise 3.18
+   #+BEGIN_QUOTE
+   Is the following program legal? If not, how might you fix it?
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+vector<int> ivec;
+ivec[0] = 42;
+   #+END_SRC
+
+   illegal. It is an error to subscript an element that doesnâ€™t exist.
+   #+BEGIN_SRC C++
+vector<int> ivec;
+ivec.push_back(42);   
    #+END_SRC
