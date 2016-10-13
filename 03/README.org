@@ -501,3 +501,12 @@ int main()
   return 0;
 }
    #+END_SRC
+
+* Exercises Section 3.3.3
+** Exercise 3.16
+
+   #+BEGIN_QUOTE
+   Write a program to print the size and contents of the ~vector~s from exercise
+   3.13. Check whether your answers to that exercise were correct. If not,
+   restudy § 3.3.1 (p. 97) until you understand why you were wrong.
+   #+END_QUOTE
