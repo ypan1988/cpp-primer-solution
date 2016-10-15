@@ -814,3 +814,9 @@ int main()
   return 0;
 }    
    #+END_SRC
+
+* Exercises Section 3.4.2
+** Exercise 3.24
+   #+BEGIN_QUOTE
+   Redo the last exercise from § 3.3.3 (p. 105) using iterators.
+   #+END_QUOTE
