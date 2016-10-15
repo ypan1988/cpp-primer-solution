@@ -931,3 +931,14 @@ int main() {
    ~sa~ is an array of ten empty string, ~ia~ is an array of ten int with value
    0s, ~sa2~ is an array of ten empty string, ~ia2~ is an array of ten
    undefined int.
+
+** Exercise 3.29
+   #+BEGIN_QUOTE
+   List some of the drawbacks of using an array instead of a vector.
+   #+END_QUOTE
+   Like a vector, an array is a container of unnamed objects of a single type
+   that we access by position. Unlike a vector, arrays have fixed size; we
+   cannot add elements to an array.  Because arrays have fixed size, they
+   sometimes offer better run-time performance for specialized
+   applications. However, that run-time advantage comes at the cost of lost
+   flexibility.
