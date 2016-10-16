@@ -942,3 +942,25 @@ int main() {
    sometimes offer better run-time performance for specialized
    applications. However, that run-time advantage comes at the cost of lost
    flexibility.
+
+* Exercises Section 3.5.2
+** Exercise 3.30
+   #+BEGIN_QUOTE
+   Identify the indexing errors in the following code:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+constexpr size_t array_size = 10;
+int ia[array_size];
+for (size_t ix = 1; ix <= array_size; ++ix)
+      ia[ix] = ix;   
+   #+END_SRC
+
+   The index value should be equal to or greater than zero and less than the
+   size of the array.
+
+** Exercise 3.31
+   #+BEGIN_QUOTE
+   Write a program to define an array of ten ~int~s. Give each element
+   the same value as its position in the array.
+   #+END_QUOTE
+   
