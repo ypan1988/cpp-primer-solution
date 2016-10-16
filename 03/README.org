@@ -960,7 +960,77 @@ for (size_t ix = 1; ix <= array_size; ++ix)
 
 ** Exercise 3.31
    #+BEGIN_QUOTE
-   Write a program to define an array of ten ~int~s. Give each element
-   the same value as its position in the array.
+   Write a program to define an array of ten ~int~s. Give each element the same
+   value as its position in the array.
    #+END_QUOTE
    
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+int main()
+{
+  int ia[10];
+  for (auto i = 0; i != 10; ++i) ia[i] = i;
+  for (auto i : ia) cout << i << " ";
+  cout << endl;
+  
+  return 0;
+}   
+   #+END_SRC
+
+** Exercise 3.32
+   #+BEGIN_QUOTE
+   Copy the array you defined in the previous exercise into another
+   array. Rewrite your program to use ~vector~s.
+   #+END_QUOTE
+   
+   ex03_32a.cc
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+int main()
+{
+  int ia1[10], ia2[10];
+  for (auto i = 0; i != 10; ++i) ia1[i] = i;
+  for (auto i = 0; i != 10; ++i) ia2[i] = ia1[i];
+
+  cout << "ia1: " << endl;
+  for (auto i : ia1) cout << i << " ";
+  cout << endl;
+
+  cout << "ia2: " << endl;
+  for (auto i : ia2) cout << i << " ";
+  cout << endl;
+  
+  return 0;
+}   
+   #+END_SRC
+
+   ex03_32b.cc
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <vector>
+using std::vector;
+
+int main()
+{
+  vector<int> ivec1, ivec2;
+  
+  for (auto i = 0; i != 10; ++i) ivec1.push_back(i);
+  ivec2 = ivec1;
+
+  cout << "ivec1: " << endl;
+  for (auto i : ivec1) cout << i << " ";
+  cout << endl;
+
+  cout << "ivec2: " << endl;
+  for (auto i : ivec2) cout << i << " ";
+  cout << endl;
+  
+  return 0;
+}   
+   #+END_SRC
