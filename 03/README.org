@@ -1034,3 +1034,9 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+** Exercise 3.33
+   #+BEGIN_QUOTE
+   What would happen if we did not initialize the ~scores~ array in the program
+   on page 116?
+   #+END_QUOTE
