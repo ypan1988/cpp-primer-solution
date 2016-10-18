@@ -1041,3 +1041,16 @@ int main()
    on page 116?
    #+END_QUOTE
    The values of ~score~ array are undefined.
+
+* Exercises Section 3.5.3
+** Exercise 3.34
+   #+BEGIN_QUOTE
+   Given that ~p1~ and ~p2~ point to elements in the same array, what does the
+   following code do? Are there values of ~p1~ or ~p2~ that make this code illegal?
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+   p1 += p2 - p1;
+   #+END_SRC
+
+   It moves ~p1~ with the offest ~p2 - p1~. After this statement, ~p1~ and ~p2~
+   points to the same address. No.
