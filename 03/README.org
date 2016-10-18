@@ -1054,3 +1054,38 @@ int main()
 
    It moves ~p1~ with the offest ~p2 - p1~. After this statement, ~p1~ and ~p2~
    points to the same address. No.
+
+** Exercise 3.35
+   #+BEGIN_QUOTE
+   Using pointers, write a program to set the elements in an array to zero.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <cstddef>
+using std::size_t;
+
+int main()
+{
+  constexpr size_t sz = 10;
+  int ia[sz] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+  for (auto i : ia) cout << i << " ";
+  cout << endl;
+
+  for (auto ptr = ia; ptr != ia + sz; ++ptr) *ptr = 0;
+
+  for (auto i : ia) cout << i << " ";
+  cout << endl;
+  
+  return 0;
+}   
+   #+END_SRC
+
+** Exercise 3.36
+   #+BEGIN_QUOTE
+   Write a program to compare two arrays for equality. Write a similar program
+   to compare two ~vector~s.
+   #+END_QUOTE
