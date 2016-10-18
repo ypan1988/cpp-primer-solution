@@ -676,7 +676,7 @@ int main()
 }   
    #+END_SRC
 
-* Exercise Section 3.4.1
+* Exercises Section 3.4.1
 ** Exercise 3.21
    #+BEGIN_QUOTE
    Redo the first exercise from § 3.3.3 (p. 105) using iterators.
@@ -1152,3 +1152,23 @@ int main()
   return 0;
 }   
    #+END_SRC
+* Exercises Section 3.5.4
+** Exercise 3.37
+   #+BEGIN_QUOTE
+   What does the following program do?
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+const char ca[] = {'h', 'e', 'l', 'l', 'o'};
+const char *cp = ca;
+while (*cp) {
+    cout << *cp << endl;
+    ++cp;
+}   
+   #+END_SRC
+
+   In this case, ~ca~ is an array of ~char~ but is not null terminated, and ~cp~
+   is a pointer which points to the first element in ~ca~. Undefined behaviour
+   will happen. The most likely effect of the program is that all characters in
+   ~ca~ will be printed and ~cp~ will keep moving through the memory that
+   follows ~ca~ until it encounters a null character.
+
