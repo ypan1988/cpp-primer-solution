@@ -1040,3 +1040,4 @@ int main()
    What would happen if we did not initialize the ~scores~ array in the program
    on page 116?
    #+END_QUOTE
+   The values of ~score~ array are undefined.
