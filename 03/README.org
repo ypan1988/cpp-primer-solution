@@ -1185,3 +1185,9 @@ while (*cp) {
    you can subtract or add an integral number to/from a pointer, which means
    "move the pointer up or down". Adding a pointer to a pointer is something
    which is hard to explain. What would the resulting pointner represent?
+
+** Exercise 3.39
+   #+BEGIN_QUOTE
+   Write a program to compare two ~strings~. Now write a program to compare the
+   values of two C-style character strings.
+   #+END_QUOTE
