@@ -1,0 +1,7 @@
+* Exercises Section 4.1.2
+** Exercise 4.1
+   #+BEGIN_QUOTE
+   What is the value returned by ~5 + 10 * 20/2~?
+   #+END_QUOTE
+
+   105.
