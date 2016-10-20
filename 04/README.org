@@ -37,5 +37,24 @@
    result.
    ~12 / 3 * 4 + 5 * 15 + 24 % 4 / 2~
    #+END_QUOTE
+   
    ~((12 / 3) * 4) + (5 * 15) + ((24 % 4) / 2)~
+   
    result: 91
+
+** Exercise 4.5
+   #+BEGIN_QUOTE
+   Determine the result of the following expressions.
+   + (a) -30 * 3 + 21 / 5
+   + (b) -30 + 3 * 21 / 5
+   + (c) 30 / 3 * 21 % 5
+   + (d) -30 / 3 * 21 % 4
+   #+END_QUOTE
+
+   + (a) -86
+   + (b) -18
+   + (c) 0
+   + (d) -2
+
+**
+   
