@@ -56,5 +56,10 @@
    + (c) 0
    + (d) -2
 
-**
+** Exercise 4.6
+   #+BEGIN_QUOTE
+   Write an expression to determine whether an ~int~ value is even or
+   odd.
+   #+END_QUOTE
    
+   ival % 2 // zero means the int value is even, otherwise it is odd
