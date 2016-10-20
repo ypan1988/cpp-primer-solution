@@ -58,8 +58,20 @@
 
 ** Exercise 4.6
    #+BEGIN_QUOTE
-   Write an expression to determine whether an ~int~ value is even or
-   odd.
+   Write an expression to determine whether an ~int~ value is even or odd.
    #+END_QUOTE
    
    ival % 2 // zero means the int value is even, otherwise it is odd
+
+** Exercise 4.7
+   #+BEGIN_QUOTE
+   What does overflow mean? Show three expressions that will overflow.
+   #+END_QUOTE
+
+   Overflow happens when a value is computed that is outside the range of values
+   that the type can represent.
+   #+BEGIN_SRC C++
+short sval = 32767; ++sval;
+unsigned uival = 0; --uival;
+unsigned short usval = 65535; ++usval;
+   #+END_SRC
