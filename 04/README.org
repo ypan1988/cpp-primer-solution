@@ -106,3 +106,14 @@ if (cp && *cp)
    The condition is true. ~cp~ is a pointer to const char *, and it's not a
    nullptr. So the first operand is true. ~*cp~ is a const char with value 'H',
    and it is a nonzero value. So the second operad is true.
+
+** Exercise 4.10
+   #+BEGIN_QUOTE
+   Write the condition for a ~while~ loop that would read ~int~s from the
+   standard input and stop when the value read is equal to 42.
+   #+END_QUOTE
+   
+   #+BEGIN_SRC C++
+int ival;
+while (cin >> ival && ival != 42)   
+   #+END_SRC
