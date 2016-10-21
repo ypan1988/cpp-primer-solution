@@ -93,3 +93,16 @@ unsigned short usval = 65535; ++usval;
      ~false~.
 
    The operands will always be evaluated in equality operators.
+
+** Exercise 4.9
+   #+BEGIN_QUOTE
+   Explain the behavior of the condition in the following ~if~:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+const char *cp = "Hello World";
+if (cp && *cp)
+   #+END_SRC
+
+   The condition is true. ~cp~ is a pointer to const char *, and it's not a
+   nullptr. So the first operand is true. ~*cp~ is a const char with value 'H',
+   and it is a nonzero value. So the second operad is true.
