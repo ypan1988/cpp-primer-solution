@@ -75,3 +75,21 @@ short sval = 32767; ++sval;
 unsigned uival = 0; --uival;
 unsigned short usval = 65535; ++usval;
    #+END_SRC
+
+* Exercises Section 4.3
+** Exercise 4.8
+   #+BEGIN_QUOTE
+   Explain when operands are evaluated in the logical AND , logical OR , and
+   equality operators.
+   #+END_QUOTE
+
+   The logical AND and OR operators always evaluate their left operand before
+   the right.  Moreover, the right operand is evaluated if and only if the left
+   operand does not determine the result. This strategy is known as
+   short-circuit evaluation: 
+   + The right side of an && is evaluated if and only if the left side is
+     ~true~.
+   + The right side of an || is evaluated if and only if the left side is
+     ~false~.
+
+   The operands will always be evaluated in equality operators.
