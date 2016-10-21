@@ -147,3 +147,17 @@ while (cin >> ival && ival != 42)
 
    + (a) i = 3; d = 3.0.
    + (b) d = 3.5; i = 3.0.
+
+** Exercise 4.14
+   #+BEGIN_QUOTE
+   Explain what happens in each of the ~if~ tests:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+if (42 = i)   //  ...
+if (i = 42)   //  ...   
+   #+END_SRC
+   
+   It is an error for the condition in the first ~if~ since literals
+   are rvalues; The condition in second ~if~ assigns 42 to i and then
+   tests the result of the assignment (The condition will be true
+   since 42 is not zero).
