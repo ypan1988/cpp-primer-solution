@@ -157,7 +157,19 @@ if (42 = i)   //  ...
 if (i = 42)   //  ...   
    #+END_SRC
    
-   It is an error for the condition in the first ~if~ since literals
-   are rvalues; The condition in second ~if~ assigns 42 to i and then
-   tests the result of the assignment (The condition will be true
-   since 42 is not zero).
+   It is an error for the condition in the first ~if~ since literals are
+   rvalues; The condition in second ~if~ assigns 42 to i and then tests the
+   result of the assignment (The condition will be true since 42 is not zero).
+
+** Exercise 4.15
+   #+BEGIN_QUOTE
+   The following assignment is illegal. Why? How would you correct it?
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+double dval; int ival; int *pi;
+dval = ival = pi = 0;   
+   #+END_SRC
+   
+   The assignment is illegal because ival and pi have different types and there
+   is no conversion from the type of pi (int*) to the type of ival (int). It is
+   illegal even though zero is a value that can be assigned to either object.
