@@ -131,5 +131,7 @@ while (cin >> ival && ival != 42)
 
 ** Exercise 4.12
    #+BEGIN_QUOTE
-   
+   Assuming ~i~, ~j~, and ~k~ are all ~int~s, explain what ~i != j < k~ means.
    #+END_QUOTE
+
+   ~i != (j < k)~
