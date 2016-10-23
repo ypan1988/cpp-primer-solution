@@ -215,4 +215,25 @@ dval = ival = pi = 0;
    + (b) ~ival++ && ival~
    + (c) ~vec[ival++] <= vec[ival]~
    #+END_QUOTE
-   (c) is incorrect. It should be ~vec[ival] <= vec[ival+1]~
+   (c) is incorrect. It should be ~vec[ival] <= vec[ival+1]~.
+
+* Exercises Section 4.6
+** Exercise 4.20
+   #+BEGIN_QUOTE
+   Assuming that ~iter~ is a ~vector<string>::iterator~, indicate which, if any,
+   of the following expressions are legal. Explain the behavior of the legal
+   expressions and why those that aren’t legal are in error.
+   + (a) ~*iter++;~
+   + (b) ~(*iter)++;~
+   + (c) ~*iter.empty();~
+   + (d) ~iter->empty();~
+   + (e) ~++*iter;~
+   + (f) ~iter++->empty();~
+   #+END_QUOTE
+
+   + (a) legal. return current ~string~, advance ~iter~.
+   + (b) illegal. increment operator is not defined for ~string~. 
+   + (c) illegal. it should be ~(*iter).empty();~.
+   + (d) legal. run the ~empty~ member of a ~string~.
+   + (e) illegal. increment operator is not defined for ~string~.
+   + (f) legal. run the ~empty~ member of a ~string~, advance ~iter~.
