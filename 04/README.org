@@ -343,3 +343,23 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+** Exercise 4.23
+   #+BEGIN_QUOTE
+   The following expression fails to compile due to operator precedence. Using
+   Table 4.12 (p. 166), explain why it fails. How would you fix it?
+   #+END_QUOTE
+   #+BEGIN_SRC C++ 
+string s = "word";
+string pl = s + s[s.size() - 1] == 's' ? "" : "s" ;   
+   #+END_SRC
+   
+   The conditional operator has fairly low precedence. When we embed a
+   conditional expression in a larger expression, we usually must parenthesize
+   the conditional subexpression. 
+
+   correct form:
+   #+BEGIN_SRC C++
+string s = "word";
+string pl = s + (s[s.size() - 1] == 's' ? "" : "s") ;      
+   #+END_SRC
