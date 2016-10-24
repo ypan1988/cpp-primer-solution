@@ -278,3 +278,68 @@ int main()
    more ~if~ statements. Which version do you think is easier to understand and
    why?
    #+END_QUOTE
+   
+   ex04_22a.cc
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <vector>
+using std::vector;
+
+int main()
+{
+  vector<unsigned> grades;
+  unsigned i;
+
+  while (cin >> i)
+    grades.push_back(i);
+
+  for (auto grade : grades) {	// for each grade in grades
+    string finalgrade = (grade > 90) ? "high pass"
+      : (grade < 60) ? "fail"
+      : (grade <= 75) ? "low pass" : "pass";
+
+    cout << grade << " " + finalgrade << endl; 
+  }
+  
+  return 0;
+}   
+   #+END_SRC
+
+   ex04_22b.cc
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <vector>
+using std::vector;
+
+int main()
+{
+  vector<unsigned> grades;
+  unsigned i;
+
+  while (cin >> i)
+    grades.push_back(i);
+
+  for (auto grade : grades) {	// for each grade in grades
+    string finalgrade;
+
+    if (grade > 90) finalgrade = "high pass";
+    else if (grade > 75) finalgrade = "pass";
+    else if (grade >= 60) finalgrade = "low pass";
+    else finalgrade = "fail";
+
+    cout << grade << " " + finalgrade << endl; 
+  }
+  
+  return 0;
+}   
+   #+END_SRC
