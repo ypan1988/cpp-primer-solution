@@ -237,3 +237,35 @@ dval = ival = pi = 0;
    + (d) legal. run the ~empty~ member of a ~string~.
    + (e) illegal. increment operator is not defined for ~string~.
    + (f) legal. run the ~empty~ member of a ~string~, advance ~iter~.
+
+* Exercises Section 4.7
+** Exercise 4.21
+   #+BEGIN_QUOTE
+   Write a program to use a conditional operator to find the elements in a
+   ~vector<int>~ that have odd value and double the value of each such element.
+   #+END_QUOTE
+   
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <vector>
+using std::vector;
+
+int main()
+{
+  vector<int> ivec = {0, 1, 2, 3, 4};
+
+  for (auto i : ivec) cout << i << " ";
+  cout << endl;
+  
+  for (auto &i : ivec) {
+    i = (!(i % 2) ? (2 * i) : i);
+  }
+
+  for (auto i : ivec) cout << i << " ";
+  cout << endl;
+
+  return 0;
+}   
+   #+END_SRC
