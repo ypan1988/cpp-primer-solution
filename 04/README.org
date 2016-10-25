@@ -381,3 +381,28 @@ string pl = s + (s[s.size() - 1] == 's' ? "" : "s") ;
 
    if grade > 90, first conditional operator's result is ~high pass~, and
    ~finalgrade~ will always fail.
+
+* Exercises Section 4.8
+** Exercise 4.25
+   #+BEGIN_QUOTE
+   What is the value of ~'q' << 6 on a machine with 32-bit ~int~s and 8 bit
+   ~char~s, that uses Latin-1 character set in which 'q' has the bit pattern
+   01110001?
+   #+END_QUOTE
+
+** Exercise 4.26
+   #+BEGIN_QUOTE
+   In our grading example in this section, what would happen if we used
+   ~unsigned int~ as the type for ~quiz1~?
+   #+END_QUOTE
+
+** Exercise 4.27
+   #+BEGIN_QUOTE
+   What is the result of each of these expressions?
+
+   ~unsigned long ul1 = 3, ul2 = 7;~
+   + (a) ul1 & ul2
+   + (b) ul1 | ul2
+   + (c) ul1 && ul2
+   + (d) ul1 || ul2
+   #+END_QUOTE
