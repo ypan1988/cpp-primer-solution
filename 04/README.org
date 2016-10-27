@@ -420,3 +420,8 @@ string pl = s + (s[s.size() - 1] == 's' ? "" : "s") ;
    + (c) ul1 && ul2
    + (d) ul1 || ul2
    #+END_QUOTE
+
+   + (a) 3
+   + (b) 7
+   + (c) true
+   + (d) true
