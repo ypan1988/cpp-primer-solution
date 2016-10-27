@@ -551,3 +551,13 @@ for (int *ptr = ia, ix = 0;
    Either ~ptr~ or ~ix~ can be used to go through the all elements in the array
    where ~ptr~ is used as a pointer for the array and ~ix~ is an int index of
    the array.
+
+** Exercise 4.33
+   #+BEGIN_QUOTE
+   Using Table 4.12 (p. 166) explain what the following expression does:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+someValue ? ++x, ++y : --x, --y   
+   #+END_SRC
+
+   Comma has lower precedence: ~(someValue ? ++x, ++y : --x), --y~.
