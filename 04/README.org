@@ -425,3 +425,9 @@ string pl = s + (s[s.size() - 1] == 's' ? "" : "s") ;
    + (b) 7
    + (c) true
    + (d) true
+
+* Exercises Section 4.9
+** Exercise 4.28
+   #+BEGIN_QUOTE
+   Write a program to print the size of each of the built-in types.
+   #+END_QUOTE
