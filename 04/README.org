@@ -388,6 +388,16 @@ string pl = s + (s[s.size() - 1] == 's' ? "" : "s") ;
    What is the value of ~'q' << 6 on a machine with 32-bit ints and 8 bit chars,
    that uses Latin-1 character set in which 'q' has the bit pattern 01110001?
    #+END_QUOTE
+   
+   The operator ~ performs integral promotions on its operand. Which means it
+   will convert the char to int before doing the complement. So it will go like
+   this:
+   #+BEGIN_SRC C++
+'q' == 01110001
+~ 'q' == ~ 00000000000000000000000001110001
+~ 'q' == 11111111111111111111111110001110
+~ 'q' << 6 == 11111111111111111110001110000000   
+   #+END_SRC
 
 ** Exercise 4.26
    #+BEGIN_QUOTE
