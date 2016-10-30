@@ -25,3 +25,28 @@
    block. Names are visible from where they are defined until the end of the
    (immediately) enclosing block. Compound statements are used when the language
    requires a single statement but the logic of our program needs more than one.
+
+** Exercise 5.3
+   #+BEGIN_QUOTE
+   Use the comma operator (§ 4.10, p. 157) to rewrite the while loop from §
+   1.4.1 (p. 11) so that it no longer requires a block. Explain whether this
+   rewrite improves or diminishes the readability of this code.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+
+int main()
+{
+  int sum = 0, val = 1;
+  // keep executing the while as long as val is less than or equal to 10
+  while (val <= 10) 
+    sum += val, ++val;
+  std::cout << "Sum of 1 to 10 inclusive is "
+            << sum << std::endl;
+
+  return 0;
+}   
+   #+END_SRC
+
+   This rewrite diminishes the readability of this code.
