@@ -50,3 +50,24 @@ int main()
    #+END_SRC
 
    This rewrite diminishes the readability of this code.
+
+* Exercises Section 5.2
+** Exercise 5.4
+   #+BEGIN_QUOTE
+   Exercise 5.4: Explain each of the following examples, and correct
+   any problems you detect.  
+   + (a) ~while (string::iterator iter != s.end()) { /* . . . */ }~ 
+   + (b) ~while (bool status = find(word)) { /*. . . */ } if (!status)
+     { /* . . . */ }~
+   #+END_QUOTE
+
+   + (a) illegal definition.
+     #+BEGIN_SRC C++
+string::iterator iter = s.begin();
+while (iter != s.end()) { /* . . . */ }     
+     #+END_SRC
+   + (b) ~status~ is not accessible outside the loop.
+     #+BEGIN_SRC C++
+bool status; 
+while (status = find(word)) { /*. . . */ } if (!status)    
+     #+END_SRC
