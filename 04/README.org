@@ -634,4 +634,13 @@ int i;  double d;  const string *ps;  char *pc;  void *pv;
    + (c) ~pv = static_cast<void*>(&d);~
    + (d) ~pc = static_cast<char*>(pv);~
 
+** Exercise 4.38
+   #+BEGIN_QUOTE
+   Explain the following expression:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+double slope = static_cast<double>(j/i);   
+   #+END_SRC
 
+   j/i is an ~int~(by truncation) which is converted to ~double~ and then
+   assigned to ~slope~.
