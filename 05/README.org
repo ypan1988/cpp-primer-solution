@@ -12,3 +12,16 @@
    A null statement is useful where the language requires a statement but the
    program’s logic does not. Such usage is most common when a loop’s work can be
    done within its condition.
+
+** Exercise 5.2
+   #+BEGIN_QUOTE
+   What is a block? When might you might use a block?
+   #+END_QUOTE
+    
+   A compound statement, usually referred to as a block, is a (possibly empty)
+   sequence of statements and declarations surrounded by a pair of curly
+   braces. A block is a scope (§ 2.2.4, p. 48). Names introduced inside a block
+   are accessible only in that block and in blocks nested inside that
+   block. Names are visible from where they are defined until the end of the
+   (immediately) enclosing block. Compound statements are used when the language
+   requires a single statement but the logic of our program needs more than one.
