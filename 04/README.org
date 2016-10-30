@@ -561,3 +561,21 @@ someValue ? ++x, ++y : --x, --y
    #+END_SRC
 
    Comma has lower precedence: ~(someValue ? ++x, ++y : --x), --y~.
+
+* Exercises Section 4.11.1
+** Exercise 4.34
+   #+BEGIN_QUOTE
+   Given the variable definitions in this section, explain what conversions take
+   place in the following expressions:
+   + (a) if (fval)
+   + (b) dval = fval + ival;
+   + (c) dval + ival * cval;
+   Remember that you may need to consider the associativity of the operators.
+   #+END_QUOTE
+
+   + (a) fval converted to bool.
+   + (b) ival converted to float, then the result of (fval + ival) is converted
+     to double.
+   + (c) cval converted to int, then the result of (ival * cval) is converted to
+     double.
+
