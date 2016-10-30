@@ -614,3 +614,24 @@ float fval;    double dval;
    #+BEGIN_SRC C++
 i *= static_cast<int>(d);   
    #+END_SRC
+
+** Exercise 4.37
+   #+BEGIN_QUOTE
+   Rewrite each of the following old-style casts to use a named cast:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+int i;  double d;  const string *ps;  char *pc;  void *pv;
+   #+END_SRC
+   #+BEGIN_QUOTE
+   + (a) ~pv = (void*)ps;~
+   + (b) ~i = int(*pc);~
+   + (c) ~pv = &d;~
+   + (d) ~pc = (char*) pv;~   
+   #+END_QUOTE
+
+   + (a) ~pv = const_cast<string*>(ps);~
+   + (b) ~i = static_cast<int>(*pc);~
+   + (c) ~pv = static_cast<void*>(&d);~
+   + (d) ~pc = static_cast<char*>(pv);~
+
+
