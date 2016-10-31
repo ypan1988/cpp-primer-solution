@@ -174,24 +174,50 @@ int main()
      #+BEGIN_SRC C++
 if (ival1 != ival2)
   ival1 = ival2
-else ival1 = ival2 = 0;     
+else ival1 = ival2 = 0;
      #+END_SRC
    + (b) 
      #+BEGIN_SRC C++
 if (ival < minval)
   minval = ival;
-  occurs = 1;     
+  occurs = 1;
      #+END_SRC
    + (c) 
      #+BEGIN_SRC C++
 if (int ival = get_value())
   cout << "ival = " << ival << endl;
 if (!ival)
-  cout << "ival = 0\n";     
+  cout << "ival = 0\n";
      #+END_SRC
    + (d)
      #+BEGIN_SRC C++
 if (ival = 0)
-  ival = get_value();     
+  ival = get_value();
      #+END_SRC
    #+END_QUOTE
+
+   + (a)
+     #+BEGIN_SRC C++
+if (ival1 != ival2)
+  ival1 = ival2;  // need to add a semicolon
+else ival1 = ival2 = 0;
+     #+END_SRC
+   + (b)
+     #+BEGIN_SRC C++
+if (ival < minval) {  // brace should be used for multiple statements
+  minval = ival;
+  occurs = 1;
+}
+     #+END_SRC
+   + (c) 
+     #+BEGIN_SRC C++
+if (int ival = get_value())  // second if statement should be else-if
+  cout << "ival = " << ival << endl;
+else if (!ival)
+  cout << "ival = 0\n";     
+     #+END_SRC
+   + (d)
+     #+BEGIN_SRC C++
+if (ival == 0)  // should be == instead of =
+  ival = get_value();     
+     #+END_SRC
