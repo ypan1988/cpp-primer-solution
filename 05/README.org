@@ -221,3 +221,17 @@ else if (!ival)
 if (ival == 0)  // should be == instead of =
   ival = get_value();     
      #+END_SRC
+
+** Exercise 5.8
+   #+BEGIN_QUOTE
+    What is a "dangling ~else~"? How are else clauses resolved in C++?
+   #+END_QUOTE
+
+   When we nest an if inside another if, it is possible that there will be more
+   if branches than else branches. Indeed, our grading program has four ifs and
+   two elses. The question arises: How do we know to which if a given else
+   belongs?  This problem, usually referred to as a dangling else, is common to
+   many programming languages that have both if and if else
+   statements. Different languages solve this problem in different ways. In C++
+   the ambiguity is resolved by specifying that each else is matched with the
+   closest preceding unmatched if.
