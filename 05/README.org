@@ -166,3 +166,32 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+** Exercise 5.7
+   #+BEGIN_QUOTE
+   Correct the errors in each of the following code fragments:
+   + (a)
+     #+BEGIN_SRC C++
+if (ival1 != ival2)
+  ival1 = ival2
+else ival1 = ival2 = 0;     
+     #+END_SRC
+   + (b) 
+     #+BEGIN_SRC C++
+if (ival < minval)
+  minval = ival;
+  occurs = 1;     
+     #+END_SRC
+   + (c) 
+     #+BEGIN_SRC C++
+if (int ival = get_value())
+  cout << "ival = " << ival << endl;
+if (!ival)
+  cout << "ival = 0\n";     
+     #+END_SRC
+   + (d)
+     #+BEGIN_SRC C++
+if (ival = 0)
+  ival = get_value();     
+     #+END_SRC
+   #+END_QUOTE
