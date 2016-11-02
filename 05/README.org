@@ -235,3 +235,10 @@ if (ival == 0)  // should be == instead of =
    statements. Different languages solve this problem in different ways. In C++
    the ambiguity is resolved by specifying that each else is matched with the
    closest preceding unmatched if.
+
+* Exercises Section 5.3.2
+** Exercise 5.9
+   #+BEGIN_QUOTE
+   Write a program using a series of ~if~ statements to count the number of
+   vowels in text read from ~cin~.
+   #+END_QUOTE
