@@ -463,3 +463,133 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+** Exercise 5.13
+   #+BEGIN_QUOTE
+   Each of the programs in the highlighted text on page 184 contains a common
+   programming error. Identify and correct each error.
+   #+END_QUOTE
+
+   #+BEGIN_QUOTE
+   + (a) 
+     #+BEGIN_SRC C++
+unsigned aCnt = 0, eCnt = 0, iouCnt = 0;
+char ch = next_text();
+switch (ch) {
+case 'a': aCnt++;
+case 'e': eCnt++;
+default: iouCnt++;
+}     
+     #+END_SRC
+   + (b)
+     #+BEGIN_SRC C++
+unsigned index = some_value();
+switch (index) {
+case 1:
+  int ix = get_value();
+  ivec[ ix ] = index;
+  break;
+default:
+  ix = ivec.size()-1;
+  ivec[ ix ] = index;
+}     
+     #+END_SRC
+   + (c)
+     #+BEGIN_SRC C++
+unsigned evenCnt = 0, oddCnt = 0;
+int digit = get_num() % 10;
+switch (digit) {
+case 1, 3, 5, 7, 9:
+  oddcnt++;
+  break;
+case 2, 4, 6, 8, 10:
+  evencnt++;
+  break;
+}     
+     #+END_SRC
+   + (d)
+     #+BEGIN_SRC C++
+unsigned ival=512, jval=1024, kval=4096;
+unsigned bufsize;
+unsigned swt = get_bufCnt();
+switch(swt) {
+case ival:
+  bufsize = ival * sizeof(int);
+  break;
+case jval:
+  bufsize = jval * sizeof(int);
+  break;
+case kval:
+  bufsize = kval * sizeof(int);
+  break;
+}     
+     #+END_SRC
+   #+END_QUOTE
+     
+   + (a) Forgetting a break is a common source of bugs and it is a common
+     misconception to think that only the statements associated with the matched
+     case label are executed.
+     #+BEGIN_SRC C++
+unsigned aCnt = 0, eCnt = 0, iouCnt = 0;
+char ch = next_text();
+switch (ch) {
+case 'a': aCnt++; break;
+case 'e': eCnt++; break;
+default: iouCnt++; break;
+}          
+     #+END_SRC
+
+   + (b) It is illegal to jump from a place where a variable with an initializer
+     is out of scope to a place where that variable is in scope. If we need to
+     define and initialize a variable for a particular case, we can do so by
+     defining the variable inside a block, thereby ensuring that the variable is
+     out of scope at the point of any subsequent label.
+     #+BEGIN_SRC C++
+unsigned index = some_value();
+switch (index) {
+case 1:
+  {
+    int ix = get_value();
+    ivec[ ix ] = index;
+  }
+  break;
+default:
+  {
+    int ix = ivec.size()-1;
+    ivec[ ix ] = index;
+  }
+}     
+     #+END_SRC
+
+   + (c) case label syntax error.
+     #+BEGIN_SRC C++
+unsigned evenCnt = 0, oddCnt = 0;
+int digit = get_num() % 10;
+switch (digit) {
+case 1: case 3: case 5: case 7: case 9:
+  oddcnt++;
+  break;
+case 2: case 4: case 6: case 8: case 10:
+  evencnt++;
+  break;
+}          
+     #+END_SRC
+
+   + (d) Case labels must be integral constant expressions.
+     #+BEGIN_SRC C++
+const unsigned ival=512, jval=1024, kval=4096;
+unsigned bufsize;
+unsigned swt = get_bufCnt();
+switch(swt) {
+case ival:
+  bufsize = ival * sizeof(int);
+  break;
+case jval:
+  bufsize = jval * sizeof(int);
+  break;
+case kval:
+  bufsize = kval * sizeof(int);
+  break;
+}          
+     #+END_SRC
+
