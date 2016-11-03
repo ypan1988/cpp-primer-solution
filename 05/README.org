@@ -625,3 +625,25 @@ for (ix != sz; ++ix) { /* . . . */ }
 for (int ix = 0; ix != sz; ++ix, ++ sz) { /* . . . */ }     
      #+END_SRC
    #+END_QUOTE
+
+   + (a) It is worth remembering that the visibility of any object defined
+     within the ~for~ header is limited to the body of the ~for~ loop. Thus, in
+     this example, ~ix~ is inaccessible after the for completes.
+     #+BEGIN_SRC C++
+int ix;
+for (int ix; ix != sz; ++ix) { /* . . . */ }
+if (ix != sz)
+// . . .          
+     #+END_SRC
+
+   + (b) A null statement for init-statement should be used when an
+     initialization is unnecessary.
+     #+BEGIN_SRC c++
+int ix;
+for (; ix != sz; ++ix) { /* . . . */ }     
+     #+END_SRC
+
+   + (c) infinite loop.
+     #+BEGIN_SRC C++
+for (int ix = 0; ix != sz; ++ix) { /* . . . */ }      
+     #+END_SRC
