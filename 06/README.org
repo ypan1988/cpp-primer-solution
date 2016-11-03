@@ -133,3 +133,31 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 6.1.1
+** Exercise 6.6 
+   #+BEGIN_QUOTE
+   Explain the differences between a parameter, a local variable, and a local
+   ~static~ variable. Give an example of a function in which each might be
+   useful.
+   #+END_QUOTE
+   
+   Parameters and variables defined inside a function body are referred to as
+   local variables. They are “local” to that function and hide declarations of
+   the same name made in an outer scope.
+    
+   It can be useful to have a local variable whose lifetime continues across
+   calls to the function. We obtain such objects by defining a local variable as
+   static. Each local static object is initialized before the first time
+   execution passes through the object’s definition. Local statics are not
+   destroyed when a function ends; they are destroyed when the program
+   terminates.
+
+   #+BEGIN_SRC C++
+size_t count_calls(bool trace)  // trace is a parameter
+{
+  static size_t ctr = 0;  // ctr is a local static variable
+  size_t result = ++ctr;  // result is a local variable
+  return result;
+}   
+   #+END_SRC
