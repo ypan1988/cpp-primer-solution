@@ -604,3 +604,24 @@ case kval:
    ~how now now now brown cow cow~
    the output should indicate that the word now occurred three times.
    #+END_QUOTE
+
+* Exercises Section 5.4.2
+** Exercise 5.15
+   #+BEGIN_QUOTE
+   Explain each of the following loops. Correct any problems you detect.
+   + (a) 
+     #+BEGIN_SRC C++
+for (int ix = 0; ix != sz; ++ix) { /* . . . */ }
+if (ix != sz)
+// . . .     
+     #+END_SRC
+   + (b)
+     #+BEGIN_SRC C++
+int ix;
+for (ix != sz; ++ix) { /* . . . */ }     
+     #+END_SRC
+   + (c)
+     #+BEGIN_SRC C++
+for (int ix = 0; ix != sz; ++ix, ++ sz) { /* . . . */ }     
+     #+END_SRC
+   #+END_QUOTE
