@@ -107,3 +107,29 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+** Exercise 6.5
+   #+BEGIN_QUOTE
+   Write a function to return the absolute value of its argument.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+int abs(int val) {
+  return val >= 0 ? val : -val;
+}
+
+int main()
+{
+  cout << "please enter an integer: ";
+  int i;
+  cin >> i;
+  int j = abs(i);
+  cout << "The absolute value of " << i
+       << " is " << j << endl;
+
+  return 0;
+}   
+   #+END_SRC
