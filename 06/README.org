@@ -161,3 +161,31 @@ size_t count_calls(bool trace)  // trace is a parameter
   return result;
 }   
    #+END_SRC
+
+** Exercise 6.7
+   #+BEGIN_QUOTE
+   Write a function that returns 0 when it is first called and then generates
+   numbers in sequence each time it is called again.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <cstddef>
+using std::size_t;
+
+size_t count()
+{
+  static size_t ctr = 0;	// value will persist across calls
+  return ctr++;
+}
+
+int main()
+{
+  for (size_t i = 0; i != 10; ++i)
+    cout << count() << endl;
+  
+  return 0;
+}   
+   #+END_SRC
