@@ -1,0 +1,49 @@
+* Exercises Section 6.1
+** Exercise 6.1
+   #+BEGIN_QUOTE
+   What is the difference between a parameter and an argument?
+   #+END_QUOTE
+
+   Arguments are the initializers for a function’s parameters.
+
+** Exercise 6.2
+   #+BEGIN_QUOTE
+   Indicate which of the following functions are in error and why. Suggest how
+   you might correct the problems.
+   + (a) ~int f() { string s; // ...
+     return s;}~
+   + (b) ~f2(int i) { /* ... */ }~
+   + (c) ~int calc(int v1, int v1) /* ... */ }~
+   + (d) ~double square(double x) return x * x;~
+   #+END_QUOTE
+
+   + (a) function return type should be ~string~
+     #+BEGIN_SRC C++
+int f() {
+  string s;
+  // ...
+  return s;
+}     
+     #+END_SRC
+
+   + (b) The function return type should be ~void~, which means that the function
+     does not return a value.
+     #+BEGIN_SRC C++
+void f2(int i) {
+  /* ... */
+}     
+     #+END_SRC
+
+   + (c) The left curly brace is missing.
+     #+BEGIN_SRC C++
+int calc(int v1, int v1) {
+  /* ... */ 
+}     
+     #+END_SRC
+
+   + (d) The curly braces are needed for function body.
+     #+BEGIN_SRC C++
+double square(double x) {
+  return x * x;
+}     
+     #+END_SRC
