@@ -690,3 +690,58 @@ while (i != size)
    ~vector~s containing 0, 1, 1, and 2 and 0, 1, 1, 2, 3, 5, 8, respectively
    your program should return ~true~.
    #+END_QUOTE
+
+* Exercises Section 5.4.4
+** Exercise 5.18
+   #+BEGIN_QUOTE
+   Explain each of the following loops. Correct any problems you detect.
+   + (a) 
+     #+BEGIN_SRC C++
+do
+  int v1, v2;
+  cout << "Please enter two numbers to sum:" ;
+  if (cin >> v1 >> v2)
+    cout << "Sum is: " << v1 + v2 << endl;
+while (cin);     
+     #+END_SRC
+   + (b)
+     #+BEGIN_SRC C++
+do {
+  // . . .
+} while (int ival = get_response());     
+     #+END_SRC
+   + (c)
+     #+BEGIN_SRC C++
+do {
+  int ival = get_response()
+} while (ival);     
+     #+END_SRC
+   #+END_QUOTE
+     
+   + (a) Brackets are needed for the block.
+     #+BEGIN_SRC C++
+do {
+  int v1, v2;
+  cout << "Please enter two numbers to sum:" ;
+  if (cin >> v1 >> v2)
+    cout << "Sum is: " << v1 + v2 << endl;
+} while (cin);          
+     #+END_SRC
+
+   + (b) Because the condition is not evaluated until after the statement or
+     block is executed, the ~do while~ loop does not allow variable definitions
+     inside the condition.
+     #+BEGIN_SRC C++
+int ival;
+do {
+  // . . .
+} while (ival = get_response());          
+     #+END_SRC
+
+   + (c) ~ival~ is used in condition; can't be defined inside the do.
+     #+BEGIN_SRC C++
+int ival;
+do {
+  ival = get_response()
+} while (ival);          
+     #+END_SRC
