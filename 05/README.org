@@ -815,3 +815,57 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 5.5.2
+** Exercise 5.21
+   #+BEGIN_QUOTE
+   Revise the program from the exercise in § 5.5.1 (p. 191) so that it looks
+   only for duplicated words that start with an uppercase letter.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <cctype>
+using std::isupper;
+
+int main()
+{
+  string word, word2;
+  bool no_repeated_word = true; 
+  while (cin >> word) {
+    if (!isupper(word[0])) {
+      word2 = word;
+      continue;
+    }
+    
+    if (word == word2) {
+      no_repeated_word = false;
+      cout << word << endl;
+      break;
+    } else {
+      word2 = word; 
+    }
+  }
+
+  if (no_repeated_word) cout << "no word was repeated." << endl;
+  
+  return 0;
+}   
+   #+END_SRC
+
+* Exercises Section 5.5.3
+** Exercise 5.22
+   #+BEGIN_QUOTE
+   The last example in this section that jumped back to ~begin~ could be better
+   written using a loop. Rewrite the code to eliminate the ~goto~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+int sz = get_size();
+while (sz <= 0) sz = get_size();
+   #+END_SRC
