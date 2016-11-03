@@ -647,3 +647,37 @@ for (; ix != sz; ++ix) { /* . . . */ }
      #+BEGIN_SRC C++
 for (int ix = 0; ix != sz; ++ix) { /* . . . */ }      
      #+END_SRC
+
+** Exercise 5.16
+   #+BEGIN_QUOTE
+   The ~while~ loop is particularly good at executing while some condition
+   holds; for example, when we need to read values until end-of-file.  The ~for~
+   loop is generally thought of as a step loop: An index steps through a range
+   of values in a collection. Write an idiomatic use of each loop and then
+   rewrite each using the other loop construct. If you could use only one loop,
+   which would you choose? Why?
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+// idiomatic use of while loop 
+int i;
+while ( cin >> i )
+    // ...
+
+// corresponding for loop
+for (int i = 0; cin >> i;)
+    // ...
+
+// idiomatic use of for loop
+for (int i = 0; i != size; ++i)
+    // ...
+
+// corresponding while loop
+int i = 0;
+while (i != size)
+{
+    // ...
+    ++i;
+}   
+   #+END_SRC
+   ~while~ loop. With better readability.
