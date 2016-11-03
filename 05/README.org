@@ -869,3 +869,94 @@ int main()
 int sz = get_size();
 while (sz <= 0) sz = get_size();
    #+END_SRC
+
+* Exercises Section 5.6.3
+** Exercise 5.23
+   #+BEGIN_QUOTE
+   Write a program that reads two integers from the standard input and prints
+   the result of dividing the first number by the second.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+int main()
+{
+  cout << "please enter two integers: ";
+  int ival1, ival2;
+  cin >> ival1 >> ival2;
+  cout << ival1 << " divided by " << ival2
+       << " is " << ival1 / ival2 << endl;
+
+  return 0;
+}   
+   #+END_SRC
+
+** Exercise 5.24
+   #+BEGIN_QUOTE
+   Revise your program to throw an exception if the second number is zero. Test
+   your program with a zero input to see what happens on your system if you
+   don’t ~catch~ an exception.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+#include <stdexcept>
+using std::runtime_error;
+
+int main()
+{
+  cout << "please enter two integers: ";
+  int ival1, ival2;
+  cin >> ival1 >> ival2;
+  if (ival2 == 0) throw runtime_error("divisor is equal to zero");
+  cout << ival1 << " divided by " << ival2
+       << " is " << ival1 / ival2 << endl;
+
+  return 0;
+}   
+   #+END_SRC
+
+   "This application has requested the Runtime to terminate it in an unusual
+way."
+
+** Exercise 5.25
+   #+BEGIN_QUOTE
+   Revise your program from the previous exercise to use a ~try~ block to
+   ~catch~ the exception. The ~catch~ clause should print a message to the user
+   and ask them to supply a new number and repeat the code inside the ~try~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+#include <stdexcept>
+using std::runtime_error;
+
+int main()
+{
+  cout << "please enter two integers: ";
+  int ival1, ival2;
+  while (cin >> ival1 >> ival2) {
+    try {
+      if (ival2 == 0) throw runtime_error("divisor is equal to zero");
+      cout << ival1 << " divided by " << ival2
+       << " is " << ival1 / ival2 << endl;
+    } catch (runtime_error err) {
+      cout << err.what()
+	   << "\nTry Again? Enter y or n" << endl;
+      char c;
+      cin >> c;
+      if (!cin || c == 'n')
+	break;
+    }
+    cout << "please enter two integers: ";
+  }
+  
+  return 0;
+}   
+   #+END_SRC
