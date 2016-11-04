@@ -189,3 +189,15 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 6.1.2
+** Exercise 6.8
+   #+BEGIN_QUOTE
+   Write a header file named ~Chapter6.h~ that contains declarations for the
+   functions you wrote for the exercises in § 6.1 (p. 205).
+   #+END_QUOTE
+   
+   Chapter6.h
+   #+BEGIN_SRC C++
+int fact(int val);   
+   #+END_SRC
