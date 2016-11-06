@@ -1,3 +1,5 @@
+#+STARTUP: content
+
 * Exercises Section 6.1
 ** Exercise 6.1
    #+BEGIN_QUOTE
@@ -237,6 +239,39 @@ int main()
 {
   int j = fact(5);		// j equals 120, i.e., the result of fact(5)
   cout << "5! is " << j << endl;
+
+  return 0;
+}   
+   #+END_SRC
+
+* Exercises Section 6.2.1
+** Exercise 6.10
+   #+BEGIN_QUOTE
+   Using pointers, write a function to swap the values of two ~int~s. Test the
+   function by calling it and printing the swapped values.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+void swap(int *ip1, int *ip2) {
+  int temp = *ip1;
+  *ip1 = *ip2;
+  *ip2 = temp;
+}
+
+int main()
+{
+  cout << "please enter two integers: ";
+
+  int ival1, ival2;
+  cin >> ival1 >> ival2;
+
+  swap(&ival1, &ival2);
+  
+  cout << ival1 << " "
+       << ival2 << endl;
 
   return 0;
 }   
