@@ -276,3 +276,9 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 6.2.2
+** Exercise 6.11
+   #+BEGIN_QUOTE
+   Write and test your own version of ~reset~ that takes a reference.
+   #+END_QUOTE
