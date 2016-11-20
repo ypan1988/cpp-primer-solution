@@ -336,4 +336,16 @@ int main()
 }   
    #+END_SRC
 
-   I think this version would be easier to use 
+   this version would be easier to use. Programmers accustomed to programming in
+   C often use pointer parameters to access objects outside a function. In C++,
+   programmers generally use reference parameters instead.
+
+** Exercise 6.13
+   #+BEGIN_QUOTE
+   Assuming ~T~ is the name of a type, explain the difference between a function
+   declared as ~void f(T)~ and ~void f(T&)~.
+   #+END_QUOTE
+
+   When the function is defined as ~void f(T)~, the parameter is not a reference
+   and the argument is passed by value; When the function is defined as ~void
+   f(T&)~, the parameter is a reference and the argument is passed by reference.
