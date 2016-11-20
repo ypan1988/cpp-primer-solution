@@ -349,3 +349,14 @@ int main()
    When the function is defined as ~void f(T)~, the parameter is not a reference
    and the argument is passed by value; When the function is defined as ~void
    f(T&)~, the parameter is a reference and the argument is passed by reference.
+
+** Exercise 6.14: 
+   #+BEGIN_QUOTE
+   Give an example of when a parameter should be a reference type. Give an
+   example of when a parameter should not be a reference.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+void process(string& text);  // inefficient to copy large object, use reference
+void process(int value);     // it is not necessary to use reference
+   #+END_SRC
