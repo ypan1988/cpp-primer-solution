@@ -350,7 +350,7 @@ int main()
    and the argument is passed by value; When the function is defined as ~void
    f(T&)~, the parameter is a reference and the argument is passed by reference.
 
-** Exercise 6.14: 
+** Exercise 6.14
    #+BEGIN_QUOTE
    Give an example of when a parameter should be a reference type. Give an
    example of when a parameter should not be a reference.
@@ -360,3 +360,24 @@ int main()
 void process(string& text);  // inefficient to copy large object, use reference
 void process(int value);     // it is not necessary to use reference
    #+END_SRC
+
+** Exercise 6.15
+   #+BEGIN_QUOTE
+   Explain the rationale for the type of each of ~find_char~’s parameters In
+   particular, why is ~s~ a reference to ~const~ but ~occurs~ is a plain
+   reference? Why are these parameters references, but the ~char~ parameter ~c~
+   is not? What would happen if we made ~s~ a plain reference?  What if we made
+   ~occurs~ a reference to ~const~?
+   #+END_QUOTE
+
+   ~s~ can be a large string and should not be changed so it is defined as a
+   reference to ~const~ while the value of ~occurs~ will be changed by the
+   function hence it is defined as a plain reference. 
+
+   ~char~ parameter ~c~ should not be a reference and is copied by value.
+
+   Obviously the value of ~s~ might be changed in the function if we made it a
+   plain reference while we are not able to change the value of ~occurs~ if it
+   is defined as a reference to ~const~.
+
+   
