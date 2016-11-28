@@ -381,3 +381,18 @@ void process(int value);     // it is not necessary to use reference
    is defined as a reference to ~const~.
 
    
+* Exercises Section 6.2.3
+** Exercise 6.16
+   #+BEGIN_QUOTE
+   The following function, although legal, is less useful than it might
+   be. Identify and correct the limitation on this function:
+
+   ~bool is_empty(string& s) { return s.empty(); }~
+   #+END_QUOTE
+
+   Using a reference instead of a reference to ~const~ unduly limits the type of
+   arguments that can be used with the function.  We cannot pass a ~const~
+   object, or a literal, or an object that requires conversion to a plain
+   reference parameter. It can be corrected as
+
+   ~bool is_empty(const string &s) { return s.empty(); }~
