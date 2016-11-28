@@ -396,3 +396,58 @@ void process(int value);     // it is not necessary to use reference
    reference parameter. It can be corrected as
 
    ~bool is_empty(const string &s) { return s.empty(); }~
+
+** Exercise 6.17
+   #+BEGIN_QUOTE
+   Write a function to determine whether a ~string~ contains any capital
+   letters. Write a function to change a ~string~ to all lowercase. Do the
+   parameters you used in these functions have the same type? If so, why?  If
+   not, why not?
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <string>
+using std::string;
+
+#include <cctype>
+using std::isupper;
+using std::tolower;
+
+bool has_capital_letters(const string &s) {
+  bool check = false;
+  for (auto c : s) {
+    if (isupper(c))
+      check = true;
+  }
+
+  return check;
+}
+
+void to_lower(string &s) {
+  for (auto &c : s) {
+    if (isupper(c))
+      c = tolower(c);
+  }
+}
+
+int main()
+{
+  cout << has_capital_letters("Hello World") << endl;
+  cout << has_capital_letters("hello world") << endl;
+
+  string s("HELLO WORLD");
+  to_lower(s);
+  cout << s << endl;
+  
+  return 0;
+}
+   #+END_SRC
+
+   The parameters in the two functions do not have the same type. For function
+   ~has_capital_letters~, the parameter is defined as reference to ~const~ and
+   it will not be changed by the function. For function ~to_lower~, ~const~
+   should not be used since the parameter will be changed in the function.
