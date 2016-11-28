@@ -451,3 +451,19 @@ int main()
    ~has_capital_letters~, the parameter is defined as reference to ~const~ and
    it will not be changed by the function. For function ~to_lower~, ~const~
    should not be used since the parameter will be changed in the function.
+
+** Exercise 6.18
+   #+BEGIN_QUOTE
+   Write declarations for each of the following functions. When you write these
+   declarations, use the name of the function to indicate what the function
+   does.
+ 
+   + (a) A function named ~compare~ that returns a ~bool~ and has two parameters
+     that are references to a class named ~matrix~.
+   + (b) A function named ~change_val~ that returns a ~vector<int>~ iterator and
+     takes two parameters: One is an ~int~ and the other is an iterator for a
+     ~vector<int>~.
+   #+END_QUOTE
+
+   + (a) ~bool compare(const matrix &m1, const matrix &m2) { }~
+   + (b) ~vector<int>::iterator change_val(int ival, vector<int>::iterator it) { }~
