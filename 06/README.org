@@ -467,3 +467,28 @@ int main()
 
    + (a) ~bool compare(const matrix &m1, const matrix &m2) { }~
    + (b) ~vector<int>::iterator change_val(int ival, vector<int>::iterator it) { }~
+
+** Exercise 6.19
+   #+BEGIN_QUOTE
+   Given the following declarations, determine which calls are legal and which
+   are illegal. For those that are illegal, explain why.
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+double calc(double);
+int count(const string &, char);
+int sum(vector<int>::iterator, int);
+vector<int> vec(10);   
+   #+END_SRC
+   #+BEGIN_QUOTE
+   + (a) ~calc(23.4, 55.1);~
+   + (b) ~count("abcda", 'a');~
+   + (c) ~calc(66);~
+   + (d) ~sum(vec.begin(), vec.end(), 3.8);~
+   #+END_QUOTE
+   
+   + (a) illegal. too many parameters.
+   + (b) legal.
+   + (c) legal. int will be converted to double.
+   + (d) legal???
+
+
