@@ -491,4 +491,15 @@ vector<int> vec(10);
    + (c) legal. int will be converted to double.
    + (d) legal???
 
-
+** Exercise 6.20
+   #+BEGIN_QUOTE
+   When should reference parameters be references to ~const~?  What happens if
+   we make a parameter a plain reference when it could be a reference to
+   ~const~?
+   #+END_QUOTE
+   
+   Reference parameters be references to ~const~ when function does not its
+   value. Using a reference instead of a reference to ~const~ unduly limits the
+   type of arguments that can be used with the function. As we’ve just seen, we
+   cannot pass a ~const~ object, or a literal, or an object that requires
+   conversion to a plain reference parameter.
