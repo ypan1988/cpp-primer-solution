@@ -503,3 +503,60 @@ vector<int> vec(10);
    type of arguments that can be used with the function. As we’ve just seen, we
    cannot pass a ~const~ object, or a literal, or an object that requires
    conversion to a plain reference parameter.
+
+* Exercises Section 6.2.4
+** Exercise 6.21
+   #+BEGIN_QUOTE
+   Write a function that takes an ~int~ and a pointer to an ~int~ and returns
+   the larger of the ~int~ value or the value to which the pointer points. What
+   type should you use for the pointer?
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout;
+using std::endl;
+
+int max_int(const int ival, const int *ip) {
+  return (ival > *ip) ? ival : *ip;
+}
+
+int main()
+{
+  int i = 50;
+  
+  cout << max_int(10, &i) << endl;
+  cout << max_int(100, &i) << endl;
+
+  return 0;
+}   
+   #+END_SRC
+
+** Exercise 6.22
+   #+BEGIN_QUOTE
+   Write a function to swap two ~int~ pointers.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout;
+using std::endl;
+
+void swap(int *ip1, int *ip2)
+{
+  int temp = *ip1;
+  *ip1 = *ip2;
+  *ip2 = temp;
+}
+  
+int main()
+{
+  int i1 = 10, i2 = 20;
+  swap(&i1, &i2);
+
+  cout << i1 << endl;
+  cout << i2 << endl;
+
+  return 0;
+}   
+   #+END_SRC
