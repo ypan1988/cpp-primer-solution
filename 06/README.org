@@ -379,7 +379,6 @@ void process(int value);     // it is not necessary to use reference
    Obviously the value of ~s~ might be changed in the function if we made it a
    plain reference while we are not able to change the value of ~occurs~ if it
    is defined as a reference to ~const~.
-
    
 * Exercises Section 6.2.3
 ** Exercise 6.16
@@ -593,5 +592,26 @@ int main()
   print(j, 2);
 
   return 0;
+}   
+   #+END_SRC
+** Exercise 6.24
+   #+BEGIN_QUOTE
+   Explain the behavior of the following function. If there are problems in the
+   code, explain what they are and how you might fix them.
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+void print(const int ia[10])
+{
+    for (size_t i = 0; i != 10; ++i)
+        cout << ia[i] << endl;
+}  
+   #+END_SRC
+
+   The dimension is used for documentation purposes and is equivalent to ~const
+   int*~. If we want to pass an array which size is 10, we should use reference
+   like that:
+   #+BEGIN_SRC C++
+void print10(const int (&ia)[10]) { 
+    for (auto i : ia) { std::cout << i << "\n"; }
 }   
    #+END_SRC
