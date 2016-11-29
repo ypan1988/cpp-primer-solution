@@ -753,3 +753,11 @@ int main()
    #+END_SRC
 
    [[./img/fig06_30.png]]
+
+** Exercise 6.31
+   #+BEGIN_QUOTE
+   When is it valid to return a reference? A reference to ~const~?
+   #+END_QUOTE
+
+   It is valid when you can find a preexisting object that the reference is
+   referring.
