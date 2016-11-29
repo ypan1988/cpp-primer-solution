@@ -699,3 +699,10 @@ int main()
   return 0;
 }   
    #+END_SRC
+** Exercise 6.28
+   #+BEGIN_QUOTE
+   In the second version of ~error_msg~ that has an ~ErrCode~ parameter, what is
+   the type of ~elem~ in the ~for~ loop?
+   #+END_QUOTE
+
+   The type of ~elem~ in the ~for~ loop is ~const string&~.
