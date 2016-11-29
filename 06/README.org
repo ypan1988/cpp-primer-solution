@@ -615,3 +615,56 @@ void print10(const int (&ia)[10]) {
     for (auto i : ia) { std::cout << i << "\n"; }
 }   
    #+END_SRC
+
+* Exercises Section 6.2.5
+** Exercise 6.25
+   #+BEGIN_QUOTE
+   Write a ~main~ function that takes two arguments. Concatenate the supplied
+   arguments and print the resulting ~string~.
+   #+END_QUOTE
+   
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <string>
+using std::string;
+
+int main(int argc, char *argv[]) {
+  string s1(argv[1]);
+  string s2(argv[2]);
+
+  cout << s1 + s2 << endl;
+
+  return 0;
+}   
+   #+END_SRC
+
+** Exercise 6.26
+   #+BEGIN_QUOTE
+   Write a program that accepts the options presented in this section. Print the
+   values of the arguments passed to ~main~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <string>
+using std::string;
+
+#include <cstddef>
+using std::size_t;
+
+int main(int argc, char *argv[]) {
+  std::string s;
+  for (size_t i = 1; i != argc; ++i) {
+    s += string(argv[i]) + " ";
+  }
+  cout << s << endl;
+
+  return 0;
+}   
+   #+END_SRC
