@@ -926,3 +926,18 @@ decltype(odd) &arrPtr(int i)
      argument, all the parameters that follow it must also have
      default arguments.
 
+** Exercise 6.41
+   #+BEGIN_QUOTE
+   Which, if any, of the following calls are illegal? Why? Which, if
+   any, are legal but unlikely to match the programmer’s intent? Why?
+
+   ~char *init(int ht, int wd = 80, char bckgrnd = ' ');~
+
+   + (a) ~init();~
+   + (b) ~init(24, 10);~
+   + (c) ~init(14, '*');~
+   #+END_QUOTE  
+   
+   All the calls are legal. The call in (c) is legal because ~'*'~ is
+   a ~char~ which can be converted to the second parameter. However
+   (c) is unlikely to match the programmer's intent.
