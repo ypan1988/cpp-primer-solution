@@ -818,3 +818,21 @@ int main()
    #+END_QUOTE
 
    if the argument is negative, recursion would never stop.
+
+** Exercise 6.35
+   #+BEGIN_QUOTE
+   In the call to ~factorial~, why did we pass ~val - 1~ rather than ~val--~?
+   #+END_QUOTE
+   
+   If we use ~val--~, value of ~val~ will be used in the call to ~factorial~ and
+   the recursion will never stop.
+
+* Exercises Section 6.3.3
+** Exercise 6.36
+   #+BEGIN_QUOTE
+   Write the declaration for a function that returns a reference to an array of
+   ten ~strings~, without using either a trailing return, ~decltype~, or a type
+   alias.
+   #+END_QUOTE
+
+   ~string (&func(string &s))[10]~
