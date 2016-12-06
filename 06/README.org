@@ -874,3 +874,39 @@ decltype(odd) &arrPtr(int i)
     return (i % 2) ? odd : even; // returns a reference to the array
 }   
    #+END_SRC
+
+* Exercises Section 6.4
+** Exercise 6.39
+   #+BEGIN_QUOTE
+   Explain the effect of the second declaration in each one of the
+   following sets of declarations. Indicate which, if any, are
+   illegal.  
+   + (a) 
+     #+BEGIN_SRC C++
+     int calc(int, int); 
+     int calc(const int, const int);
+     #+END_SRC
+
+   + (b) 
+     #+BEGIN_SRC C++
+     int get(); 
+     double get();
+     #+END_SRC
+
+   + (c)
+     #+BEGIN_SRC C++
+     int *reset(int *); 
+     double *reset(double *);
+     #+END_SRC
+   #+END_QUOTE
+
+   + (a) illegal. Top-level ~const~ has no effect on the objects that
+     can be passed to the function. A parameter that has a top-level
+     ~const~ is indistinguishable from one without a top-level ~const~.
+
+   + (b) illegal. It is an error for two functions to differ only in
+     terms of their return types. If the parameter lists of two
+     functions match but the return types differ, then the second
+     declaration is an error.
+
+   + (c) legal.
