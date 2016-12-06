@@ -941,3 +941,39 @@ decltype(odd) &arrPtr(int i)
    All the calls are legal. The call in (c) is legal because ~'*'~ is
    a ~char~ which can be converted to the second parameter. However
    (c) is unlikely to match the programmer's intent.
+
+** Exercise 6.42
+   #+BEGIN_QUOTE
+   Give the second parameter of ~make_plural~ (§ 6.3.2, p.224) a
+   default argument of '~s~'. Test your program by printing singular
+   and plural versions of the words ~success~ and ~failure~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout;
+using std::endl;
+
+#include <string>
+using std::string;
+
+// return the plural version of word if ctr is greater than 1
+string make_plural(size_t ctr, const string &word,
+		   const string &ending = "s")
+{
+  return (ctr > 1) ? word + ending : word;
+}
+
+int main()
+{
+  string s1("success");
+  string s2("failure");
+  
+  cout << make_plural(1, s1, "es") << endl
+       << make_plural(2, s1, "es") << endl;
+  cout << make_plural(1, s2, "s") << endl
+       << make_plural(2, s2, "s") << endl;
+
+  return 0;
+}   
+   #+END_SRC
