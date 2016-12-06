@@ -836,3 +836,27 @@ int main()
    #+END_QUOTE
 
    ~string (&func(string &s))[10]~
+
+** Exercise 6.37 
+   #+BEGIN_QUOTE
+   Write three additional declarations for the function in the previous
+   exercise. One should use a type alias, one should use a trailing return, and
+   the third should use ~decltype~. Which form do you prefer and why?
+   #+END_QUOTE
+   
+   type alias:
+   #+BEGIN_SRC C++
+   using arrT = string[10];
+   arrT& func(string &s);
+   #+END_SRC
+
+   trailing return:
+   #+BEGIN_SRC C++
+   auto func(string &s) -> string(&)[10];
+   #+END_SRC
+
+   ~decltype~:
+   #+BEGIN_SRC C++
+   string arrStr[10];
+   decltype(arrStr) *func(string &s);
+   #+END_SRC
