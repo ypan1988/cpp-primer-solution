@@ -1027,3 +1027,13 @@ inline bool isShorter(const string &s1, const string &s2)
    #+END_QUOTE
 
    No, because ~s1.size() < s2.size()~ is not a constant expression.
+
+* Exercises Section 6.5.3
+** Exercise 6.47
+   #+BEGIN_QUOTE
+   Revise the program you wrote in the exercises in § 6.3.2 (p.228) that used
+   recursion to print the contents of a ~vector~ to conditionally print
+   information about its execution. For example, you might print the size of the
+   ~vector~ on each call. Compile and run the program with debugging turned on
+   and again with it turned off.
+   #+END_QUOTE
