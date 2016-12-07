@@ -993,5 +993,37 @@ int main()
    For (a), both declarations and definitions should be put in a header
    file. For (b), the declarations and definitions should be put in a header
    file and a source file respectively.
-    
-   
+
+** Exercise 6.44
+   #+BEGIN_QUOTE
+   Rewrite the ~isShorter~ function from § 6.2.2 (p. 211) to be ~inline~.
+   #+END_QUOTE
+
+   The following ~isShorter~ function should be put in a header file.
+   #+BEGIN_SRC C++
+// compare the length of two strings
+inline bool isShorter(const string &s1, const string &s2)
+{
+    return s1.size() < s2.size();
+}   
+   #+END_SRC
+
+** Exercise 6.45
+   #+BEGIN_QUOTE
+   Review the programs you’ve written for the earlier exercises and decide
+   whether they should be defined as ~inline~. If so, do so. If not, explain why
+   they should not be ~inline~.
+   #+END_QUOTE
+
+   In general, the ~inline~ mechanism is meant to optimize small, straight-line
+   functions that are called frequently. Many compilers will not inline a
+   recursive function. A 75-line function will almost surely not be expanded
+   inline.
+
+** Exercise 6.46
+   #+BEGIN_QUOTE
+   Would it be possible to define ~isShorter~ as a ~constexpr~?  If so, do
+   so. If not, explain why not.
+   #+END_QUOTE
+
+   No, because ~s1.size() < s2.size()~ is not a constant expression.
