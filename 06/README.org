@@ -878,9 +878,8 @@ decltype(odd) &arrPtr(int i)
 * Exercises Section 6.4
 ** Exercise 6.39
    #+BEGIN_QUOTE
-   Explain the effect of the second declaration in each one of the
-   following sets of declarations. Indicate which, if any, are
-   illegal.  
+   Explain the effect of the second declaration in each one of the following
+   sets of declarations. Indicate which, if any, are illegal.
    + (a) 
      #+BEGIN_SRC C++
      int calc(int, int); 
@@ -900,14 +899,13 @@ decltype(odd) &arrPtr(int i)
      #+END_SRC
    #+END_QUOTE
 
-   + (a) illegal. Top-level ~const~ has no effect on the objects that
-     can be passed to the function. A parameter that has a top-level
-     ~const~ is indistinguishable from one without a top-level ~const~.
+   + (a) illegal. Top-level ~const~ has no effect on the objects that can be
+     passed to the function. A parameter that has a top-level ~const~ is
+     indistinguishable from one without a top-level ~const~.
 
-   + (b) illegal. It is an error for two functions to differ only in
-     terms of their return types. If the parameter lists of two
-     functions match but the return types differ, then the second
-     declaration is an error.
+   + (b) illegal. It is an error for two functions to differ only in terms of
+     their return types. If the parameter lists of two functions match but the
+     return types differ, then the second declaration is an error.
 
    + (c) legal.
 
@@ -920,16 +918,15 @@ decltype(odd) &arrPtr(int i)
    #+END_QUOTE
 
    + (a) legal.
-   + (b) illegal. A default argument is specified as an initializer
-     for a parameter in the parameter list. We may define defaults for
-     one or more parameters. However, if a parameter has a default
-     argument, all the parameters that follow it must also have
-     default arguments.
+   + (b) illegal. A default argument is specified as an initializer for a
+     parameter in the parameter list. We may define defaults for one or more
+     parameters. However, if a parameter has a default argument, all the
+     parameters that follow it must also have default arguments.
 
 ** Exercise 6.41
    #+BEGIN_QUOTE
-   Which, if any, of the following calls are illegal? Why? Which, if
-   any, are legal but unlikely to match the programmer’s intent? Why?
+   Which, if any, of the following calls are illegal? Why? Which, if any, are
+   legal but unlikely to match the programmer’s intent? Why?
 
    ~char *init(int ht, int wd = 80, char bckgrnd = ' ');~
 
@@ -938,15 +935,15 @@ decltype(odd) &arrPtr(int i)
    + (c) ~init(14, '*');~
    #+END_QUOTE  
    
-   All the calls are legal. The call in (c) is legal because ~'*'~ is
-   a ~char~ which can be converted to the second parameter. However
-   (c) is unlikely to match the programmer's intent.
-
+   All the calls are legal. The call in (c) is legal because ~'*'~ is a ~char~
+   which can be converted to the second parameter. However (c) is unlikely to
+   match the programmer's intent.
+   
 ** Exercise 6.42
    #+BEGIN_QUOTE
-   Give the second parameter of ~make_plural~ (§ 6.3.2, p.224) a
-   default argument of '~s~'. Test your program by printing singular
-   and plural versions of the words ~success~ and ~failure~.
+   Give the second parameter of ~make_plural~ (§ 6.3.2, p.224) a default
+   argument of '~s~'. Test your program by printing singular and plural versions
+   of the words ~success~ and ~failure~.
    #+END_QUOTE
 
    #+BEGIN_SRC C++
@@ -977,3 +974,24 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 6.5.2
+** Exercise 6.43
+   #+BEGIN_QUOTE
+   Which one of the following declarations and definitions would you put in a
+   header? In a source file? Explain why.
+   + (a) ~inline bool eq(const BigInt&, const BigInt&) {...}~
+   + (b) ~void putValues(int *arr, int size);~
+   #+END_QUOTE
+
+   Unlike other functions, ~inline~ and ~constexpr~ functions may be defined
+   multiple times in the program. After all, the compiler needs the definition,
+   not just the declaration, in order to expand the code. However, all of the
+   definitions of a given ~inline~ or ~constexpr~ must match exactly. As a
+   result, ~inline~ and ~constexpr~ functions normally are defined in headers.
+
+   For (a), both declarations and definitions should be put in a header
+   file. For (b), the declarations and definitions should be put in a header
+   file and a source file respectively.
+    
+   
