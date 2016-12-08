@@ -1105,3 +1105,22 @@ assert(cin);
    same number of parameters as there are arguments in the call, and the type of
    each argument must match—or be convertible to—the type of its corresponding
    parameter
+
+** Exercise 6.50
+   #+BEGIN_QUOTE
+   Given the declarations for ~f~ from page 242, list the viable functions, if
+   any for each of the following calls. Indicate which function is the best
+   match, or if the call is illegal whether there is no match or why the call is
+   ambiguous.
+   + (a) ~f(2.56, 42)~
+   + (b) ~f(42)~
+   + (c) ~f(42, 0)~
+   + (d) ~f(2.56, 3.14)~
+   #+END_QUOTE
+
+   + (a) illegal. the call is ambiguous.
+   + (b) ~void f(int);~
+   + (c) ~void f(int, int);~
+   + (d) ~void f(double, double);~
+
+   
