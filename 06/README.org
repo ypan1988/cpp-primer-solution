@@ -1161,3 +1161,17 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 6.6.1
+** Exercise 6.52
+   #+BEGIN_QUOTE
+   Given the following declarations,
+   ~void manip(int, int);~
+   ~double dobj;~
+   what is the rank (§ 6.6.1, p. 245) of each conversion in the following calls?
+   + (a) ~manip('a', 'z');~
+   + (b) ~manip(55.4, dobj);~
+   #+END_QUOTE
+
+   + (a) match through a promotion
+   + (b) match through an arithmetic conversion
