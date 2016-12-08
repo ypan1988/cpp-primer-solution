@@ -1175,3 +1175,24 @@ int main()
 
    + (a) match through a promotion
    + (b) match through an arithmetic conversion
+
+** Exercise 6.53
+   #+BEGIN_QUOTE
+   Explain the effect of the second declaration in each one of the following
+   sets of declarations. Indicate which, if any, are illegal.
+   + (a)
+     #+BEGIN_SRC C++
+int calc(int&, int&);
+int calc(const int&, const int&);
+     #+END_SRC
+   + (b) 
+     #+BEGIN_SRC C++
+int calc(char*, char*);
+int calc(const char*, const char*);     
+     #+END_SRC
+   + (c) 
+     #+BEGIN_SRC C++
+int calc(char*, char*);
+int calc(char* const, char* const);     
+     #+END_SRC
+   #+END_QUOTE
