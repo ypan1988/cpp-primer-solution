@@ -1196,3 +1196,17 @@ int calc(char*, char*);
 int calc(char* const, char* const);     
      #+END_SRC
    #+END_QUOTE
+
+* Exercises Section 6.7
+** Exercise 6.54
+   #+BEGIN_QUOTE
+   Write a declaration for a function that takes two ~int~ parameters and
+   returns an ~int~, and declare a ~vector~ whose elements have this function
+   pointer type.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+int func(int a, int b);
+typedef decltype(func) *pFunc;   
+vector<pFunc> vec;
+   #+END_SRC
