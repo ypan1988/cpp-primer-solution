@@ -1207,6 +1207,34 @@ int calc(char* const, char* const);
 
    #+BEGIN_SRC C++
 int func(int a, int b);
-typedef decltype(func) *pFunc;   
-vector<pFunc> vec;
+vector<decltype(func)*> vec;
+   #+END_SRC
+
+** Exercise 6.55
+   #+BEGIN_QUOTE
+   Write four functions that add, subtract, multiply, and divide two ~int~
+   values. Store pointers to these values in your ~vector~ from the previous
+   exercise.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+int add(int a, int b) { return a + b; }
+int subtract(int a, int b) { return a - b; }
+int multiply(int a, int b) { return a * b; }
+int divide(int a, int b) { return b != 0 ? a / b : 0; }
+
+vec.push_back(add);
+vec.push_back(subtract);
+vec.push_back(multiply);
+vec.push_back(divide);
+   #+END_SRC
+
+** Exercise 6.56
+   #+BEGIN_QUOTE
+   Call each element in the ~vector~ and print their result.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+for (auto f : vec)
+  std::cout << f(10, 5) << std::endl;   
    #+END_SRC
