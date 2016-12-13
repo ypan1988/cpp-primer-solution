@@ -140,7 +140,7 @@ int main()
 ** Exercise 7.4
    #+BEGIN_QUOTE
    Write a class named ~Person~ that represents the name and address of a
-   person. Use a ~string~ to hold each of these elements.  Subsequent exercises
+   person. Use a ~string~ to hold each of these elements. Subsequent exercises
    will incrementally add features to this class.
    #+END_QUOTE
 
@@ -151,3 +151,24 @@ class Person {
   std::string address;
 };   
    #+END_SRC
+
+** Exercise 7.5
+   #+BEGIN_QUOTE
+   Provide operations in your ~Person~ class to return the name and
+   address. Should these functions be ~const~? Explain your choice.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+class Person {
+ public:
+  std::string get_name() const { return name; }
+  std::string get_addr() const { return address; }
+ private:
+  std::string name;
+  std::string address;
+};   
+   #+END_SRC
+
+   The body of ~get_name~ and ~get_addr~ don’t change the object to which ~this~
+   points, so our functions would be more flexible if ~this~ were a pointer to
+   ~const~.
