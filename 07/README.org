@@ -317,9 +317,24 @@ int main()
 
 ** Exercise 7.9
    #+BEGIN_QUOTE
-   Add operations to read and print Person objects to the code you wrote for the
-   exercises in § 7.1.2 (p. 260).
+   Add operations to read and print ~Person~ objects to the code you wrote for
+   the exercises in § 7.1.2 (p. 260).
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+std::istream&
+read(std::istream &is, Person &person) {
+  is >> person.name >> person.address;
+  return is;
+}
+
+std::ostream&
+print(std::ostream &os, Person &person) {
+  os << person.name << " "
+     << person.address << " " 
+     << std::endl;
+}   
+   #+END_SRC
 
 ** Exercise 7.10
    #+BEGIN_QUOTE
