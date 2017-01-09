@@ -307,9 +307,13 @@ int main()
 
 ** Exercise 7.8
    #+BEGIN_QUOTE
-   Why does read define its Sales_data parameter as a plain reference and print
-   define its parameter as a reference to const?
+   Why does ~read~ define its ~Sales_data~ parameter as a plain reference and
+   ~print~ define its parameter as a reference to ~const~?
    #+END_QUOTE
+   
+   ~Sales_data~ is defined as a plain reference in ~read~ since we may change
+   its data members while it is defined as a reference to ~const~ in ~print~
+   since we don't want to write to its data members.
 
 ** Exercise 7.9
    #+BEGIN_QUOTE
