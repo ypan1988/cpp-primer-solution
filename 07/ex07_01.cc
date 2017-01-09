@@ -30,8 +30,8 @@ int main()
       }
     }
     std::cout << total.bookNo << " "
-		  << total.units_sold << " "
-		  << total.revenue << std::endl;
+	      << total.units_sold << " "
+	      << total.revenue << std::endl;
   } else {
     // no input! warn the user
     std::cerr << "No data?!" << std::endl;
