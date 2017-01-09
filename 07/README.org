@@ -237,3 +237,21 @@ print(ostream &os, const Sales_data &item) {
 
    ~if (read(read(cin, data1), data2))~
    #+END_QUOTE
+
+* Exercises Section 7.3.3
+** Exercise 7.31
+   #+BEGIN_QUOTE
+   Define a pair of classes ~X~ and ~Y~, in which ~X~ has a pointer to ~Y~, and
+   ~Y~ has an object of type ~X~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+class Y;  // forward declaration
+class X {
+  Y *py;
+};   
+class Y {
+  X x;
+};
+   #+END_SRC
+
