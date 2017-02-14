@@ -1,9 +1,9 @@
 #include <iostream>
 
 struct Sales_data {
-    std::string bookNo;
-    unsigned units_sold = 0;
-    double revenue = 0.0;
+  std::string bookNo;
+  unsigned units_sold = 0;
+  double revenue = 0.0;
 };
 
 int main()
@@ -17,21 +17,20 @@ int main()
     while (std::cin >> trans.bookNo >> trans.units_sold >> trans.revenue) {
       // if we're still processing the same book
       if (total.bookNo == trans.bookNo) {
-	// update the running total
-	total.units_sold += trans.units_sold;
-	total.revenue += trans.revenue;
-      }
-      else {
+        // update the running total
+        total.units_sold += trans.units_sold;
+        total.revenue += trans.revenue;
+      } else {
         // print results for the previous book
         std::cout << total.bookNo << " "
-		  << total.units_sold << " "
-		  << total.revenue << std::endl;
+                  << total.units_sold << " "
+                  << total.revenue << std::endl;
         total = trans;          // total now refers to the next book
       }
     }
     std::cout << total.bookNo << " "
-	      << total.units_sold << " "
-	      << total.revenue << std::endl;
+              << total.units_sold << " "
+              << total.revenue << std::endl;
   } else {
     // no input! warn the user
     std::cerr << "No data?!" << std::endl;
