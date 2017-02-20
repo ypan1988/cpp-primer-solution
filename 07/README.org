@@ -202,7 +202,7 @@ print(std::ostream &os, const Sales_data &item) {
  
 ** Exercise 7.7
    #+BEGIN_QUOTE
-   Rewrite the transaction-processing program you wrote for the exercises in ยง
+   Rewrite the transaction-processing program you wrote for the exercises in ง
    7.1.2 (p. 260) to use these new functions.
    #+END_QUOTE
 
@@ -305,7 +305,7 @@ int main()
 ** Exercise 7.9
    #+BEGIN_QUOTE
    Add operations to read and print ~Person~ objects to the code you wrote for
-   the exercises in ยง 7.1.2 (p. 260).
+   the exercises in ง 7.1.2 (p. 260).
    #+END_QUOTE
 
    #+BEGIN_SRC C++
@@ -325,10 +325,12 @@ print(std::ostream &os, Person &person) {
 
 ** Exercise 7.10
    #+BEGIN_QUOTE
-   What does the condition in the following if statement do?
+   What does the condition in the following ~if~ statement do?
 
    ~if (read(read(cin, data1), data2))~
    #+END_QUOTE
+
+   The condition of the ~if~ would check if it is successful to read two Sales_data objects.
 
 * Exercises Section 7.3.3
 ** Exercise 7.31
