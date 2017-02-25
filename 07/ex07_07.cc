@@ -17,7 +17,7 @@ Sales_data::combine(const Sales_data &rhs) {
   units_sold += rhs.units_sold;	// add the members of rhs into
   revenue += rhs.revenue;	// the members of "this" object
   return *this;			// return the object on which the function was
-				// called
+  // called
 }
 
 double Sales_data::avg_price() const {
@@ -48,7 +48,7 @@ print(std::ostream &os, const Sales_data &item) {
   os << item.isbn() << " " << item.units_sold << " "
      << item.revenue << " " << item.avg_price();
   return os;
-}   
+}
 
 int main()
 {
@@ -61,12 +61,12 @@ int main()
     while (read(std::cin, trans)) {
       // if we're still processing the same book
       if (total.isbn() == trans.isbn()) {
-	// update the running total
-	total.combine(trans);	
+        // update the running total
+        total.combine(trans);	
       }
       else {
         // print results for the previous book
-	print(std::cout, total);
+        print(std::cout, total);
         std::cout << std::endl;
         total = trans;          // total now refers to the next book
       }
