@@ -54,7 +54,7 @@ int main()
 ** Exercise 7.2
    #+BEGIN_QUOTE
    Add the ~combine~ and ~isbn~ members to the ~Sales_data~ class you wrote for
-   the exercises in ยง 2.6.2 (p. 76).
+   the exercises in ง 2.6.2 (p. 76).
    #+END_QUOTE
 
    #+BEGIN_SRC C++
@@ -74,7 +74,7 @@ Sales_data::isbn() const {
 
 ** Exercise 7.3
    #+BEGIN_QUOTE
-   Revise your transaction-processing program from ยง 7.1.1 (p. 256) to use these
+   Revise your transaction-processing program from ง 7.1.1 (p. 256) to use these
    members.
    #+END_QUOTE
 
@@ -603,6 +603,27 @@ int main()
 
   return 0;
 }   
+   #+END_SRC
+
+** Exercise 7.14
+   #+BEGIN_QUOTE
+   Write a version of the default constructor that explicitly initializes the
+   members to the values we have provided as in-class initializers.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+Sales_data(): units_sold(0), revenue(0.0) { }    
+   #+END_SRC
+
+** Exercise 7.15
+   #+BEGIN_QUOTE
+   Add appropriate constructors to your ~Person~ class.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+Person() = default;
+Person(const std::string sname, const std::string saddr): name(sname), address(saddr) { }
+Person(std::istream &is) { read(is, *this); }   
    #+END_SRC
 
 * Exercises Section 7.3.3
