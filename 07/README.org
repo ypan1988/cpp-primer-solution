@@ -646,7 +646,17 @@ Person(std::istream &is) { read(is, *this); }
    + Members defined after a ~private~ specifier are accessible to the member
      functions of the class but are not accessible to code that uses the class.
      The ~private~ sections encapsulate (i.e., hide) the implementation.
-   
+
+** Exercise 7.17
+   #+BEGIN_QUOTE
+   What, if any, are the differences between using ~class~ or ~struct~?
+   #+END_QUOTE
+
+   A class may define members before the first access specifier. Access to such
+   members depends on how the class is defined. If we use the ~struct~ keyword,
+   the members defined before the first access specifier are ~public~; if we use
+   ~class~, then the members are ~private~.
+
 * Exercises Section 7.3.3
 ** Exercise 7.31
    #+BEGIN_QUOTE
