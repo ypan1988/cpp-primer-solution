@@ -626,6 +626,27 @@ Person(const std::string sname, const std::string saddr): name(sname), address(s
 Person(std::istream &is) { read(is, *this); }   
    #+END_SRC
 
+* Exercises Section 7.2
+** Exercise 7.16
+   #+BEGIN_QUOTE
+   What, if any, are the constraints on where and how often an access specifier
+   may appear inside a class definition? What kinds of members should be defined
+   after a ~public~ specifier? What kinds should be ~private~?
+   #+END_QUOTE
+
+   A class may contain zero or more access specifiers, and there are no
+   restrictions on how often an access specifier may appear. Each access
+   specifier specifies the access level of the succeeding members. The specified
+   access level remains in effect until the next access specifier or the end of
+   the class body.
+
+   + Members defined after a ~public~ specifier are accessible to all parts of the
+   program. The ~public~ members define the interface to the class.
+
+   + Members defined after a ~private~ specifier are accessible to the member
+   functions of the class but are not accessible to code that uses the class.
+   The ~private~ sections encapsulate (i.e., hide) the implementation.
+   
 * Exercises Section 7.3.3
 ** Exercise 7.31
    #+BEGIN_QUOTE
