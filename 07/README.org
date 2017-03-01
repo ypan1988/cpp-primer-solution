@@ -640,12 +640,12 @@ Person(std::istream &is) { read(is, *this); }
    access level remains in effect until the next access specifier or the end of
    the class body.
 
-   + Members defined after a ~public~ specifier are accessible to all parts of the
-   program. The ~public~ members define the interface to the class.
+   + Members defined after a ~public~ specifier are accessible to all parts of
+     the program. The ~public~ members define the interface to the class.
 
    + Members defined after a ~private~ specifier are accessible to the member
-   functions of the class but are not accessible to code that uses the class.
-   The ~private~ sections encapsulate (i.e., hide) the implementation.
+     functions of the class but are not accessible to code that uses the class.
+     The ~private~ sections encapsulate (i.e., hide) the implementation.
    
 * Exercises Section 7.3.3
 ** Exercise 7.31
