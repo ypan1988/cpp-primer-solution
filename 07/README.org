@@ -681,6 +681,12 @@ Person(std::istream &is) { read(is, *this); }
    ~Person~ class should be hided in ~private~ section, like ~name~ and
    ~address~.
 
+* Exercises Section 7.2.1
+** Exercise 7.20
+   #+BEGIN_QUOTE
+   When are friends useful? Discuss the pros and cons of using friends.
+   #+END_QUOTE
+
 * Exercises Section 7.3.3
 ** Exercise 7.31
    #+BEGIN_QUOTE
