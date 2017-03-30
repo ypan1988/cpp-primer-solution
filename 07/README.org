@@ -812,6 +812,43 @@ int main()
 }   
    #+END_SRC
 
+** Exercise 7.22
+   #+BEGIN_QUOTE
+   Update your ~Person~ class to hide its implementation.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+class Person {
+  friend std::istream& read(std::istream &is, Person &person);
+  friend std::ostream& print(std::ostream &os, Person &person);
+
+public:
+  Person() = default;
+  Person(const std::string sname, const std::string saddr): name(sname), address(saddr) { }
+  Person(std::istream &is) { read(is, *this); }
+   
+  std::string get_name() const { return name; }
+  std::string get_addr() const { return address; }
+
+private:
+  std::string name;
+  std::string address;
+};
+
+std::istream&
+read(std::istream &is, Person &person) {
+  is >> person.name >> person.address;
+  return is;
+}
+
+std::ostream&
+print(std::ostream &os, Person &person) {
+  os << person.name << " "
+     << person.address << " " 
+     << std::endl;
+}   
+   #+END_SRC
+
 * Exercises Section 7.3.3
 ** Exercise 7.31
    #+BEGIN_QUOTE
@@ -829,3 +866,10 @@ class Y {
 };
    #+END_SRC
 
+   #+BEGIN_QUOTE
+   Update your ~Person~ class to hide its implementations.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+   
+   #+END_SRC
