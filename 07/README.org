@@ -889,6 +889,18 @@ private:
 };   
    #+END_SRC
 
+** Exercise 7.25
+   #+BEGIN_QUOTE
+   Can ~Screen~ safely rely on the default versions of copy and assignment? If
+   so, why? If not, why not?
+   #+END_QUOTE
+   
+   Yes. The synthesized versions are unlikely to work correctly for classes that
+   allocate resources that reside outside the class objects
+   themselves. Moreover, the synthesized versions for copy, assignment, and
+   destruction work correctly for classes that have ~vector~ or ~string~
+   members.
+
 * Exercises Section 7.3.3
 ** Exercise 7.31
    #+BEGIN_QUOTE
