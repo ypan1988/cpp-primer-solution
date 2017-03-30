@@ -1,8 +1,8 @@
 * Exercises Section 7.1.1
 ** Exercise 7.1
    #+BEGIN_QUOTE
-   Write a version of the transaction-processing program from ง 1.6 (p. 24)
-   using the ~Sales_data~ class you defined for the exercises in ง 2.6.1 (p.
+   Write a version of the transaction-processing program from ยง 1.6 (p. 24)
+   using the ~Sales_data~ class you defined for the exercises in ยง 2.6.1 (p.
    72).
    #+END_QUOTE
 
@@ -54,7 +54,7 @@ int main()
 ** Exercise 7.2
    #+BEGIN_QUOTE
    Add the ~combine~ and ~isbn~ members to the ~Sales_data~ class you wrote for
-   the exercises in ง 2.6.2 (p. 76).
+   the exercises in ยง 2.6.2 (p. 76).
    #+END_QUOTE
 
    #+BEGIN_SRC C++
@@ -74,7 +74,7 @@ Sales_data::isbn() const {
 
 ** Exercise 7.3
    #+BEGIN_QUOTE
-   Revise your transaction-processing program from ง 7.1.1 (p. 256) to use these
+   Revise your transaction-processing program from ยง 7.1.1 (p. 256) to use these
    members.
    #+END_QUOTE
 
@@ -202,7 +202,7 @@ print(std::ostream &os, const Sales_data &item) {
  
 ** Exercise 7.7
    #+BEGIN_QUOTE
-   Rewrite the transaction-processing program you wrote for the exercises in ง
+   Rewrite the transaction-processing program you wrote for the exercises in ยง
    7.1.2 (p. 260) to use these new functions.
    #+END_QUOTE
 
@@ -306,7 +306,7 @@ int main()
 ** Exercise 7.9
    #+BEGIN_QUOTE
    Add operations to read and print ~Person~ objects to the code you wrote for
-   the exercises in ง 7.1.2 (p. 260).
+   the exercises in ยง 7.1.2 (p. 260).
    #+END_QUOTE
 
    #+BEGIN_SRC C++
@@ -702,6 +702,115 @@ Person(std::istream &is) { read(is, *this); }
    + code verbosity, declarations inside the class, outside the class.
 
 ** Exercise 7.21
+   #+BEGIN_QUOTE
+   Update your ~Sales_data~ class to hide its implementation. The programs
+   you've written to use ~Sales_data~ operations should still continue to work.
+   Recompile those programs with your new class definition to verify that they
+   still work.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+#include <string>
+
+struct Sales_data;
+std::istream& read(std::istream &is, Sales_data &item);
+
+struct Sales_data {
+  // friend declarations for nonmember Sales_data operations added
+  friend Sales_data add(const Sales_data &lhs, const Sales_data &rhs);
+  friend std::istream& read(std::istream &is, Sales_data &item);
+  friend std::ostream& print(std::ostream &os, const Sales_data &item);
+
+  // other members and access specifiers as before
+public:
+  Sales_data() = default;
+  Sales_data(const std::string &s): bookNo(s) { }
+  Sales_data(const std::string &s, unsigned n, double p):
+    bookNo(s), units_sold(n), revenue(p*n) { }
+  Sales_data(std::istream &is) { read(is, *this); }
+
+  // other members as before
+  std::string isbn() const { return bookNo; }
+  Sales_data& combine(const Sales_data&);
+  double avg_price() const;
+
+private:
+  std::string bookNo;
+  unsigned units_sold = 0;
+  double revenue = 0.0;
+};
+
+
+// definitions for nonmember parts of the Sales_data interface
+Sales_data
+add(const Sales_data &lhs, const Sales_data &rhs) {
+  Sales_data sum = lhs;		// copy data members from lhs into sum
+  sum.combine(rhs);		// add data members from rhs into sum
+  return sum;
+}
+
+// transactions contain ISBN, number of copies sold, and sales price
+std::istream&
+read(std::istream &is, Sales_data &item) {
+  double price = 0.0;
+  is >> item.bookNo >> item.units_sold >> price;
+  item.revenue = price * item.units_sold;
+  return is;
+}
+
+std::ostream&
+print(std::ostream &os, const Sales_data &item) {
+  os << item.isbn() << " " << item.units_sold << " "
+     << item.revenue << " " << item.avg_price();
+  return os;
+}
+
+// add the value of the given Sales_data into this object
+Sales_data&
+Sales_data::combine(const Sales_data &rhs) {
+  units_sold += rhs.units_sold;	// add the members of rhs into
+  revenue += rhs.revenue;	// the members of "this" object
+  return *this;			// return the object on which the function was
+  // called
+}
+
+double Sales_data::avg_price() const {
+  if (units_sold)
+    return revenue/units_sold;
+  else
+    return 0;
+}
+
+int main()
+{
+  Sales_data total(std::cin); // variable to hold data for the next transaction
+
+  // read the first transaction and ensure that there are data to process
+  if (!total.isbn().empty()) {
+    Sales_data trans;           // variable to hold the running sum
+    // read and process the remaining transtraction
+    while (read(std::cin, trans)) {
+      // if we're still processing the same book
+      if (total.isbn() == trans.isbn()) {
+        // update the running total
+        total.combine(trans);
+      } else {
+        // print results for the previous book
+        print(std::cout, total) << std::endl;
+        total = trans;          // total now refers to the next book
+      }
+    }
+    print(std::cout, total) << std::endl;
+  } else {
+    // no input! warn the user
+    std::cerr << "No data?!" << std::endl;
+    return -1;                  // indicate failure
+  }
+
+  return 0;
+}   
+   #+END_SRC
 
 * Exercises Section 7.3.3
 ** Exercise 7.31
