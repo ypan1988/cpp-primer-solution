@@ -1034,3 +1034,35 @@ class Y {
   X x;
 };
    #+END_SRC
+
+* Exercises Section 7.3.4
+** Exercise 7.32
+   #+BEGIN_QUOTE
+   Define your own versions of ~Screen~ and ~Window_mgr~ in which ~clear~ is a
+   member of ~Window_mgr~ and a ~friend~ of ~Screen~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+class Window_mgr {
+public:
+  // location ID for each screen on the window
+  using ScreenIndex = std::vector<Screen>::size_type;
+  // reset the Screen at the given position to all blanks
+  void clear(ScreenIndex);
+private:
+  std::vector<Screen> screens{Screen(24, 80, ' ')};
+};
+// Screen must be declaired before clear can use members of Screen
+class Screen {
+  // Window_mgr::clear must have been declared before class Screen
+  friend void Window_mgr::clear(ScreenIndex);
+  // ... rest of the Screen class
+};
+void Window_mgr::clear(ScreenIndex i)
+{
+  // s is a reference to the Screen we want to clear
+  Screen &s = screens[i];
+  // reset the contents of that Screen to all blanks
+  s.contents = string(s.height * s.width, ' ');
+}
+   #+END_SRC
