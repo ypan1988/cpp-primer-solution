@@ -901,6 +901,14 @@ private:
    destruction work correctly for classes that have ~vector~ or ~string~
    members.
 
+** Exercise 7.26
+   #+BEGIN_QUOTE
+   Define ~Sales_data::avg_price~ as an ~inline~ function.
+   #+END_QUOTE
+
+   Simply specify ~inline~ on the definition of ~Sales_data::avg_price~ outside
+   of the class.
+
 * Exercises Section 7.3.3
 ** Exercise 7.31
    #+BEGIN_QUOTE
