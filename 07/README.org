@@ -909,6 +909,22 @@ private:
    Simply specify ~inline~ on the definition of ~Sales_data::avg_price~ outside
    of the class.
 
+* Exercises Section 7.3.2
+** Exercise 7.27
+   #+BEGIN_QUOTE
+   Add the ~move~, ~set~, and ~display~ operations to your version of
+   ~Screen~. Test your class by executing the following code:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+Screen myScreen(5, 5, 'X');
+myScreen.move(4,0).set('#').display(cout);
+cout << "\n";
+myScreen.display(cout);
+cout << "\n";
+   #+END_SRC
+   
+   
+ 
 * Exercises Section 7.3.3
 ** Exercise 7.31
    #+BEGIN_QUOTE
