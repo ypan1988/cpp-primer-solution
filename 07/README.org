@@ -1113,3 +1113,36 @@ pos Screen::size() const
    Which, if any, of the following static data member declarations and
    definitions are errors? Explain why.
    #+END_QUOTE
+   #+BEGIN_SRC C++
+// example.h
+class Example {
+public:
+static double rate = 6.5;
+static const int vecSize = 20;
+static vector<double> vec(vecSize);
+};
+// example.C
+#include "example.h"
+double Example::rate;
+vector<double> Example::vec;   
+   #+END_SRC
+   
+   Fixed:
+   #+BEGIN_SRC C++
+// example.h
+class Example {
+public:
+  static constexpr double rate = 6.5;
+  static const int vecSize = 20;
+  static vector<double> vec;
+};
+// example.C
+#include "example.h"
+constexpr double Example::rate;
+vector<double> Example::vec(Example::vecSize);   
+   #+END_SRC
+   Ordinarily, class static members may not be initialized in the class
+   body. However, we can provide in-class initializers for static members that
+   have const integral type and must do so for static members that are
+   constexprs of literal type. The initializers must be constant
+   expressions.
