@@ -1084,6 +1084,24 @@ pos Screen::size() const
    appears outside the scope of class ~Screen~. To use ~pos~ for the return
    type, we must specify the class in which that type is defined.
 
+* Exercises Section 7.4.1
+** Exercise 7.34
+   #+BEGIN_QUOTE
+   What would happen if we put the typedef of pos in the Screen class on page
+   285 as the last line in the class?
+   #+END_QUOTE
+   
+   There is an error in
+   #+BEGIN_SRC
+dummy_fcn(pos height)
+           ^
+Unknown type name 'pos'   
+   #+END_SRC
+   
+   Definitions of type names usually should appear at the beginning of a
+   class. That way any member that uses that type will be seen after the type
+   name has already been defined.
+
 * Exercises Section 7.6
 ** Exercise 7.56
    #+BEGIN_QUOTE
