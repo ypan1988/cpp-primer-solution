@@ -1083,5 +1083,33 @@ pos Screen::size() const
    Because the return type appears before the name of the class is seen, it
    appears outside the scope of class ~Screen~. To use ~pos~ for the return
    type, we must specify the class in which that type is defined.
- 
 
+* Exercises Section 7.6
+** Exercise 7.56
+   #+BEGIN_QUOTE
+   What is a static class member? What are the advantages of static members?
+   How do they differ from ordinary members?
+   #+END_QUOTE
+   
+   Classes sometimes need members that are associated with the class, rather
+   than with individual objects of the class type. For example, a bank account
+   class might need a data member to represent the current prime interest
+   rate. In this case, we'd want to associate the rate with the class, not
+   with each individual object. From an efficiency standpoint, there'd be no
+   reason for each object to store the rate. Much more importantly, if the
+   rate changes, we'd want each object to use the new value.
+    
+   The static members of a class exist outside any object. Objects do not
+   contain data associated with static data members. Similarly, static member
+   functions are not bound to any object; they do not have a this pointer.
+
+** Exercise 7.57
+   #+BEGIN_QUOTE
+   Write your own version of the ~Account~ class.
+   #+END_QUOTE
+
+** Exercise 7.58
+   #+BEGIN_QUOTE
+   Which, if any, of the following static data member declarations and
+   definitions are errors? Explain why.
+   #+END_QUOTE
