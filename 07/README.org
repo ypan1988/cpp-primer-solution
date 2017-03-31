@@ -1102,6 +1102,51 @@ Unknown type name 'pos'
    class. That way any member that uses that type will be seen after the type
    name has already been defined.
 
+** Exercise 7.35
+   #+BEGIN_QUOTE
+   Explain the following code, indicating which definition of Type or initVal
+   is used for each use of those names. Say how you would fix any errors.
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+typedef string Type;
+Type initVal();
+class Exercise {
+public:
+  typedef double Type;
+  Type setVal(Type);
+  Type initVal();
+private:
+  int val;
+};
+Type Exercise::setVal(Type parm) {
+  val = parm + initVal();
+  return val;
+}   
+   #+END_SRC
+
+   #+BEGIN_SRC C++
+typedef string Type;
+Type initVal();  // string
+class Exercise {
+public:
+  typedef double Type;
+  Type setVal(Type);  // double
+  Type initVal();     // double
+private:
+  int val;
+};
+Type Exercise::setVal(Type parm) {  // string; double 
+  val = parm + initVal();  // Exercise::initVal()
+  return val;
+}   
+   #+END_SRC
+   
+   ~Type Exercise::setVal(Type parm)~ should be changed as ~Exercise::Type
+   Exercise::setVal(Type parm)~. Because the return type appears before the
+   name of the class is seen, it appears outside the scope of class
+   ~Exercise~. To use ~Exercise::Type~ for the return type, we must specify
+   the class in which that type is defined.
+
 * Exercises Section 7.6
 ** Exercise 7.56
    #+BEGIN_QUOTE
