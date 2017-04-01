@@ -1171,10 +1171,86 @@ struct X {
    It is a good idea to write constructor initializers in the same order as the
    members are declared. Moreover, when possible, avoid using members to
    initialize other members.
-
  
+** Exercise 7.37
+   #+BEGIN_QUOTE
+   Using the version of ~Sales_data~ from this section, determine which
+   constructor is used to initialize each of the following variables and list
+   the values of the data members in each object:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+Sales_data first_item(cin);
  
+int main() {
+  Sales_data next;
+  Sales_data last("9-999-99999-9");
+}   
+   #+END_SRC
 
+   The code with some comments:
+   #+BEGIN_SRC C++
+Sales_data first_item(cin);  // Sales_data(std::istream &is)
+                             // The values are up to the input.
+ 
+int main() {
+  Sales_data next;  // Sales_data(std::string s = "")
+                    // bookNo = "", units_sold = 0, revenue = 0.
+  Sales_data last("9-999-99999-9");  // Sales_data(std::string s = "")
+                    // bookNo = "9-999-99999-9", units_sold = 0, revenue = 0.
+}   
+   #+END_SRC
+ 
+** Exercise 7.38
+   #+BEGIN_QUOTE
+   We might want to supply ~cin~ as a default argument to the constructor that
+   takes an ~istream&~. Write the constructor declaration that uses ~cin~ as a
+   default argument.
+   #+END_QUOTE
+   
+   #+BEGIN_SRC C++
+Sales_data(std::istream &is = std::cin) { read(is, *this); }   
+   #+END_SRC
+
+** Exercise 7.39
+   #+BEGIN_QUOTE
+   Would it be legal for both the constructor that takes a ~string~ and the one
+   that takes an ~istream&~ to have default arguments? If not, why not?
+   #+END_QUOTE
+   
+   No, because the call of overloaded 'Sales_data()' is ambiguous.
+
+** Exercise 7.40
+   #+BEGIN_QUOTE
+   Choose one of the following abstractions (or an abstraction of your own
+   choosing). Determine what data are needed in the class. Provide an
+   appropriate set of constructors. Explain your decisions.
+   + (a) ~Book~
+   + (b) ~Date~
+   + (c) ~Employee~
+   + (d) ~Vehicle~
+   + (e) ~Object~
+   + (f) ~Tree~
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+class Book 
+{
+public:
+  Book(std::string isbn, std::string const& name, std::string const& author)
+    :isbn_(isbn), name_(name), author_(author)
+  { }
+
+  explicit Book(std::istream &is) 
+  { 
+    is >> isbn_ >> name_ >> author_;
+  }
+
+private:
+  std::string isbn_;
+  std::string name_;
+  std::string author_;
+};   
+   #+END_SRC
 
 * Exercises Section 7.6
 ** Exercise 7.56
