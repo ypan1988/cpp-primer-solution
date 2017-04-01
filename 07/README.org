@@ -1124,6 +1124,7 @@ Type Exercise::setVal(Type parm) {
 }   
    #+END_SRC
 
+   The code with some comments:
    #+BEGIN_SRC C++
 typedef string Type;
 Type initVal();  // string
