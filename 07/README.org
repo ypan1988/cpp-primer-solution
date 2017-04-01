@@ -1148,6 +1148,34 @@ Type Exercise::setVal(Type parm) {  // string; double
    ~Exercise~. To use ~Exercise::Type~ for the return type, we must specify
    the class in which that type is defined.
 
+* Exercises Section 7.5.1 
+** Exercise 7.36
+   #+BEGIN_QUOTE
+   The following initializer is in error. Identify and fix the problem.
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+struct X {
+  X (int i, int j): base(i), rem(base % j) { }
+  int rem, base;
+}; 
+   #+END_SRC
+
+   fixed:
+   #+BEGIN_SRC C++
+struct X {
+  X (int i, int j): rem(i % j), base(i) { }
+  int rem, base;
+};    
+   #+END_SRC
+
+   It is a good idea to write constructor initializers in the same order as the
+   members are declared. Moreover, when possible, avoid using members to
+   initialize other members.
+
+ 
+ 
+
+
 * Exercises Section 7.6
 ** Exercise 7.56
    #+BEGIN_QUOTE
