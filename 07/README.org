@@ -1404,6 +1404,8 @@ struct C {
    #+END_SRC
    #+END_QUOTE
 
+   illegal. cannot synthesize a constructor for ~NoDefault~.
+
 ** Exercise 7.45
    #+BEGIN_QUOTE
    What if we defined the vector in the previous execercise to hold objects of
