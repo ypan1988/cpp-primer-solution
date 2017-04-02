@@ -1425,6 +1425,17 @@ struct C {
      generates one that initializes each data member to the default value of its
      associated type.
    #+END_QUOTE
+   
+   + (a) is untrue. The compiler-generated constructor is known as the
+     synthesized default constructor.
+   + (b) is untrue. A default constructor is a constructor that is used if no
+     initializer is supplied. While a constructor that supplies default
+     arguments for all its parameters also defines the default constructor.
+   + (c) is untrue. In practice, it is almost always right to provide a default
+     constructor if other constructors are being defined.
+   + (d) is untrue. Only if our class does not explicitly define any
+     constructors, the compiler will implicitly define the default constructor
+     for us.
 
 * Exercises Section 7.6
 ** Exercise 7.56
