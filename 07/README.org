@@ -1381,6 +1381,47 @@ int main()
    definition for that abstraction.
    #+END_QUOTE
 
+* Exercises Section 7.5.3
+** Exercise 7.43
+   #+BEGIN_QUOTE
+   Assume we have a class named ~NoDefault~ that has a constructor that takes an
+   ~int~, but has no default constructor. Define a class ~C~ that has a member
+   of type ~NoDefault~. Define the default constructor for ~C~.
+   #+END_QUOTE
+   
+   #+BEGIN_SRC C++
+struct C {
+  C():c_member(0) { }
+  NoDefault c_member;
+};   
+   #+END_SRC
+
+** Exercise 7.44
+   #+BEGIN_QUOTE
+   Is the following declaration legal? If not, why not?  
+   #+BEGIN_SRC C++
+   vector<NoDefault> vec(10);
+   #+END_SRC
+   #+END_QUOTE
+
+** Exercise 7.45
+   #+BEGIN_QUOTE
+   What if we defined the vector in the previous execercise to hold objects of
+   type C?
+   #+END_QUOTE
+
+** Exercise 7.46
+   #+BEGIN_QUOTE
+   Which, if any, of the following statements are untrue? Why?
+   + (a) A class must provide at least one constructor.
+   + (b) A default constructor is a constructor with an empty parameter list.
+   + (c) If there are no meaningful default values for a class, the class should
+     not provide a default constructor.
+   + (d) If a class does not define a default constructor, the compiler
+     generates one that initializes each data member to the default value of its
+     associated type.
+   #+END_QUOTE
+
 * Exercises Section 7.6
 ** Exercise 7.56
    #+BEGIN_QUOTE
