@@ -1411,6 +1411,8 @@ struct C {
    What if we defined the vector in the previous execercise to hold objects of
    type C?
    #+END_QUOTE
+   
+   legal. ~C~ has a default constructor.
 
 ** Exercise 7.46
    #+BEGIN_QUOTE
