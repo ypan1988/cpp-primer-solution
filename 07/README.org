@@ -1556,6 +1556,9 @@ private:
    ~constexpr~? If not, why not?
    #+END_QUOTE
 
+   No, for a ~constexpr~ function, the only executable statement it can have is
+   a return statement.
+
 ** Exercise 7.55
    #+BEGIN_QUOTE
    Is the ~Data~ class from § 7.5.5 (p. 298) a literal class? If not, why not?
