@@ -1564,7 +1564,16 @@ private:
    Is the ~Data~ class from § 7.5.5 (p. 298) a literal class? If not, why not?
    If so, explain why it is literal.
    #+END_QUOTE
-   
+
+   #+BEGIN_SRC C++
+struct Data {
+  int ival;
+  std::string s;
+};   
+   #+END_SRC
+   No. An *aggregate class* whose data members are all of literal type
+   is *literal class*. Here ~std::string~ is not a literal type.
+
 * Exercises Section 7.6
 ** Exercise 7.56
    #+BEGIN_QUOTE
