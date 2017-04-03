@@ -1489,7 +1489,43 @@ Sales_data item2("9-999-99999-9");
    Why do you think vector defines its single-argument constructor as explicit,
    but string does not?
    #+END_QUOTE
+
+* Exercises Section 7.5.5
+** Exercise 7.52
+   #+BEGIN_QUOTE
+   Using our first version of ~Sales_data~ from § 2.6.1 (p. 72), explain the
+   following initialization. Identify and fix any problems.
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+   Sales_data item = {"978-0590353403", 25, 15.99};
+   #+END_SRC
  
+   the first version of ~Sales_data~:
+   #+BEGIN_SRC C++
+struct Sales_data {
+  std::string bookNo;
+  unsigned units_sold = 0;
+  double revenue = 0.0;
+};   
+   #+END_SRC
+
+   fixed:
+   #+BEGIN_SRC C++
+struct Sales_data {
+  std::string bookNo;
+  unsigned units_sold;
+  double revenue;
+};   
+   #+END_SRC
+
+   An *aggregate class* gives users direct access to its members and has special
+   initialization syntax. A class is an aggregate if
+   + All of its data members are public;
+   + It does not define any constructors;
+   + It has no in-class initializers (§ 2.6.1, p. 73);
+   + It has no base classes or virtual functions, which are class-related
+     features.
+
 * Exercises Section 7.6
 ** Exercise 7.56
    #+BEGIN_QUOTE
