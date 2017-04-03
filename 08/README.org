@@ -49,3 +49,91 @@ int main()
    #+END_QUOTE
    
    The ~cin~ is in an error state.
+
+* Exercises Section 8.2.1
+** Exercise 8.4
+   #+BEGIN_QUOTE
+   Write a function to open a file for input and read its contents into a
+   ~vector~ of ~strings~, storing each line as a separate element in the
+   ~vector~.
+   #+END_QUOTE
+   
+   #+BEGIN_SRC C++
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+
+using std::cout;
+using std::endl;
+using std::string;
+using std::vector;
+using std::getline;
+using std::ifstream;
+
+void read(std::istream &is, vector<string> &svec) 
+{
+  string buf;
+  while (getline(is, buf))
+    svec.push_back(buf);
+}
+
+int main()
+{
+  string ifile = "./data/book.txt";
+  ifstream in(ifile);
+  vector<string> svec;
+  read(in, svec);
+  
+  for (const auto &str : svec)
+    cout << str << endl;
+
+  return 0;
+}   
+   #+END_SRC
+
+** Exercise 8.5
+   #+BEGIN_QUOTE
+   Rewrite the previous program to store each word in separate element.
+   #+END_QUOTE
+   
+   #+BEGIN_SRC C++
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+
+using std::cout;
+using std::endl;
+using std::string;
+using std::vector;
+using std::getline;
+using std::ifstream;
+
+void read(std::istream &is, vector<string> &svec) 
+{
+  string buf;
+  while (is >> buf)
+    svec.push_back(buf);
+}
+
+int main()
+{
+  string ifile = "./data/book.txt";
+  ifstream in(ifile);
+  vector<string> svec;
+  read(in, svec);
+  
+  for (const auto &str : svec)
+    cout << str << endl;
+
+  return 0;
+}   
+   #+END_SRC
+
+** Exercise 8.6
+   #+BEGIN_QUOTE
+   Rewrite the bookstore program from § 7.1.1 (p. 256) to read its transactions
+   from a file. Pass the name of the file as an argument to main (§ 6.2.5,
+   p. 218).
+   #+END_QUOTE
