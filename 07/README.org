@@ -1526,6 +1526,42 @@ struct Sales_data {
    + It has no base classes or virtual functions, which are class-related
      features.
 
+* Exercises Section 7.5.6
+** Exercise 7.53
+   #+BEGIN_QUOTE
+   Define your own version of ~Debug~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+class Debug {
+public:
+  constexpr Debug(bool b = true): hw(b), io(b), other(b) { }
+  constexpr Debug(bool h, bool i, bool o): hw(h), io(i), other(o) { }
+  constexpr bool any() { return hw || io || other; }
+
+  void set_io(bool b) { io = b; }
+  void set_hw(bool b) { hw = b; }
+  void set_other(bool b) { hw = b; }
+
+private:
+  bool hw; // hardware errors other than IO errors
+  bool io; // IO errors
+  bool other; // other errors
+}; 
+   #+END_SRC
+
+** Exercise 7.54
+   #+BEGIN_QUOTE
+   Should the members of ~Debug~ that begin with ~set_~ be declared as
+   ~constexpr~? If not, why not?
+   #+END_QUOTE
+
+** Exercise 7.55
+   #+BEGIN_QUOTE
+   Is the ~Data~ class from § 7.5.5 (p. 298) a literal class? If not, why not?
+   If so, explain why it is literal.
+   #+END_QUOTE
+   
 * Exercises Section 7.6
 ** Exercise 7.56
    #+BEGIN_QUOTE
