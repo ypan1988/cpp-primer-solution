@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 
 struct Sales_data;
 std::istream& read(std::istream &is, Sales_data &item);
@@ -70,15 +71,17 @@ double Sales_data::avg_price() const {
     return 0;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
-  Sales_data total(std::cin); // variable to hold data for the next transaction
+  std::ifstream in(argv[1]);
+
+  Sales_data total(in); // variable to hold data for the next transaction
 
   // read the first transaction and ensure that there are data to process
   if (!total.isbn().empty()) {
     Sales_data trans;           // variable to hold the running sum
     // read and process the remaining transtraction
-    while (read(std::cin, trans)) {
+    while (read(in, trans)) {
       // if we're still processing the same book
       if (total.isbn() == trans.isbn()) {
         // update the running total
