@@ -471,3 +471,52 @@ int main(int argc, char *argv[])
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 8.3.1
+** Exercise 8.9
+   #+BEGIN_QUOTE
+   Use the function you wrote for the first exercise in § 8.1.2 (p. 314) to
+   print the contents of an ~istringstream~ object.
+   #+END_QUOTE
+   
+   #+BEGIN_SRC C++
+#include <iostream>
+#include <sstream>
+
+std::istream& func(std::istream &is)
+{
+  std::string buf;
+  while (is >> buf) std::cout << buf << std::endl;
+  is.clear();
+  return is;
+}
+
+int main()
+{
+  std::istringstream in("hello world");
+  std::istream &is = func(in);
+  std::cout << is.rdstate() << std::endl;
+
+  return 0;
+}   
+   #+END_SRC
+
+** Exercise 8.10
+   #+BEGIN_QUOTE
+   Write a program to store each line from a file in a vector<string>. Now use
+   an istringstream to read each element from the vector a word at a time.
+   #+END_QUOTE
+
+** Exercise 8.11
+   #+BEGIN_QUOTE
+   The program in this section defined its istringstream object inside the outer
+   while loop. What changes would you need to make if record were defined
+   outside that loop? Rewrite the program, moving the definition of record
+   outside the while, and see whether you thought of all the changes that are
+   needed.
+   #+END_QUOTE
+
+** Exercise 8.12
+   #+BEGIN_QUOTE
+   Why didn’t we use in-class initializers in PersonInfo?
+   #+END_QUOTE
