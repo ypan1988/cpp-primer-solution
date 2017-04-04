@@ -520,3 +520,19 @@ int main()
    #+BEGIN_QUOTE
    Why didn’t we use in-class initializers in PersonInfo?
    #+END_QUOTE
+
+* Exercises Section 8.3.2
+** Exercise 8.13
+   #+BEGIN_QUOTE
+   Rewrite the phone number program from this section to read from a named file
+   rather than from cin.
+   #+END_QUOTE
+
+** Exercise 8.14
+   #+BEGIN_QUOTE
+   Why did we declare ~entry~ and ~nums~ as ~const auto &~?
+   #+END_QUOTE
+
+   + they are all class type, not the built-in type, so reference will be more
+     effective;
+   + the output shouldn't change their values, so we added the const.
