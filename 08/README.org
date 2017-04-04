@@ -518,8 +518,10 @@ int main()
 
 ** Exercise 8.12
    #+BEGIN_QUOTE
-   Why didn’t we use in-class initializers in PersonInfo?
+   Why didn’t we use in-class initializers in ~PersonInfo~?
    #+END_QUOTE
+
+   Because we need a aggregate class here and it should have no in-class initializers.
 
 * Exercises Section 8.3.2
 ** Exercise 8.13
