@@ -24,3 +24,37 @@
    #+BEGIN_SRC C++
    list<deque<int>> v1;
    #+END_SRC
+
+* Exercises Section 9.2.1
+** Exercise 9.3
+   #+BEGIN_QUOTE
+   What are the constraints on the iterators that form iterator ranges?
+   #+END_QUOTE
+
+   The iterators ~begin~ and ~end~ must refer to the same container. The
+   iterator ~end~ may be equal to ~begin~ but must not refer to an element
+   before the one denoted by ~begin~.
+
+** Exercise 9.4
+   #+BEGIN_QUOTE
+   Write a function that takes a pair of iterators to a vector<int> and an int
+   value. Look for that value in the range and return a bool indicating whether
+   it was found.
+   #+END_QUOTE
+
+** Exercise 9.5
+   #+BEGIN_QUOTE
+   Rewrite the previous program to return an iterator to the requested element.
+   Note that the program must handle the case where the element is not found.
+   #+END_QUOTE
+
+** Exercise 9.6
+   #+BEGIN_QUOTE
+   What is wrong with the following program? How might you correct it?
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+list<int> lst1;
+list<int>::iterator iter1 = lst1.begin(),
+iter2 = lst1.end();
+while (iter1 < iter2) /* ... */
+   #+END_SRC
