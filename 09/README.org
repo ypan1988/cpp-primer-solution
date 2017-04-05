@@ -14,3 +14,13 @@
    #+END_QUOTE
 
    (a) ~list~, (b) ~deque~, (c) ~vector~.
+
+* Exercises Section 9.2
+** Exercise 9.2
+   #+BEGIN_QUOTE
+   Define a ~list~ that holds elements that are ~deque~ s that hold ~int~ s.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+   list<deque<int>> v1;
+   #+END_SRC
