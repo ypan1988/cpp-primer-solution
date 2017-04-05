@@ -37,16 +37,69 @@
 
 ** Exercise 9.4
    #+BEGIN_QUOTE
-   Write a function that takes a pair of iterators to a vector<int> and an int
-   value. Look for that value in the range and return a bool indicating whether
-   it was found.
+   Write a function that takes a pair of iterators to a ~vector<int>~ and an
+   ~int~ value. Look for that value in the range and return a ~bool~ indicating
+   whether it was found.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <vector>
+using std::vector;
+
+bool CheckVal(int val, vector<int>::const_iterator begin, vector<int>::const_iterator end)
+{
+  while (begin != end) {
+    if (*begin == val) return true;
+    ++begin;
+  }
+
+  return false;
+}
+
+int main()
+{
+  vector<int> ivec = {1, 2, 3, 4, 5};
+  cout << CheckVal(3, ivec.cbegin(), ivec.cend()) << endl;
+
+  return 0;
+}
+   #+END_SRC
 
 ** Exercise 9.5
    #+BEGIN_QUOTE
    Rewrite the previous program to return an iterator to the requested element.
    Note that the program must handle the case where the element is not found.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <vector>
+using std::vector;
+
+vector<int>::const_iterator FindVal(int val, vector<int>::const_iterator begin, vector<int>::const_iterator end)
+{
+  while (begin != end) {
+    if (*begin == val) return begin;
+    ++begin;
+  }
+
+  return end;
+}
+
+int main()
+{
+  vector<int> ivec = {1, 2, 3, 4, 5};
+  auto iter = FindVal(3, ivec.cbegin(), ivec.cend());
+  cout << *iter << endl;
+
+  return 0;
+}
+   #+END_SRC
 
 ** Exercise 9.6
    #+BEGIN_QUOTE
@@ -55,6 +108,13 @@
    #+BEGIN_SRC C++
 list<int> lst1;
 list<int>::iterator iter1 = lst1.begin(),
-iter2 = lst1.end();
+                    iter2 = lst1.end();
 while (iter1 < iter2) /* ... */
    #+END_SRC
+
+   Fixed:
+   #+BEGIN_SRC C++
+while (iter1 != iter2) /* ... */
+   #+END_SRC
+
+   operator ~<~ is not implemented in ~std::list~.
