@@ -39,7 +39,7 @@ int main()
   std::cout << is.rdstate() << std::endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 8.3
@@ -47,7 +47,7 @@ int main()
    What causes the following while to terminate?
    ~while (cin >> i) /* ...*/~
    #+END_QUOTE
-   
+
    The ~cin~ is in an error state.
 
 * Exercises Section 8.2.1
@@ -57,7 +57,7 @@ int main()
    ~vector~ of ~strings~, storing each line as a separate element in the
    ~vector~.
    #+END_QUOTE
-   
+
    #+BEGIN_SRC C++
 #include <iostream>
 #include <string>
@@ -71,7 +71,7 @@ using std::vector;
 using std::getline;
 using std::ifstream;
 
-void read(std::istream &is, vector<string> &svec) 
+void read(std::istream &is, vector<string> &svec)
 {
   string buf;
   while (getline(is, buf))
@@ -84,19 +84,19 @@ int main()
   ifstream in(ifile);
   vector<string> svec;
   read(in, svec);
-  
+
   for (const auto &str : svec)
     cout << str << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 8.5
    #+BEGIN_QUOTE
    Rewrite the previous program to store each word in separate element.
    #+END_QUOTE
-   
+
    #+BEGIN_SRC C++
 #include <iostream>
 #include <string>
@@ -110,7 +110,7 @@ using std::vector;
 using std::getline;
 using std::ifstream;
 
-void read(std::istream &is, vector<string> &svec) 
+void read(std::istream &is, vector<string> &svec)
 {
   string buf;
   while (is >> buf)
@@ -123,12 +123,12 @@ int main()
   ifstream in(ifile);
   vector<string> svec;
   read(in, svec);
-  
+
   for (const auto &str : svec)
     cout << str << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 8.6
@@ -241,7 +241,7 @@ int main(int argc, char *argv[])
   }
 
   return 0;
-}   
+}
    #+END_SRC
 
 * Exercises Section 8.2.2
@@ -355,7 +355,7 @@ int main(int argc, char *argv[])
   }
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 8.8
@@ -469,7 +469,7 @@ int main(int argc, char *argv[])
   }
 
   return 0;
-}   
+}
    #+END_SRC
 
 * Exercises Section 8.3.1
@@ -478,7 +478,7 @@ int main(int argc, char *argv[])
    Use the function you wrote for the first exercise in § 8.1.2 (p. 314) to
    print the contents of an ~istringstream~ object.
    #+END_QUOTE
-   
+
    #+BEGIN_SRC C++
 #include <iostream>
 #include <sstream>
@@ -498,14 +498,53 @@ int main()
   std::cout << is.rdstate() << std::endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 8.10
    #+BEGIN_QUOTE
-   Write a program to store each line from a file in a vector<string>. Now use
-   an istringstream to read each element from the vector a word at a time.
+   Write a program to store each line from a file in a ~vector<string>~. Now use
+   an ~istringstream~ to read each element from the ~vector~ a word at a time.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <vector>
+using std::vector;
+
+#include <fstream>
+using std::ifstream;
+
+#include <sstream>
+using std::istringstream;
+
+int main()
+{
+  string ifile("./data/sstream");
+  ifstream in(ifile);
+
+  string line;
+  vector<string> svec;
+  while (getline(in, line)) {
+    svec.push_back(line);
+  }
+
+  for (const auto &s : svec) {
+    istringstream str(s);
+    string word;
+    while (str >> word) {
+      cout << word << endl;
+    }
+  }
+
+  return 0;
+}
+   #+END_SRC
 
 ** Exercise 8.11
    #+BEGIN_QUOTE
@@ -562,7 +601,7 @@ string format(const string &s) { return s; }
 bool valid(const string &s) { return true; }
 
 vector<PersonInfo>
-getData(istream &is) 
+getData(istream &is)
 {
   // will hold a line and word from input, respectively
   string line, word;
@@ -602,7 +641,7 @@ ostream& process(ostream &os, vector<PersonInfo> people)
       cerr << "input error: " << entry.name
 	   << " invalid number(s) " << badNums.str() << endl;
   }
-    
+
   return os;
 }
 
@@ -613,7 +652,7 @@ int main()
   process(cout, getData(in));
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 8.14
