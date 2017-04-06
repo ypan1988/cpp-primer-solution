@@ -189,10 +189,38 @@ vector<int> vec6(vec4.begin(), vec4.end());  // 1, 2, 3, 4, 5
    elements we’re copying to the element type of the container we are
    initializing.
 
-
-
 ** Exercise 9.13
    #+BEGIN_QUOTE
    How would you initialize a ~vector<double>~ from a ~list<int>~? From a
    ~vector<int>~? Write code to check your answers.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <vector>
+using std::vector;
+
+#include <list>
+using std::list;
+
+int main()
+{
+  list<int> ilst = {1, 2, 3, 4, 5};
+  vector<int> ivec = {6, 7, 8, 9, 10};
+
+  vector<double> dvec1(ilst.begin(), ilst.end());
+  vector<double> dvec2(ivec.begin(), ivec.end());
+
+  cout << "dvec1 =" << endl;
+  for (const auto &dval : dvec1)
+    cout << dval << endl;
+
+  cout << "dvec2 =" << endl;
+  for (const auto &dval : dvec2)
+    cout << dval << endl;
+
+  return 0;
+}
+   #+END_SRC
