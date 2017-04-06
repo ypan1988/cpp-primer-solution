@@ -159,3 +159,31 @@ auto it4 = v2.cbegin();
 
    ~it1~ is a ~vector<int>::iterator~, ~it2~, ~it3~ and ~it4~ are
    ~vector<int>::const_iterator~.
+
+* Exercises Section 9.2.4
+** Exercise 9.11
+   #+BEGIN_QUOTE
+   Show an example of each of the six ways to create and initialize a ~vector~.
+   Explain what values each ~vector~ contains.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+vector<int> vec1;                            // 0
+vector<int> vec2(5);                         // 0, 0, 0, 0, 0
+vector<int> vec3(5, 1);                      // 1, 1, 1, 1, 1
+vector<int> vec4 = {1, 2, 3, 4, 5};          // 1, 2, 3, 4, 5
+vector<int> vec5(vec4);                      // 1, 2, 3, 4, 5
+vector<int> vec6(vec4.begin(), vec4.end());  // 1, 2, 3, 4, 5
+   #+END_SRC
+
+** Exercise 9.12
+   #+BEGIN_QUOTE
+   Explain the differences between the constructor that takes a container to
+   copy and the constructor that takes two iterators.
+   #+END_QUOTE
+
+** Exercise 9.13
+   #+BEGIN_QUOTE
+   How would you initialize a ~vector<double>~ from a ~list<int>~? From a
+   ~vector<int>~? Write code to check your answers.
+   #+END_QUOTE
