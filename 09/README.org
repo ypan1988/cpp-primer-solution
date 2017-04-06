@@ -135,3 +135,27 @@ while (iter1 != iter2) /* ... */
 
    use ~list<string>::const_iterator~ to read, and use ~list<string>::iterator~
    to write.
+
+* Exercises Section 9.2.3
+** Exercise 9.9
+   #+BEGIN_QUOTE
+   What is the difference between the ~begin~ and ~cbegin~ functions?
+   #+END_QUOTE
+
+   ~begin~ returns ~iterator~ and ~cbegin~ returns ~const_iterator~.
+
+** Exercise 9.10
+   #+BEGIN_QUOTE
+   What are the types of the following four objects?
+   #+END_QUOTE
+   #+BEGIN_SRC
+vector<int> v1;
+const vector<int> v2;
+auto it1 = v1.begin();
+auto it2 = v2.begin();
+auto it3 = v1.cbegin();
+auto it4 = v2.cbegin();
+   #+END_SRC
+
+   ~it1~ is a ~vector<int>::iterator~, ~it2~, ~it3~ and ~it4~ are
+   ~vector<int>::const_iterator~.
