@@ -118,3 +118,20 @@ while (iter1 != iter2) /* ... */
    #+END_SRC
 
    operator ~<~ is not implemented in ~std::list~.
+
+* Exercises Section 9.2.2
+** Exercise 9.7
+   #+BEGIN_QUOTE
+   What type should be used as the index into a ~vector~ of ~int~ s?
+   #+END_QUOTE
+
+   ~vector<int>::size_type~
+
+** Exercise 9.8
+   #+BEGIN_QUOTE
+   What type should be used to read elements in a ~list~ of ~string~ s? To write
+   them?
+   #+END_QUOTE
+
+   use ~list<string>::const_iterator~ to read, and use ~list<string>::iterator~
+   to write.
