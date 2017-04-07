@@ -457,17 +457,19 @@ iter = svec.insert(iter, word); // same as calling push_front
    element. Thus, each iteration inserts an element ahead of the first element
    in the ~vector~.
 
-
-
 ** Exercise 9.22
    #+BEGIN_QUOTE
-   Assuming iv is a vector of ints, what is wrong with the following program?
-   How might you correct the problem(s)?
+   Assuming ~iv~ is a ~vector~ of ~int~ s, what is wrong with the following
+   program? How might you correct the problem(s)?
    #+END_QUOTE
    #+BEGIN_SRC C++
 vector<int>::iterator iter = iv.begin(),
-mid = iv.begin() + iv.size()/2;
+                       mid = iv.begin() + iv.size()/2;
 while (iter != mid)
-if (*iter == some_val)
-iv.insert(iter, 2 * some_val);
+  if (*iter == some_val)
+    iv.insert(iter, 2 * some_val);
    #+END_SRC
+
+   It is a infinite loop since ~iter~ will never equal to ~mid~.
+
+   (TODO: ~mid~ will be invalid after the ~insert~.)
