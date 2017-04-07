@@ -323,7 +323,7 @@ if (c1 < c2)
    relational operators (>, >=, <, <=). The right- and left-hand operands must
    be the same kind of container and must hold elements of the same type.
 
-   The container equality operators use the element’s == operator, and the relational
-   operators use the element’s < operator. If the element type doesn’t support the
-   required operator, then we cannot use the corresponding operations on containers
-   holding that type.
+   The container equality operators use the element’s == operator, and the
+   relational operators use the element’s < operator. If the element type
+   doesn’t support the required operator, then we cannot use the corresponding
+   operations on containers holding that type.
