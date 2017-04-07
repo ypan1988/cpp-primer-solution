@@ -473,3 +473,39 @@ while (iter != mid)
    It is a infinite loop since ~iter~ will never equal to ~mid~.
 
    (TODO: ~mid~ will be invalid after the ~insert~.)
+
+* Exercises Section 9.3.2
+** Exercise 9.23
+   #+BEGIN_QUOTE
+   In the first program in this section on page 346, what would the values of
+   ~val~, ~val2~, ~val3~, and ~val4~ be if ~c.size()~ is 1?
+   #+END_QUOTE
+
+   They have the same value that equal to the only element in ~c~.
+
+** Exercise 9.24
+   #+BEGIN_QUOTE
+   Write a program that fetches the first element in a ~vector~ using ~at~, the
+   subscript operator, ~front~, and ~begin~. Test your program on an empty
+   ~vector~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <vector>
+using std::vector;
+
+int main()
+{
+  vector<int> ivec;
+
+  cout << ivec.at(0) << endl;
+  cout << ivec[0] << endl;
+  cout << ivec.front() << endl;
+  cout << *ivec.begin() << endl;
+
+  return 0;
+}
+   #+END_SRC
