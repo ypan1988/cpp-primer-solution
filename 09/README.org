@@ -327,3 +327,69 @@ if (c1 < c2)
    relational operators use the element’s < operator. If the element type
    doesn’t support the required operator, then we cannot use the corresponding
    operations on containers holding that type.
+
+* Exercises Section 9.3.1
+** Exercise 9.18
+   #+BEGIN_QUOTE
+   Write a program to read a sequence of ~string~ s from the standard input into
+   a ~deque~. Use iterators to write a loop to print the elements in the
+   ~deque~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <deque>
+using std::deque;
+
+int main()
+{
+  string word;
+  deque<string> sdeq;
+
+  while (cin >> word)
+    sdeq.push_back(word);
+
+  for (const auto &str : sdeq) {
+    cout << str << endl;
+  }
+
+  return 0;
+}
+   #+END_SRC
+
+** Exercise 9.19
+   #+BEGIN_QUOTE
+   Rewrite the program from the previous exercise to use a list. List the
+   changes you needed to make.
+   #+END_QUOTE
+
+** Exercise 9.20
+   #+BEGIN_QUOTE
+   Write a program to copy elements from a list<int> into two deques. The
+   even-valued elements should go into one deque and the odd ones into the
+   other.
+   #+END_QUOTE
+
+** Exercise 9.21
+   #+BEGIN_QUOTE
+   Explain how the loop from page 345 that used the return from insert to add
+   elements to a list would work if we inserted into a vector instead.
+   #+END_QUOTE
+
+** Exercise 9.22
+   #+BEGIN_QUOTE
+   Assuming iv is a vector of ints, what is wrong with the following program?
+   How might you correct the problem(s)?
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+vector<int>::iterator iter = iv.begin(),
+mid = iv.begin() + iv.size()/2;
+while (iter != mid)
+if (*iter == some_val)
+iv.insert(iter, 2 * some_val);
+   #+END_SRC
