@@ -672,3 +672,19 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 9.3.5
+** Exercise 9.29
+   #+BEGIN_QUOTE
+   Given that ~vec~ holds 25 elements, what does ~vec.resize(100)~ do? What if
+   we next wrote ~vec.resize(10)~?
+   #+END_QUOTE
+
+   adds 75 elements to the back of ~vec~, and erases 90 elements from the back
+   of ~vec~.
+
+** Exercise 9.30
+   #+BEGIN_QUOTE
+   What, if any, restrictions does using the version of resize that takes a
+   single argument place on the element type?
+   #+END_QUOTE
