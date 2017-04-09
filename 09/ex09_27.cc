@@ -6,7 +6,7 @@ using std::forward_list;
 
 int main()
 {
-  forward_list<int> ilst = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  forward_list<int> ilst = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
   auto prev = ilst.before_begin();
   auto curr = ilst.begin();
