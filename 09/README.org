@@ -814,7 +814,7 @@ int main()
     ++begin;               // advance begin because we want to insert after this
     // v.insert(begin, 42);
     begin = v.insert(begin, 42); // insert the new value
-    ++begin;                     //  // advance begin past the element we just added
+    ++begin;                     // advance begin past the element we just added
   }
 
   for (auto ival : v) {
@@ -828,9 +828,9 @@ int main()
 
 ** Exercise 9.34
    #+BEGIN_QUOTE
-   Assuming vi is a container of ints that includes even and odd values, predict
-   the behavior of the following loop. After you’ve analyzed this loop, write a
-   program to test whether your expectations were correct.
+   Assuming ~vi~ is a container of ~int~ s that includes even and odd values,
+   predict the behavior of the following loop. After you’ve analyzed this loop,
+   write a program to test whether your expectations were correct.
    #+END_QUOTE
    #+BEGIN_SRC C++
 iter = vi.begin();
@@ -838,4 +838,36 @@ while (iter != vi.end())
 if (*iter % 2)
 iter = vi.insert(iter, *iter);
 ++iter;
+   #+END_SRC
+
+   It is an infinite loop.
+
+   Fixed:
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <vector>
+using std::vector;
+
+int main()
+{
+  vector<int> vi = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  auto iter = vi.begin();
+  while (iter != vi.end()) {
+    if (*iter % 2) {
+      iter = vi.insert(iter, *iter);
+      advance(iter, 2);
+    } else {
+      ++iter;
+    }
+  }
+
+  for (auto ival : vi) {
+    cout << ival << " ";
+  }
+  cout << endl;
+
+  return 0;
+}
    #+END_SRC

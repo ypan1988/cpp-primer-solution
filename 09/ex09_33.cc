@@ -12,7 +12,7 @@ int main()
     ++begin;               // advance begin because we want to insert after this
     // v.insert(begin, 42);
     begin = v.insert(begin, 42); // insert the new value
-    ++begin;                     //  // advance begin past the element we just added
+    ++begin;                     // advance begin past the element we just added
   }
 
   for (auto ival : v) {
