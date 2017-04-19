@@ -871,3 +871,47 @@ int main()
   return 0;
 }
    #+END_SRC
+
+* Exercises Section 9.4
+** Exercise 9.35
+   #+BEGIN_QUOTE
+   Explain the difference between a vector’s capacity and its size.
+   #+END_QUOTE
+       
+   The size of a container is the number of elements it already holds; its
+   capacity is how many elements it can hold before more space must be
+   allocated.
+
+** Exercise 9.36
+   #+BEGIN_QUOTE
+   Can a container have a capacity less than its size?
+   #+END_QUOTE
+
+** Exercise 9.37
+   #+BEGIN_QUOTE
+   Why don’t list or array have a capacity member?
+   #+END_QUOTE
+
+** Exercise 9.38
+   #+BEGIN_QUOTE
+   Write a program to explore how vectors grow in the library you use.
+   #+END_QUOTE
+
+** Exercise 9.39
+   #+BEGIN_QUOTE
+   Explain what the following program fragment does:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+vector<string> svec;
+svec.reserve(1024);
+string word;
+while (cin >> word)
+svec.push_back(word);
+svec.resize(svec.size()+svec.size()/2);
+   #+END_SRC
+
+** Exercise 9.40
+   #+BEGIN_QUOTE
+   If the program in the previous exercise reads 256 words, what is its likely
+   capacity after it is resized? What if it reads 512? 1,000?  1,048?
+   #+END_QUOTE
