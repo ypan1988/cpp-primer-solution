@@ -780,13 +780,14 @@ int main()
 
 ** Exercise 9.32
    #+BEGIN_QUOTE
-   In the program on page 354 would it be legal to write the call to insert as
+   In the program on page 354 would it be legal to write the call to ~insert~ as
    follows? If not, why not?
    #+END_QUOTE
    #+BEGIN_SRC C++
 iter = vi.insert(iter, *iter++);
    #+END_SRC
 
+   illegal. The order of evaluation of arguments is unspecified.
 
 ** Exercise 9.33
    #+BEGIN_QUOTE
