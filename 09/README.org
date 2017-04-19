@@ -891,8 +891,11 @@ int main()
 
 ** Exercise 9.37
    #+BEGIN_QUOTE
-   Why don’t list or array have a capacity member?
+   Why don’t ~list~ or ~array~ have a capacity member?
    #+END_QUOTE
+
+   The elements of ~list~ are not contiguous, and the size of ~array~ is not
+   flexible.
 
 ** Exercise 9.38
    #+BEGIN_QUOTE
