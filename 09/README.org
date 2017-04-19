@@ -887,6 +887,8 @@ int main()
    Can a container have a capacity less than its size?
    #+END_QUOTE
 
+   No.
+
 ** Exercise 9.37
    #+BEGIN_QUOTE
    Why don’t list or array have a capacity member?
