@@ -1021,4 +1021,64 @@ int main()
    performance of your program?
    #+END_QUOTE
 
-   use ~reserve~ to allocate enough space for this string.
+   Use ~reserve~ to allocate enough space for this string.
+
+* Exercises Section 9.5.2
+** Exercise 9.43
+   #+BEGIN_QUOTE
+   Write a function that takes three ~string~ s, ~s~, ~oldVal~, and ~newVal~.
+   Using iterators, and the ~insert~ and ~erase~ functions replace all instances
+   of ~oldVal~ that appear in ~s~ by ~newVal~. Test your function by using it to
+   replace common abbreviations, such as “tho” by “though” and “thru” by
+   “through”.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+void Replace(string &s, const string &oldVal, const string &newVal)
+{
+  string::size_type index = 0;
+  while (s.size() - index >= oldVal.size()) {
+    if (s.substr(index, oldVal.size()) == oldVal) {
+      s.erase(index, oldVal.size());
+      s.insert(index, newVal);
+      index += newVal.size();
+    } else ++index;
+  }
+}
+
+int main()
+{
+  string str{"hello thru world tho !!!"};
+  Replace(str, "thru", "through");
+  Replace(str, "tho", "though");
+
+  std::cout << str << std::endl;
+
+  return 0;
+}
+   #+END_SRC
+
+** Exercise 9.44
+   #+BEGIN_QUOTE
+   Rewrite the previous function using an index and replace.
+   #+END_QUOTE
+
+** Exercise 9.45
+   #+BEGIN_QUOTE
+   Write a funtion that takes a string representing a name and two other strings
+   representing a prefix, such as “Mr.” or “Ms.” and a suffix, such as “Jr.” or
+   “III”. Using iterators and the insert and append functions, generate and
+   return a new string with the suffix and prefix added to the given name.
+   #+END_QUOTE
+
+** Exercise 9.46
+   #+BEGIN_QUOTE
+   Rewrite the previous exercise using a position and length to manage the
+   strings. This time use only the insert function.
+   #+END_QUOTE
