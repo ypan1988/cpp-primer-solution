@@ -877,7 +877,7 @@ int main()
    #+BEGIN_QUOTE
    Explain the difference between a vector’s capacity and its size.
    #+END_QUOTE
-       
+
    The size of a container is the number of elements it already holds; its
    capacity is how many elements it can hold before more space must be
    allocated.
@@ -901,7 +901,7 @@ int main()
    #+BEGIN_QUOTE
    Write a program to explore how vectors grow in the library you use.
    #+END_QUOTE
-   
+
    #+BEGIN_SRC C++
 #include <iostream>
 using std::cout; using std::endl;
@@ -912,7 +912,7 @@ using std::vector;
 int main()
 {
   vector<int> ivec;
-  
+
   // size should be zero; capacity is implementation defined
   cout << "ivec: size: " << ivec.size()
        << " capacity: " << ivec.capacity() << endl;
@@ -926,7 +926,7 @@ int main()
        << " capacity: " << ivec.capacity() << endl;
 
   ivec.reserve(50); 		// sets capacity to at least 50; might be more
-  
+
   // size should be 24; capacity to at least 50; might be more
   cout << "ivec: size: " << ivec.size()
        << " capacity: "  << ivec.capacity() << endl;
@@ -934,7 +934,7 @@ int main()
   // add elements to use up the excess capacity
   while (ivec.size() != ivec.capacity())
     ivec.push_back(0);
-  
+
   // capacity should be unchanged and size and capacity are now equal
   cout << "ivec: size: " << ivec.size()
        << " capacity: "  << ivec.capacity() << endl;
@@ -952,7 +952,7 @@ int main()
        << " capacity: "  << ivec.capacity() << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 9.39
@@ -967,7 +967,7 @@ while (cin >> word)
 svec.push_back(word);
 svec.resize(svec.size()+svec.size()/2);
    #+END_SRC
-      
+
    The ~while~ loop will read words from ~cin~ and store them in our
    ~vector~. Although we initially reserved 1024 elements, if there are more
    words read from ~cin~, our ~vector~ 's capacity will be automatically
@@ -986,3 +986,37 @@ svec.resize(svec.size()+svec.size()/2);
    #+END_QUOTE
 
    The likely capacity will be 1024, 1024, 1024, 2048.
+
+* Exercises Section 9.5.1
+** Exercise 9.41
+   #+BEGIN_QUOTE
+   Write a program that initializes a ~string~ from a ~vector<char>~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <vector>
+using std::vector;
+
+int main()
+{
+  vector<char> cvec = {'H', 'e', 'l', 'l', 'o'};
+  string s(cvec.cbegin(), cvec.cend());
+
+  cout << s << endl;
+
+  return 0;
+}
+   #+END_SRC
+
+** Exercise 9.42
+   #+BEGIN_QUOTE
+   Given that you want to read a character at a time into a string, and you know
+   that you need to read at least 100 characters, how might you improve the
+   performance of your program?
+   #+END_QUOTE
