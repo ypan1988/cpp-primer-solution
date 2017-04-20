@@ -1165,3 +1165,28 @@ int main()
   return 0;
 }
    #+END_SRC
+
+* Exercises Section 9.5.3
+** Exercise 9.47
+   #+BEGIN_QUOTE
+   Write a program that finds each numeric character and then each alphabetic
+   character in the ~string~ "ab2c3d7R4E6". Write two versions of the program. The
+   first should use ~find_first_of~, and the second ~find_first_not_of~.
+   #+END_QUOTE
+
+** Exercise 9.48
+   #+BEGIN_QUOTE
+   Given the definitions of ~name~ and ~numbers~ on page 365, what does
+   ~numbers.find(name)~ return?
+   #+END_QUOTE
+
+   ~string::npos~
+
+** Exercise 9.49
+   #+BEGIN_QUOTE
+   A letter has an ascender if, as with d or f, part of the letter extends above
+   the middle of the line. A letter has a descender if, as with pg, part of the
+   letter extends below the line. Write a program that reads a file containing
+   words and reports the longest word that contains neither ascenders nor
+   descenders.
+   #+END_QUOTE
