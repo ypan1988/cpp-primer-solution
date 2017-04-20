@@ -1239,3 +1239,32 @@ int main()
    a file containing words and reports the longest word that contains neither
    ascenders nor descenders.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <fstream>
+using std::ifstream;
+
+#include <string>
+using std::string;
+
+int main()
+{
+  string ifile = "./data/words.txt";
+  ifstream in(ifile);
+
+  const string letters = "aceimnorsuvwxz";
+  string word, result;
+  while (in >> word) {
+    if (word.find_first_not_of(letters) == string::npos &&
+        result.size() < word.size())
+      result = word;
+  }
+
+  cout << result << endl;
+
+  return 0;
+}
+   #+END_SRC
