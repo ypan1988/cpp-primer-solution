@@ -1020,3 +1020,5 @@ int main()
    that you need to read at least 100 characters, how might you improve the
    performance of your program?
    #+END_QUOTE
+
+   use ~reserve~ to allocate enough space for this string.
