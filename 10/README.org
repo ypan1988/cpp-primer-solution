@@ -183,10 +183,15 @@ fill_n(vec.begin(), 10, 0);
    + (b) incorrect. ~fill_n~ assumes that it is safe to write the specified
      number of elements.
 
-     fix: ~fill_n(std::back_inserter(vec), 10, 0)~
+     fix: ~fill_n(back_inserter(vec), 10, 0)~
 
 ** Exercise 10.8
    #+BEGIN_QUOTE
    We said that algorithms do not change the size of the containers over which
    they operate. Why doesn’t the use of ~back_inserter~ invalidate this claim?
    #+END_QUOTE
+
+   ~back_inserter~ takes a reference to a container and returns an insert
+   iterator bound to that container. When we assign through that iterator, the
+   assignment calls ~push_back~ to add an element with the given value to the
+   container.
