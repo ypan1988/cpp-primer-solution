@@ -121,3 +121,7 @@ int main()
    In the call to equal on rosters, what would happen if both rosters held
    C-style strings, rather than library strings?
    #+END_QUOTE
+
+   For such case, ~std::equal~ is going to compare the address values rather
+   than the ~string~ values. So the result is not the same as ~std::string~. Try
+   to avoid coding this way.
