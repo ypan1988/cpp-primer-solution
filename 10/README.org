@@ -175,6 +175,16 @@ fill_n(vec.begin(), 10, 0);
      #+END_SRC
    #+END_QUOTE
 
+   + (a) incorrect. ~copy~ assumes that the second sequence is at least as large
+     as the first.
+
+     fix: ~copy(lst.cbegin(), lst.cend(), back_inserter(vec.begin()));~
+
+   + (b) incorrect. ~fill_n~ assumes that it is safe to write the specified
+     number of elements.
+
+     fix: ~fill_n(std::back_inserter(vec), 10, 0)~
+
 ** Exercise 10.8
    #+BEGIN_QUOTE
    We said that algorithms do not change the size of the containers over which
