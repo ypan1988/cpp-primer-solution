@@ -257,3 +257,6 @@ int main()
    #+BEGIN_QUOTE
    Why do you think the algorithms don’t change the size of containers?
    #+END_QUOTE
+
+   The library algorithms operate on iterators, not containers. Therefore, an
+   algorithm cannot (directly) add or remove elements.
