@@ -446,6 +446,35 @@ int main()
    elements that have five or more characters.
    #+END_QUOTE
 
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <vector>
+using std::vector;
+
+#include <algorithm>
+using std::partition;
+
+bool isLarger5(const string &s)
+{
+  return s.size() >= 5;
+}
+
+int main()
+{
+  vector<string> svec = {"aaa", "Hello", "bbb", "world!!!", "ccc"};
+  partition(svec.begin(), svec.end(), isLarger5);
+
+  for (const auto &s : svec) cout << s << endl;
+  
+  return 0;
+}   
+   #+END_SRC
+
 * Exercises Section 10.3.2
 ** Exercise 10.14
    #+BEGIN_QUOTE
@@ -684,8 +713,8 @@ int main()
 
 ** Exercise 10.18
    #+BEGIN_QUOTE
-   Rewrite biggies to use partition instead of find_if. We described the
-   partition algorithm in exercise 10.13 in § 10.3.1 (p. 387).
+   Rewrite ~biggies~ to use ~partition~ instead of ~find_if~. We described the
+   ~partition~ algorithm in exercise 10.13 in § 10.3.1 (p. 387).
    #+END_QUOTE
 
 ** Exercise 10.19
