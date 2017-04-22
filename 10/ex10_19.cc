@@ -8,9 +8,8 @@ using std::string;
 using std::vector;
 
 #include <algorithm>
-using std::sort; using std::stable_sort;
-using std::unique; using std::partition;
-using std::for_each;
+using std::sort; using std::unique; 
+using std::stable_partition; using std::for_each;
 
 void elimDups(vector<string> &words)
 {
@@ -42,13 +41,13 @@ void biggies(vector<string> &words, vector<string>::size_type sz)
   elimDups(words);		// put words in alphabetical order and remove
 				// duplicates
   
-  auto wc = partition(words.begin(), words.end(),
-		      [sz](const string &a) 
-		      { return a.size() < sz; });
-
+  auto wc = stable_partition(words.begin(), words.end(),
+			     [sz](const string &a) 
+			     { return a.size() < sz; });
+  
   for (const auto &str : words) cout << str << " ";
   cout << endl;
-  
+
   // compute the number of elements with size >= sz
   auto count = words.end() - wc;
   cout << count << " " << make_plural(count, "word", "s")
