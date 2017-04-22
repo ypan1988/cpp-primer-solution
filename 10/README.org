@@ -469,10 +469,26 @@ int main()
 
 ** Exercise 10.15
    #+BEGIN_QUOTE
-   Write a lambda that captures an int from its enclosing function and takes
-   an int parameter. The lambda should return the sum of the captured int and
-   the int parameter.
+   Write a lambda that captures an ~int~ from its enclosing function and takes
+   an ~int~ parameter. The lambda should return the sum of the captured ~int~
+   and the ~int~ parameter.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+int main()
+{
+  int a = 1;
+  auto f = [a](int b)
+    { return a + b; };
+
+  cout << f(2) << endl;
+
+  return 0;
+}   
+   #+END_SRC
 
 ** Exercise 10.16
    #+BEGIN_QUOTE
