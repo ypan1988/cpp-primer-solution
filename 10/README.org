@@ -458,10 +458,10 @@ using std::cout; using std::endl;
 
 int main()
 {
-  auto add = [](int a, int b)
+  auto f = [](int a, int b)
     { return a + b; };
 
-  cout << add(1, 2) << endl;
+  cout << f(1, 2) << endl;
 
   return 0;
 }   
