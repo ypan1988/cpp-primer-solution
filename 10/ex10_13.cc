@@ -18,9 +18,10 @@ bool isLarger5(const string &s)
 int main()
 {
   vector<string> svec = {"aaa", "Hello", "bbb", "world!!!", "ccc"};
-  partition(svec.begin(), svec.end(), isLarger5);
+  auto bound = partition(svec.begin(), svec.end(), isLarger5);
 
-  for (const auto &s : svec) cout << s << endl;
+  for (auto iter = svec.begin(); iter != bound; ++iter) 
+    cout << *iter << endl;
   
   return 0;
 }
