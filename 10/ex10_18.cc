@@ -9,7 +9,7 @@ using std::vector;
 
 #include <algorithm>
 using std::sort; using std::stable_sort;
-using std::unique; using std::find_if;
+using std::unique; using std::partition;
 using std::for_each;
 
 void elimDups(vector<string> &words)
@@ -50,10 +50,10 @@ void biggies(vector<string> &words, vector<string>::size_type sz)
   for (const auto &str : words) cout << str << " ";
   cout << endl;
 
-  // get an iterator to the first element whose size() is >= sz
-  auto wc = find_if(words.begin(), words.end(),
-		    [sz](const string &a) 
-		    { return a.size() >= sz; });
+  // get an iterator to the first element whose size() is < sz
+  auto wc = partition(words.begin(), words.end(),
+		      [sz](const string &a) 
+		      { return a.size() < sz; });
 
   // compute the number of elements with size >= sz
   auto count = words.end() - wc;
