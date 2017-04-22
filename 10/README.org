@@ -445,3 +445,55 @@ int main()
    characters or more. Use that function to partition ~words~. Print the
    elements that have five or more characters.
    #+END_QUOTE
+
+* Exercises Section 10.3.2
+** Exercise 10.14
+   #+BEGIN_QUOTE
+   Write a lambda that takes two ~int~ s and returns their sum.
+   #+END_QUOTE
+   
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+int main()
+{
+  auto add = [](int a, int b)
+    { return a + b; };
+
+  cout << add(1, 2) << endl;
+
+  return 0;
+}   
+   #+END_SRC
+
+** Exercise 10.15
+   #+BEGIN_QUOTE
+   Write a lambda that captures an int from its enclosing function and takes
+   an int parameter. The lambda should return the sum of the captured int and
+   the int parameter.
+   #+END_QUOTE
+
+** Exercise 10.16
+   #+BEGIN_QUOTE
+   Write your own version of the biggies function using lambdas.
+   #+END_QUOTE
+
+** Exercise 10.17
+   #+BEGIN_QUOTE
+   Rewrite exercise 10.12 from § 10.3.1 (p. 387) to use a lambda in the call
+   to sort instead of the compareIsbn function.
+   #+END_QUOTE
+
+** Exercise 10.18
+   #+BEGIN_QUOTE
+   Rewrite biggies to use partition instead of find_if.  We described the
+   partition algorithm in exercise 10.13 in § 10.3.1 (p. 387).
+   #+END_QUOTE
+
+** Exercise 10.19
+   #+BEGIN_QUOTE
+   Rewrite the previous exercise to use stable_partition, which like
+   stable_sort maintains the original element order in the paritioned
+   sequence.
+   #+END_QUOTE
