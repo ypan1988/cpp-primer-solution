@@ -1,0 +1,31 @@
+* Exercises Section 11.1
+** Exercise 11.1
+   #+BEGIN_QUOTE
+   Describe the differences between a ~map~ and a ~vector~.
+   #+END_QUOTE
+
+   Associative and sequential containers differ from one another in a
+   fundamental way: Elements in an associative container are stored and
+   retrieved by a key. In contrast, elements in a sequential container are
+   stored and accessed sequentially by their position in the container.
+
+   Although the associative containers share much of the behavior of the
+   sequential containers, they differ from the sequential containers in ways
+   that reflect the use of keys.
+ 
+** Exercise 11.2
+   #+BEGIN_QUOTE
+   Give an example of when each of list, vector, deque, map, and set might be
+   most useful.
+   #+END_QUOTE
+
+** Exercise 11.3
+   #+BEGIN_QUOTE
+   Write your own version of the word-counting program.
+   #+END_QUOTE
+
+** Exercise 11.4
+   #+BEGIN_QUOTE
+   Extend your program to ignore case and punctuation. For example, “example.”
+   “example,” and “Example” should all increment the same counter.
+   #+END_QUOTE
