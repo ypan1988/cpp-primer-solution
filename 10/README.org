@@ -1148,11 +1148,53 @@ int main()
  
 ** Exercise 10.27
    #+BEGIN_QUOTE
-   In addition to unique (§ 10.2.3, p. 384), the library defines function named
-   unique_copy that takes a third iterator denoting a destination into which to
-   copy the unique elements. Write a program that uses unique_copy to copy the
-   unique elements from a vector into an initially empty list.
+   In addition to ~unique~ (§ 10.2.3, p. 384), the library defines function
+   named ~unique_copy~ that takes a third iterator denoting a destination into
+   which to copy the unique elements. Write a program that uses ~unique_copy~ to
+   copy the unique elements from a vector into an initially empty list.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <vector>
+using std::vector;
+
+#include <list>
+using std::list;
+
+#include <algorithm>
+using std::sort; using std::unique_copy;
+
+#include <iterator>
+using std::back_inserter;
+
+int main()
+{
+  vector<string> svec = {"the", "quick", "red", "fox", "jumps", "over", "the",
+			 "slow", "red", "turtle"};
+
+  for (const auto &str : svec) cout << str << " ";
+  cout << endl;
+
+  sort(svec.begin(), svec.end());
+
+  for (const auto &str : svec) cout << str << " ";
+  cout << endl;
+
+  list<string> lst;
+  unique_copy(svec.begin(), svec.end(), back_inserter(lst));
+
+  for (const auto &str : lst) cout << str << " ";
+  cout << endl;
+
+  return 0;
+}      
+   #+END_SRC
 
 ** Exercise 10.28
    #+BEGIN_QUOTE
