@@ -1129,3 +1129,37 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 10.4.1
+** Exercise 10.26
+   #+BEGIN_QUOTE
+   Explain the differences among the three kinds of insert iterators.
+   #+END_QUOTE
+    
+   There are three kinds of inserters. Each differs from the others as to where
+   elements are inserted:
+ 
+   + ~back_inserter~ creates an iterator that uses ~push_back~.
+   + ~front_inserter~ creates an iterator that uses ~push_front~.
+   + ~inserter~ creates an iterator that uses ~insert~. This function takes a
+     second argument, which must be an iterator into the given
+     container. Elements are inserted ahead of the element denoted by the given
+     iterator.
+ 
+** Exercise 10.27
+   #+BEGIN_QUOTE
+   In addition to unique (§ 10.2.3, p. 384), the library defines function named
+   unique_copy that takes a third iterator denoting a destination into which to
+   copy the unique elements. Write a program that uses unique_copy to copy the
+   unique elements from a vector into an initially empty list.
+   #+END_QUOTE
+
+** Exercise 10.28
+   #+BEGIN_QUOTE
+   Copy a vector that holds the values from 1 to 9 inclusive, into three other
+   containers. Use an inserter, a back_inserter, and a front_inserter,
+   respectivly to add elements to these containers. Predict how the output
+   sequence varies by the kind of inserter and verify your predictions by
+   running your programs.
+   #+END_QUOTE
+   
