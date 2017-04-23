@@ -1198,10 +1198,59 @@ int main()
 
 ** Exercise 10.28
    #+BEGIN_QUOTE
-   Copy a vector that holds the values from 1 to 9 inclusive, into three other
-   containers. Use an inserter, a back_inserter, and a front_inserter,
+   Copy a ~vector~ that holds the values from 1 to 9 inclusive, into three other
+   containers. Use an ~inserter~, a ~back_inserter~, and a ~front_inserter~,
    respectivly to add elements to these containers. Predict how the output
    sequence varies by the kind of inserter and verify your predictions by
    running your programs.
    #+END_QUOTE
-   
+
+   Therefore, ~front_inserter~ yields an iterator that reverses the order of the
+   sequence that it inserts; ~inserter~ and ~back_inserter~ don’t.
+ 
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <vector>
+using std::vector;
+
+#include <list>
+using std::list;
+
+#include <algorithm>
+using std::copy;
+
+#include <iterator>
+using std::inserter; 
+using std::back_inserter; 
+using std::front_inserter;
+
+int main()
+{
+  vector<int> ivec = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  
+  cout << "vector:" << endl;
+  for (const auto &ival : ivec) cout << ival << " ";
+  cout << endl;
+
+  list<int> ilst1, ilst2, ilst3;
+
+  cout << "inserter:" << endl;
+  copy(ivec.begin(), ivec.end(), inserter(ilst1, ilst1.begin()));
+  for (const auto &ival : ilst1) cout << ival << " ";
+  cout << endl;
+
+  cout << "back_inserter:" << endl;
+  copy(ivec.begin(), ivec.end(), back_inserter(ilst2));
+  for (const auto &ival : ilst2) cout << ival << " ";
+  cout << endl;
+
+  cout << "front_inserter:" << endl;
+  copy(ivec.begin(), ivec.end(), front_inserter(ilst3));
+  for (const auto &ival : ilst3) cout << ival << " ";
+  cout << endl;
+
+  return 0;
+}   
+   #+END_SRC
