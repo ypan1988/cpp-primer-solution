@@ -923,8 +923,24 @@ int main()
 
 ** Exercise 10.21
    #+BEGIN_QUOTE
-   Write a lambda that captures a local int variable and decrements that
+   Write a lambda that captures a local ~int~ variable and decrements that
    variable until it reaches 0. Once the variable is 0 additional calls should
-   no longer decrement the variable. The lambda should return a bool that
+   no longer decrement the variable. The lambda should return a ~bool~ that
    indicates whether the captured variable is 0.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+int main()
+{
+  int ival = 10;
+
+  auto f = [&ival] () -> bool { --ival; return ival == 0; };
+
+  while (!f()) cout << ival << endl;
+  
+  return 0;
+}   
+   #+END_SRC
