@@ -12,7 +12,7 @@ using std::istream_iterator;
 
 int main()
 {
-    istream_iterator<string> in_iter(cin), eof;  // read ints from cin
+    istream_iterator<string> in_iter(cin), eof;  // read strings from cin
     vector<string> vec(in_iter, eof);            // construct vec from an iterator range
 
     for (const auto &s : vec)
