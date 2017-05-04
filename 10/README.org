@@ -1325,15 +1325,43 @@ int main()
 ** Exercise 10.31
    #+BEGIN_QUOTE
    Update the program from the previous exercise so that it prints only the
-   unique elements. Your program should use unqiue_copy (§ 10.4.1, p. 403).
+   unique elements. Your program should use ~unqiue_copy~ (§ 10.4.1, p. 403).
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+#include <vector>
+using std::vector;
+
+#include <algorithm>
+using std::sort; using std::unique_copy;
+
+#include <iterator>
+using std::istream_iterator; using std::ostream_iterator;
+
+int main()
+{
+    istream_iterator<int> in_iter(cin), eof; // read ints from cin
+    vector<int> vec(in_iter, eof); // construct vec from an iterator range
+
+    sort(vec.begin(), vec.end());
+
+    ostream_iterator<int> out_iter(cout, " ");
+    unique_copy(vec.begin(), vec.end(), out_iter);
+    cout << endl;
+
+    return 0;
+}
+   #+END_SRC
 
 ** Exercise 10.32
    #+BEGIN_QUOTE
-   Rewrite the bookstore problem from § 1.6 (p. 24) using a vector to hold the
-   transactions and various algorithms to do the processing. Use sort with your
-   compareIsbn function from § 10.3.1 (p. 387) to arrange the transactions in
-   order, and then use find and accumulate to do the sum.
+   Rewrite the bookstore problem from § 1.6 (p. 24) using a ~vector~ to hold the
+   transactions and various algorithms to do the processing. Use ~sort~ with
+   your ~compareIsbn~ function from § 10.3.1 (p. 387) to arrange the
+   transactions in order, and then use ~find~ and ~accumulate~ to do the sum.
    #+END_QUOTE
 
 ** Exercise 10.33
