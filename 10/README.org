@@ -245,12 +245,12 @@ int main()
   cout << endl;
 
   elimDups(svec);
-  
+
   for (const auto &str : svec) cout << str << " ";
   cout << endl;
-  
+
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 10.10
@@ -317,7 +317,7 @@ int main()
   cout << endl;
 
   elimDups(svec);
-  
+
   for (const auto &str : svec) cout << str << " ";
   cout << endl;
 
@@ -327,7 +327,7 @@ int main()
   cout << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 10.12
@@ -336,7 +336,7 @@ int main()
    two ~Sales_data~ objects. Use that function to sort a ~vector~ that holds
    ~Sales_data~ objects.
    #+END_QUOTE
-   
+
    #+BEGIN_SRC C++
 #include <iostream>
 #include <string>
@@ -422,7 +422,7 @@ int main()
   Sales_data trans2("aaa");
   Sales_data trans3("ccc");
   Sales_data trans4("bb");
-  
+
   std::vector<Sales_data> vec = {trans1, trans2, trans3, trans4};
   std::sort(vec.begin(), vec.end(), compareIsbn);
 
@@ -431,7 +431,7 @@ int main()
   }
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 10.13
@@ -469,11 +469,11 @@ int main()
   vector<string> svec = {"aaa", "Hello", "bbb", "world!!!", "ccc"};
   auto bound = partition(svec.begin(), svec.end(), isLarger5);
 
-  for (auto iter = svec.begin(); iter != bound; ++iter) 
+  for (auto iter = svec.begin(); iter != bound; ++iter)
     cout << *iter << endl;
-  
+
   return 0;
-}   
+}
    #+END_SRC
 
 * Exercises Section 10.3.2
@@ -481,7 +481,7 @@ int main()
    #+BEGIN_QUOTE
    Write a lambda that takes two ~int~ s and returns their sum.
    #+END_QUOTE
-   
+
    #+BEGIN_SRC C++
 #include <iostream>
 using std::cout; using std::endl;
@@ -494,7 +494,7 @@ int main()
   cout << f(1, 2) << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 10.15
@@ -517,7 +517,7 @@ int main()
   cout << f(2) << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 10.16
@@ -569,18 +569,18 @@ void biggies(vector<string> &words, vector<string>::size_type sz)
 {
   elimDups(words);		// put words in alphabetical order and remove
 				// duplicates
-  
+
   // sort words by size, but maintain alphabetical order for words of the same size
   stable_sort(words.begin(), words.end(),
 	      [](const string &a, const string &b)
 	      { return a.size() < b.size(); });
-  
+
   for (const auto &str : words) cout << str << " ";
   cout << endl;
 
   // get an iterator to the first element whose size() is >= sz
   auto wc = find_if(words.begin(), words.end(),
-		    [sz](const string &a) 
+		    [sz](const string &a)
 		    { return a.size() >= sz; });
 
   // compute the number of elements with size >= sz
@@ -608,7 +608,7 @@ int main()
   cout << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 10.17
@@ -616,7 +616,7 @@ int main()
    Rewrite exercise 10.12 from § 10.3.1 (p. 387) to use a lambda in the call
    to sort instead of the ~compareIsbn~ function.
    #+END_QUOTE
-   
+
    #+BEGIN_SRC C++
 #include <iostream>
 #include <string>
@@ -698,10 +698,10 @@ int main()
   Sales_data trans2("aaa");
   Sales_data trans3("ccc");
   Sales_data trans4("bb");
-  
+
   std::vector<Sales_data> vec = {trans1, trans2, trans3, trans4};
-  std::sort(vec.begin(), vec.end(), 
-	    [](const Sales_data &obj1, const Sales_data &obj2) 
+  std::sort(vec.begin(), vec.end(),
+	    [](const Sales_data &obj1, const Sales_data &obj2)
 	    { return obj1.isbn() < obj2.isbn(); });
 
   for (const auto &trans : vec) {
@@ -709,7 +709,7 @@ int main()
   }
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 10.18
@@ -762,14 +762,14 @@ void biggies(vector<string> &words, vector<string>::size_type sz)
 {
   elimDups(words);		// put words in alphabetical order and remove
 				// duplicates
-  
+
   auto wc = partition(words.begin(), words.end(),
-		      [sz](const string &a) 
+		      [sz](const string &a)
 		      { return a.size() < sz; });
 
   for (const auto &str : words) cout << str << " ";
   cout << endl;
-  
+
   // compute the number of elements with size >= sz
   auto count = words.end() - wc;
   cout << count << " " << make_plural(count, "word", "s")
@@ -816,7 +816,7 @@ using std::string;
 using std::vector;
 
 #include <algorithm>
-using std::sort; using std::unique; 
+using std::sort; using std::unique;
 using std::stable_partition; using std::for_each;
 
 void elimDups(vector<string> &words)
@@ -848,11 +848,11 @@ void biggies(vector<string> &words, vector<string>::size_type sz)
 {
   elimDups(words);		// put words in alphabetical order and remove
 				// duplicates
-  
+
   auto wc = stable_partition(words.begin(), words.end(),
-			     [sz](const string &a) 
+			     [sz](const string &a)
 			     { return a.size() < sz; });
-  
+
   for (const auto &str : words) cout << str << " ";
   cout << endl;
 
@@ -881,7 +881,7 @@ int main()
   cout << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 * Exercises Section 10.3.3
@@ -893,7 +893,7 @@ int main()
    count of how often the predicate is true. Use count_if to rewrite the portion
    of our program that counted how many words are greater than length 6.
    #+END_QUOTE
-   
+
    #+BEGIN_SRC C++
 #include <iostream>
 using std::cout; using std::endl;
@@ -914,11 +914,11 @@ int main()
   auto cnt = count_if(svec.begin(), svec.end(),
 		      [](const string &s)
 		      { return s.size() > 6; });
-  
+
   cout << cnt << " words are greater than length 6" << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 10.21
@@ -940,9 +940,9 @@ int main()
   auto f = [&ival] () -> bool { --ival; return ival == 0; };
 
   while (!f()) cout << ival << endl;
-  
+
   return 0;
-}   
+}
    #+END_SRC
 
 * Exercises Section 10.3.4
@@ -951,7 +951,7 @@ int main()
    Rewrite the program to count words of size 6 or less using functions in place
    of the lambdas.
    #+END_QUOTE
-   
+
    #+BEGIN_SRC C++
 #include <iostream>
 using std::cout; using std::endl;
@@ -978,11 +978,11 @@ int main()
   vector<string> svec = {"hello", "world", "university", "of", "manchester"};
 
   auto cnt = count_if(svec.begin(), svec.end(), bind(isShorter, _1, 6));
-  
+
   cout << cnt << " words are not greater than length 6" << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 10.23
@@ -1030,11 +1030,11 @@ int main()
   string s("hello");
 
   auto iter = find_if(ivec.begin(), ivec.end(), bind(check_size, s, _1));
-  
+
   cout << *iter << endl;
-  
+
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 10.25
@@ -1081,7 +1081,7 @@ void elimDups(vector<string> &words)
   words.erase(end_unique, words.end());
 }
 
-bool check_size(const string &s, string::size_type sz) 
+bool check_size(const string &s, string::size_type sz)
 {
   return s.size() < sz;
 }
@@ -1096,12 +1096,12 @@ void biggies(vector<string> &words, vector<string>::size_type sz)
 {
   elimDups(words);		// put words in alphabetical order and remove
 				// duplicates
-  
+
   auto wc = partition(words.begin(), words.end(), bind(check_size, _1, sz));
 
   for (const auto &str : words) cout << str << " ";
   cout << endl;
-  
+
   // compute the number of elements with size >= sz
   auto count = words.end() - wc;
   cout << count << " " << make_plural(count, "word", "s")
@@ -1127,7 +1127,7 @@ int main()
   cout << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 * Exercises Section 10.4.1
@@ -1135,17 +1135,17 @@ int main()
    #+BEGIN_QUOTE
    Explain the differences among the three kinds of insert iterators.
    #+END_QUOTE
-    
+
    There are three kinds of inserters. Each differs from the others as to where
    elements are inserted:
- 
+
    + ~back_inserter~ creates an iterator that uses ~push_back~.
    + ~front_inserter~ creates an iterator that uses ~push_front~.
    + ~inserter~ creates an iterator that uses ~insert~. This function takes a
      second argument, which must be an iterator into the given
      container. Elements are inserted ahead of the element denoted by the given
      iterator.
- 
+
 ** Exercise 10.27
    #+BEGIN_QUOTE
    In addition to ~unique~ (§ 10.2.3, p. 384), the library defines function
@@ -1193,7 +1193,7 @@ int main()
   cout << endl;
 
   return 0;
-}      
+}
    #+END_SRC
 
 ** Exercise 10.28
@@ -1207,7 +1207,7 @@ int main()
 
    Therefore, ~front_inserter~ yields an iterator that reverses the order of the
    sequence that it inserts; ~inserter~ and ~back_inserter~ don’t.
- 
+
    #+BEGIN_SRC C++
 #include <iostream>
 using std::cout; using std::endl;
@@ -1222,14 +1222,14 @@ using std::list;
 using std::copy;
 
 #include <iterator>
-using std::inserter; 
-using std::back_inserter; 
+using std::inserter;
+using std::back_inserter;
 using std::front_inserter;
 
 int main()
 {
   vector<int> ivec = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  
+
   cout << "vector:" << endl;
   for (const auto &ival : ivec) cout << ival << " ";
   cout << endl;
@@ -1252,5 +1252,66 @@ int main()
   cout << endl;
 
   return 0;
-}   
+}
    #+END_SRC
+
+* Exercises Section 10.4.2
+** Exercise 10.29
+   #+BEGIN_QUOTE
+   Write a program using stream iterators to read a text file into a ~vector~ of
+   ~string~ s.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <vector>
+using std::vector;
+
+#include <iterator>
+using std::istream_iterator;
+
+int main()
+{
+    istream_iterator<string> in_iter(cin), eof;  // read ints from cin
+    vector<string> vec(in_iter, eof);            // construct vec from an iterator range
+
+    for (const auto &s : vec)
+        cout << s << endl;
+
+    return 0;
+}
+   #+END_SRC
+
+** Exercise 10.30
+   #+BEGIN_QUOTE
+   Use stream iterators, sort, and copy to read a sequence of integers from the
+   standard input, sort them, and then write them back to the standard output.
+   #+END_QUOTE
+
+** Exercise 10.31
+   #+BEGIN_QUOTE
+   Update the program from the previous exercise so that it prints only the
+   unique elements. Your program should use unqiue_copy (§ 10.4.1, p. 403).
+   #+END_QUOTE
+
+** Exercise 10.32
+   #+BEGIN_QUOTE
+   Rewrite the bookstore problem from § 1.6 (p. 24) using a vector to hold the
+   transactions and various algorithms to do the processing. Use sort with your
+   compareIsbn function from § 10.3.1 (p. 387) to arrange the transactions in
+   order, and then use find and accumulate to do the sum.
+   #+END_QUOTE
+
+** Exercise 10.33
+   #+BEGIN_QUOTE
+   Write a program that takes the names of an input file and two output files.
+   The input file should hold integers. Using an istream_iterator read the input
+   file. Using ostream_iterators, write the odd numbers into the first output
+   file. Each value should be followed by a space. Write the even numbers into
+   the second file. Each of these values should be placed on a separate line.
+   #+END_QUOTE
