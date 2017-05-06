@@ -1638,3 +1638,7 @@ int main()
    What kinds of iterators do you think ~copy~ requires? What about ~reverse~ or
    ~unique~?
    #+END_QUOTE
+
+   + ~copy~ : first and second are input iterators, last is a Output iterators
+   + ~reverse~ : Bidirectional iterators.
+   + ~unique~ : Forward iterators.
