@@ -15,9 +15,18 @@
  
 ** Exercise 11.2
    #+BEGIN_QUOTE
-   Give an example of when each of list, vector, deque, map, and set might be
-   most useful.
+   Give an example of when each of ~list~, ~vector~, ~deque~, ~map~, and ~set~
+   might be most useful.
    #+END_QUOTE
+   
+   + ~list~ : When a doubly-linked list is required.
+   + ~vector~ : When a dynamic array is required.
+   + ~deque~ : When we need "fast access" to insert/deletes at both ends of the
+     line.
+   + ~map~ : A dictionary would be a good use for a map: The word would be the
+     key, and its definition would be the value.
+   + ~set~ : We might use a set to hold words that we want to ignore during some
+     kind of text processing.
 
 ** Exercise 11.3
    #+BEGIN_QUOTE
