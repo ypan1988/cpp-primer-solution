@@ -1642,3 +1642,26 @@ int main()
    + ~copy~ : first and second are input iterators, last is a Output iterators
    + ~reverse~ : Bidirectional iterators.
    + ~unique~ : Forward iterators.
+
+* Exercises Section 10.5.3
+** Exercise 10.41
+   #+BEGIN_QUOTE
+   Based only on the algorithm and argument names, describe the operation that
+   the each of the following library algorithms performs:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+replace(beg, end, old_val, new_val);
+replace_if(beg, end, pred, new_val);
+replace_copy(beg, end, dest, old_val, new_val);
+replace_copy_if(beg, end, dest, pred, new_val);   
+   #+END_SRC
+
+   ~replace~ assigns ~new_val~ to all the elements in the range [first,last)
+   that compare equal to ~old_val~; ~replace_if~ assigns ~new_val~ to all the
+   elements in the range [first,last) for which ~pred~ returns true;
+   ~replace_copy~ copies the elements in the range [first,last) to the range
+   beginning at result, replacing the appearances of ~old_val~ by ~new_val~;
+   ~replace_copy_if~ copies the elements in the range [first,last) to the range
+   beginning at result, replacing those for which pred returns true by
+   ~new_val~.
+
