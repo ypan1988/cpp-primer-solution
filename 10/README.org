@@ -1580,3 +1580,59 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 10.5.1
+** Exercise 10.38
+   #+BEGIN_QUOTE
+   List the five iterator categories and the operations that each supports.
+   #+END_QUOTE
+
+** Exercise 10.39
+   #+BEGIN_QUOTE
+   What kind of iterator does a list have? What about a vector?
+   #+END_QUOTE
+
+** Exercise 10.40
+   #+BEGIN_QUOTE
+   What kinds of iterators do you think copy requires? What about reverse or
+   unique?
+   #+END_QUOTE
+    
+   *Input iterators*: can read elements in a sequence. An input iterator must
+   provide:
+   + Equality and inequality operators (==, !=) to compare two iterators
+   + Prefix and postfix increment (++) to advance the iterator
+   + Dereference operator (*) to read an element; dereference may appear only on
+     the right-hand side of an assignment
+   + The arrow operator (->) as a synonym for (* it).member—that is, dereference
+     the iterator and fetch a member from the underlying object.
+
+   *Output iterators*: can be thought of as having complementary functionality
+   to input iterators; they write rather than read elements. Output iterators
+   must provide:
+   + Prefix and postfix increment (++) to advance the iterator 
+   + Dereference (*), which may appear only as the left-hand side of an
+     assignment (Assigning to a dereferenced output iterator writes to the
+     underlying element.)
+
+   *Forward iterators*: can read and write a given sequence. They move in only
+   one direction through the sequence. Forward iterators support all the
+   operations of both input iterators and output iterators.
+
+   *Bidirectional iterators*: can read and write a sequence forward or
+   backward. In addition to supporting all the operations of a forward iterator,
+   a bidirectional iterator also supports the prefix and postfix decrement (--)
+   operators.
+
+   *Random-access iterators*: provide constant-time access to any position in
+   the sequence. These iterators support all the functionality of bidirectional
+   iterators. In addition, random-access iterators support the operations from
+   Table 3.7 (p. 111):
+   + The relational operators (<, <=, >, and >=) to compare the relative
+     positions of two iterators.
+   + Addition and subtraction operators (+, +=, -, and -=) on an iterator and an
+     integral value. The result is the iterator advanced (or retreated) the
+     integral number of elements within the sequence.
+   + The subtraction operator (-) when applied to two iterators, which yields
+     the distance between two iterators.
+   + The subscript operator (iter[n]) as a synonym for * (iter + n).
