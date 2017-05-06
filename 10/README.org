@@ -1586,17 +1586,6 @@ int main()
    #+BEGIN_QUOTE
    List the five iterator categories and the operations that each supports.
    #+END_QUOTE
-
-** Exercise 10.39
-   #+BEGIN_QUOTE
-   What kind of iterator does a list have? What about a vector?
-   #+END_QUOTE
-
-** Exercise 10.40
-   #+BEGIN_QUOTE
-   What kinds of iterators do you think copy requires? What about reverse or
-   unique?
-   #+END_QUOTE
     
    *Input iterators*: can read elements in a sequence. An input iterator must
    provide:
@@ -1636,3 +1625,16 @@ int main()
    + The subtraction operator (-) when applied to two iterators, which yields
      the distance between two iterators.
    + The subscript operator (iter[n]) as a synonym for * (iter + n).
+
+** Exercise 10.39
+   #+BEGIN_QUOTE
+   What kind of iterator does a ~list~ have? What about a ~vector~?
+   #+END_QUOTE
+
+   ~list~ has a bidirectional iterator; ~vector~ has a random-access iterator.
+
+** Exercise 10.40
+   #+BEGIN_QUOTE
+   What kinds of iterators do you think ~copy~ requires? What about ~reverse~ or
+   ~unique~?
+   #+END_QUOTE
