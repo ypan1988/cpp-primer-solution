@@ -1666,3 +1666,51 @@ replace_copy_if(beg, end, dest, pred, new_val);
    beginning at result, replacing those for which pred returns true by
    ~new_val~.
 
+* Exercises Section 10.6
+** Exercise 10.42
+   #+BEGIN_QUOTE
+   Reimplement the program that eliminated duplicate words that we wrote in §
+   10.2.3 (p. 383) to use a ~list~ instead of a ~vector~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <list>
+using std::list;
+
+#include <algorithm>
+using std::sort; using std::unique;
+
+void elimDups(list<string> &words)
+{
+  // sort words alphabetically so we can find the duplicates
+  words.sort();
+
+  for (const auto &str : words) cout << str << " ";
+  cout << endl;
+
+  // remove the nonunique elements
+  words.unique();
+}
+
+int main()
+{
+  list<string> slst = {"the", "quick", "red", "fox", "jumps", "over", "the",
+		       "slow", "red", "turtle"};
+
+  for (const auto &str : slst) cout << str << " ";
+  cout << endl;
+
+  elimDups(slst);
+  
+  for (const auto &str : slst) cout << str << " ";
+  cout << endl;
+  
+  return 0;
+}   
+   #+END_SRC
