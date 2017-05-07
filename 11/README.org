@@ -291,10 +291,14 @@ int main()
 
 ** Exercise 11.10
    #+BEGIN_QUOTE
-   Could we define a map from vector<int>::iterator to int? What about from
-   list<int>::iterator to int? In each case, if not, why not?
+   Could we define a ~map~ from ~vector<int>::iterator~ to ~int~? What about
+   from ~list<int>::iterator~ to ~int~? In each case, if not, why not?
    #+END_QUOTE
 
+   we can define a ~map~ from ~vector<int>::iterator~ to ~int~; we cannot define
+   a ~map~ from ~list<int>::iterator~ to ~int~ since ~<~ opratator is not
+   defined for the ~list<int>::iterator~ to compare the keys.
+   
 ** Exercise 11.11
    #+BEGIN_QUOTE
    Redefine bookstore without using decltype.
