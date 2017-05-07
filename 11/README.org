@@ -428,8 +428,15 @@ int main()
 
 ** Exercise 11.16
    #+BEGIN_QUOTE
-   Using a map iterator write an expression that assigns a value to an element.
+   Using a ~map~ iterator write an expression that assigns a value to an
+   element.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+pair<string, size_t> word_count = {"hello", 5};
+auto map_it = word_count.begin();
+++map_it->second;
+   #+END_SRC
 
 ** Exercise 11.17
    #+BEGIN_QUOTE
