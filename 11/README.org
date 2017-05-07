@@ -113,8 +113,8 @@ int main()
 * Exercises Section 11.2.1
 ** Exercise 11.5
    #+BEGIN_QUOTE
-   Explain the difference between a map and a set. When might you use one or the
-   other?
+   Explain the difference between a ~map~ and a ~set~. When might you use one or
+   the other?
    #+END_QUOTE
 
    Both ~std::set~ and ~std::map~ are associative containers. The difference is
@@ -129,18 +129,18 @@ int main()
 
 ** Exercise 11.6
    #+BEGIN_QUOTE
-   Explain the difference between a set and a list. When might you use one or
-   the other?
+   Explain the difference between a ~set~ and a ~list~. When might you use one
+   or the other?
    #+END_QUOTE
 
-   ~List~:
+   ~list~:
    + Searching (linear time).
    + Inserting, deleting, moving (takes constant time).
    + Elements may be ordered.
    + Elements may be sorted.
    + Elements may be duplicate.
 
-   ~Set~:
+   ~set~:
    + Searching (logarithmic in size).
    + Insert and delete (logarithimic in general).
    + Elements are un-ordered.
@@ -149,11 +149,57 @@ int main()
 
 ** Exercise 11.7
    #+BEGIN_QUOTE
-   Define a map for which the key is the family’s last name and the value is a
-   vector of the children’s names. Write code to add new families and to add new
-   children to an existing family.
+   Define a ~map~ for which the key is the family’s last name and the value is a
+   ~vector~ of the children’s names. Write code to add new families and to add
+   new children to an existing family.
    #+END_QUOTE
-   
+
+   Note: each time the program will read a line which represents a single
+   person with his/her last_name and first_name.
+ 
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+#include<sstream>
+using std::istringstream;
+
+#include <cstddef>
+using std::size_t;
+
+#include <vector>
+using std::vector;
+
+#include <string>
+using std::string;
+
+#include <map>
+using std::map;
+
+int main()
+{
+  map<string, vector<string>> families;
+  string line;
+  while (getline(cin, line)) {
+    istringstream str(line);
+    string last_name, first_name;
+    str >> last_name >> first_name;
+    families[last_name].push_back(first_name);
+  }
+
+  for (const auto &m : families) {
+    cout << "Family: " << m.first << endl
+	 << "Children: ";
+    for (const auto &v : m.second) {
+      cout << v << " ";
+    }
+    cout << endl;
+  }
+
+  return 0;
+}   
+   #+END_SRC
+
 ** Exercise 11.8
    #+BEGIN_QUOTE
    Write a program that stores the excluded words in a vector instead of in a
