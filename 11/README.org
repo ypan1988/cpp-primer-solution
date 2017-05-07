@@ -440,23 +440,23 @@ auto map_it = word_count.begin();
 
 ** Exercise 11.17
    #+BEGIN_QUOTE
-   Assuming c is a multiset of strings and v is a vector of strings, explain the
-   following calls. Indicate whether each call is legal:
+   Assuming ~c~ is a ~multiset~ of ~string~ s and ~v~ is a ~vector~ of ~string~
+   s, explain the following calls. Indicate whether each call is legal:
    #+END_QUOTE
    #+BEGIN_SRC C++
-copy(v.begin(),
- v.end(),
- inserter(c, c.end()));
-copy(v.begin(),
- v.end(),
- back_inserter(c));
-copy(c.begin(),
- c.end(),
- inserter(v, v.end()));
-copy(c.begin(),
- c.end(),
- back_inserter(v));   
+copy(v.begin(), v.end(), inserter(c, c.end()));
+copy(v.begin(), v.end(), back_inserter(c));
+copy(c.begin(), c.end(), inserter(v, v.end()));
+copy(c.begin(), c.end(), back_inserter(v));   
    #+END_SRC
+
+   + ~copy(v.begin(), v.end(), inserter(c, c.end()));~ will copy all elements in
+     ~v~ to the end of ~c~; 
+   + ~copy(v.begin(), v.end(), back_inserter(c));~ is illegal. ~push_back~ is
+     not definied in ~set~;
+   + both ~copy(c.begin(), c.end(), inserter(v, v.end()));~ and ~copy(c.begin(),
+     c.end(), back_inserter(v));~ will copy all elements in ~c~ to the end of
+     ~v~.
 
 ** Exercise 11.18
    #+BEGIN_QUOTE
