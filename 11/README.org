@@ -305,8 +305,8 @@ int main()
    #+END_QUOTE
 
    #+BEGIN_SRC C++
-bool (*foo)(const Sales_data &lhs, const Sales_data &rhs);
-multiset<Sales_data, foo> bookstore(compareIsbn);    
+bool (*pf)(const Sales_data &lhs, const Sales_data &rhs);
+multiset<Sales_data, pf> bookstore(compareIsbn);    
    #+END_SRC
 
 * Exercises Section 11.2.3
@@ -474,7 +474,7 @@ copy(c.begin(), c.end(), back_inserter(v));
    #+END_QUOTE
 
    #+BEGIN_SRC C++
-bool (*foo)(const Sales_data &lhs, const Sales_data &rhs);
-multiset<Sales_data, foo> bookstore(compareIsbn); 
-multiset<Sales_data, foo>::iterator mset_it = bookstore.begin();
+bool (*pf)(const Sales_data &lhs, const Sales_data &rhs);
+multiset<Sales_data, pf> bookstore(compareIsbn); 
+multiset<Sales_data, pf>::iterator mset_it = bookstore.begin();
    #+END_SRC
