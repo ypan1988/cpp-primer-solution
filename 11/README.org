@@ -308,3 +308,56 @@ int main()
 bool (*foo)(const Sales_data &lhs, const Sales_data &rhs);
 multiset<Sales_data, foo> bookstore(compareIsbn);    
    #+END_SRC
+
+* Exercises Section 11.2.3
+** Exercise 11.12
+   #+BEGIN_QUOTE
+   Write a program to read a sequence of ~string~ s and ~int~ s, storing each
+   into a ~pair~. Store the ~pair~ s in a ~vector~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <vector>
+using std::vector;
+
+#include <utility>
+using std::pair;
+
+int main()
+{
+  vector<pair<string, int>> vec;
+  
+  string str;
+  int ival;
+  while (cin >> str >> ival) {
+    vec.push_back({str, ival});
+  }
+
+  for (const auto &p : vec) {
+    cout << p.first << " " << p.second << endl;
+  }
+
+  return 0;
+}   
+   #+END_SRC
+
+** Exercise 11.13
+   #+BEGIN_QUOTE
+   There are at least three ways to create the pairs in the program for the
+   previous exercise. Write three versions of that program, creating the pairs
+   in each way. Explain which form you think is easiest to write and understand,
+   and why.
+   #+END_QUOTE
+
+** Exercise 11.14
+   #+BEGIN_QUOTE
+   Extend the map of children to their family name that you wrote for the
+   exercises in § 11.2.1 (p. 424) by having the vector store a pair that holds a
+   child’s name and birthday.
+   #+END_QUOTE
