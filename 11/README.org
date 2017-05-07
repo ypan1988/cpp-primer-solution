@@ -468,7 +468,13 @@ copy(c.begin(), c.end(), back_inserter(v));
 
 ** Exercise 11.19
    #+BEGIN_QUOTE
-   Define a variable that you initialize by calling begin() on the multiset
-   named bookstore from § 11.2.2 (p. 425). Write the variable’s type without
-   using auto or decltype.
+   Define a variable that you initialize by calling ~begin()~ on the ~multiset~
+   named ~bookstore~ from § 11.2.2 (p. 425). Write the variable’s type without
+   using ~auto~ or ~decltype~.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+bool (*foo)(const Sales_data &lhs, const Sales_data &rhs);
+multiset<Sales_data, foo> bookstore(compareIsbn); 
+multiset<Sales_data, foo>::iterator mset_it = bookstore.begin();
+   #+END_SRC
