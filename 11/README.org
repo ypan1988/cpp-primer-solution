@@ -4,9 +4,9 @@
    Describe the differences between a ~map~ and a ~vector~.
    #+END_QUOTE
 
-   Associative and sequential containers differ from one another in a
-   fundamental way: Elements in an associative container are stored and
-   retrieved by a key. In contrast, elements in a sequential container are
+   Associative (~map~) and sequential (~vector~) containers differ from one
+   another in a fundamental way: Elements in an associative container are stored
+   and retrieved by a key. In contrast, elements in a sequential container are
    stored and accessed sequentially by their position in the container.
 
    Although the associative containers share much of the behavior of the
@@ -132,6 +132,20 @@ int main()
    Explain the difference between a set and a list. When might you use one or
    the other?
    #+END_QUOTE
+
+   ~List~:
+   + Searching (linear time).
+   + Inserting, deleting, moving (takes constant time).
+   + Elements may be ordered.
+   + Elements may be sorted.
+   + Elements may be duplicate.
+
+   ~Set~:
+   + Searching (logarithmic in size).
+   + Insert and delete (logarithimic in general).
+   + Elements are un-ordered.
+   + Elements are always sorted from lower to higher.
+   + Elements are unique.
 
 ** Exercise 11.7
    #+BEGIN_QUOTE
