@@ -303,3 +303,8 @@ int main()
    #+BEGIN_QUOTE
    Redefine bookstore without using decltype.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+bool (*foo)(const Sales_data &lhs, const Sales_data &rhs);
+multiset<Sales_data, foo> bookstore(compareIsbn);    
+   #+END_SRC
