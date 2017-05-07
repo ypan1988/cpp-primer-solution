@@ -460,9 +460,11 @@ copy(c.begin(), c.end(), back_inserter(v));
 
 ** Exercise 11.18
    #+BEGIN_QUOTE
-   Write the type of map_it from the loop on page 430 without using auto or
-   decltype.
+   Write the type of ~map_it~ from the loop on page 430 without using ~auto~ or
+   ~decltype~.
    #+END_QUOTE
+   
+   ~pair<string, size_t>::const_iterator~
 
 ** Exercise 11.19
    #+BEGIN_QUOTE
