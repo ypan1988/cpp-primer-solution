@@ -588,3 +588,43 @@ int main()
   return 0;
 }
    #+END_SRC
+
+* Exercises Section 11.3.4
+** Exercise 11.24
+   #+BEGIN_QUOTE
+   What does the following program do?
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+map<int, int> m;
+m[0] = 1;
+   #+END_SRC
+
+   + ~m~ is searched for the element whose key is ~0~. The element is not found.
+   + A new key-value pair is inserted into ~m~. The key is a ~const int~ holding
+     ~0~. The value is value initialized, meaning in this case that the value is
+     ~0~.
+   + The newly inserted element is fetched and is given the value 1.
+
+** Exercise 11.25
+   #+BEGIN_QUOTE
+   Contrast the following program with the one in the previous exercise
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+vector<int> v;
+v[0] = 1;
+   #+END_SRC
+
+** Exercise 11.26
+   #+BEGIN_QUOTE
+   What type can be used to subscript a map? What type does the subscript
+   operator return? Give a concrete example—that is, define a map and then write
+   the types that can be used to subscript the map and the type that would be
+   returned from the subscript operator.
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+set<int> iset = {0,1,2,3,4,5,6,7,8,9};
+iset.find(1); // returns an iterator that refers to the element with key == 1
+iset.find(11); // returns the iterator == iset.end()
+iset.count(1); // returns 1
+iset.count(11); // returns 0
+   #+END_SRC
