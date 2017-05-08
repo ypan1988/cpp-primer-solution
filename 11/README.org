@@ -521,14 +521,18 @@ int main()
 
 ** Exercise 11.21
    #+BEGIN_QUOTE
-   Assuming word_count is a map from string to size_t and word is a string,
-   explain the following loop:
+   Assuming ~word_count~ is a ~map~ from ~string~ to ~size_t~ and ~word~ is a
+   ~string~, explain the following loop:
    #+END_QUOTE
 
    #+BEGIN_SRC C++
 while (cin >> word)
 ++word_count.insert({word, 0}).first->second;
    #+END_SRC
+
+   The increment statements fetches the iterator, which is the first member of a
+   ~pair~ returned from the ~insert~ operation, for the element with the key
+   ~word~ and increments the counter associated with the key we tried to insert.
 
 ** Exercise 11.22
    #+BEGIN_QUOTE
