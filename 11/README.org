@@ -12,13 +12,13 @@
    Although the associative containers share much of the behavior of the
    sequential containers, they differ from the sequential containers in ways
    that reflect the use of keys.
- 
+
 ** Exercise 11.2
    #+BEGIN_QUOTE
    Give an example of when each of ~list~, ~vector~, ~deque~, ~map~, and ~set~
    might be most useful.
    #+END_QUOTE
-   
+
    + ~list~ : When a doubly-linked list is required.
    + ~vector~ : When a dynamic array is required.
    + ~deque~ : When we need "fast access" to insert/deletes at both ends of the
@@ -59,7 +59,7 @@ int main()
 	 << ((w.second > 1) ? " times" : " time") << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 11.4
@@ -95,7 +95,7 @@ int main()
   while (cin >> word) {
     for_each(word.begin(), word.end(), [](char &c) { tolower(c); });
     auto iter = remove_if(word.begin(), word.end(),
-			  [](char c) 
+			  [](char c)
 			  { return ispunct(static_cast<unsigned char>(c)); });
     word.erase(iter, word.end());
     ++word_count[word];		// fetch and increment the counter for word
@@ -107,7 +107,7 @@ int main()
 	 << ((w.second > 1) ? " times" : " time") << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 * Exercises Section 11.2.1
@@ -156,7 +156,7 @@ int main()
 
    Note: each time the program will read a line which represents a single
    person with his/her last_name and first_name.
- 
+
    #+BEGIN_SRC C++
 #include <iostream>
 using std::cin; using std::cout; using std::endl;
@@ -197,7 +197,7 @@ int main()
   }
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 11.8
@@ -241,7 +241,7 @@ int main()
 	   << ((w.second > 1) ? " times" : " time") << endl;
 
     return 0;
-}   
+}
    #+END_SRC
 
    A ~set~ is ordered. It is guaranteed to remain in a specific ordering,
@@ -298,7 +298,7 @@ int main()
    we can define a ~map~ from ~vector<int>::iterator~ to ~int~; we cannot define
    a ~map~ from ~list<int>::iterator~ to ~int~ since ~<~ opratator is not
    defined for the ~list<int>::iterator~ to compare the keys.
-   
+
 ** Exercise 11.11
    #+BEGIN_QUOTE
    Redefine bookstore without using decltype.
@@ -306,7 +306,7 @@ int main()
 
    #+BEGIN_SRC C++
 bool (*pf)(const Sales_data &lhs, const Sales_data &rhs);
-multiset<Sales_data, pf> bookstore(compareIsbn);    
+multiset<Sales_data, pf> bookstore(compareIsbn);
    #+END_SRC
 
 * Exercises Section 11.2.3
@@ -332,7 +332,7 @@ using std::pair;
 int main()
 {
   vector<pair<string, int>> vec;
-  
+
   string str;
   int ival;
   while (cin >> str >> ival) {
@@ -344,7 +344,7 @@ int main()
   }
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 11.13
@@ -354,11 +354,11 @@ int main()
    in each way. Explain which form you think is easiest to write and understand,
    and why.
    #+END_QUOTE
-   
+
    #+BEGIN_SRC C++
 vec.push_back({str, ival});          // easiest to write and understand
 vec.push_back(pair<string, int>(str, ival));
-vec.push_back(make_pair(str, ival));   
+vec.push_back(make_pair(str, ival));
    #+END_SRC
 
 ** Exercise 11.14
@@ -413,7 +413,7 @@ int main()
   }
 
   return 0;
-}      
+}
    #+END_SRC
 
 * Exercises Section 11.3.1
@@ -422,7 +422,7 @@ int main()
    What are the ~mapped_type~, ~key_type~, and ~value_type~ of a ~map~ from
    ~int~ to ~vector<int>~?
    #+END_QUOTE
-   
+
    For ~map<int, vector<int>>~, the ~key_type~ is ~int~, ~mapped_type~ is
    ~vector<int>~ and ~value_type~ is ~pair<const int, vector<int>>~.
 
@@ -447,11 +447,11 @@ auto map_it = word_count.begin();
 copy(v.begin(), v.end(), inserter(c, c.end()));
 copy(v.begin(), v.end(), back_inserter(c));
 copy(c.begin(), c.end(), inserter(v, v.end()));
-copy(c.begin(), c.end(), back_inserter(v));   
+copy(c.begin(), c.end(), back_inserter(v));
    #+END_SRC
 
    + ~copy(v.begin(), v.end(), inserter(c, c.end()));~ will copy all elements in
-     ~v~ to the end of ~c~; 
+     ~v~ to the end of ~c~;
    + ~copy(v.begin(), v.end(), back_inserter(c));~ is illegal. ~push_back~ is
      not definied in ~set~;
    + both ~copy(c.begin(), c.end(), inserter(v, v.end()));~ and ~copy(c.begin(),
@@ -463,7 +463,7 @@ copy(c.begin(), c.end(), back_inserter(v));
    Write the type of ~map_it~ from the loop on page 430 without using ~auto~ or
    ~decltype~.
    #+END_QUOTE
-   
+
    ~pair<string, size_t>::const_iterator~
 
 ** Exercise 11.19
@@ -475,6 +475,70 @@ copy(c.begin(), c.end(), back_inserter(v));
 
    #+BEGIN_SRC C++
 bool (*pf)(const Sales_data &lhs, const Sales_data &rhs);
-multiset<Sales_data, pf> bookstore(compareIsbn); 
+multiset<Sales_data, pf> bookstore(compareIsbn);
 multiset<Sales_data, pf>::iterator mset_it = bookstore.begin();
    #+END_SRC
+
+* Exercises Section 11.3.2
+**  Exercise 11.20
+   #+BEGIN_QUOTE
+   Rewrite the word-counting program from § 11.1 (p. 421) to use ~insert~
+   instead of subscripting. Which program do you think is easier to write and
+   read? Explain your reasoning.
+   #+END_QUOTE
+
+   Obviously the one use subscripting is easier to write and read.
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+#include <cstddef>
+using std::size_t;
+
+#include <string>
+using std::string;
+
+#include <map>
+using std::map;
+
+int main()
+{
+  // count the number of times each word occurs in the input
+  map<string, size_t> word_count; // empty map from string to size_t
+  string word;
+  while (cin >> word) {
+    auto ret = word_count.insert({word, 1});
+    if (!ret.second) ++ret.first->second;
+  }
+  for (const auto &w : word_count) // for each element in the map
+    // print the results
+    cout << w.first << " occurs " << w.second
+         << ((w.second > 1) ? " times" : " time") << endl;
+
+  return 0;
+}
+   #+END_SRC
+
+** Exercise 11.21
+   #+BEGIN_QUOTE
+   Assuming word_count is a map from string to size_t and word is a string,
+   explain the following loop:
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+while (cin >> word)
+++word_count.insert({word, 0}).first->second;
+   #+END_SRC
+
+** Exercise 11.22
+   #+BEGIN_QUOTE
+   Given a map<string, vector<int>>, write the types used as an argument and as
+   the return value for the version of insert that inserts one element.
+   #+END_QUOTE
+
+** Exercise 11.23
+   #+BEGIN_QUOTE
+   Rewrite the map that stored vectors of children’s names with a key that is
+   the family last name for the exercises in § 11.2.1 (p. 424) to use a
+   multimap.
+   #+END_QUOTE
