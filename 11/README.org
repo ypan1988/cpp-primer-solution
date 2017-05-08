@@ -433,7 +433,7 @@ int main()
    #+END_QUOTE
 
    #+BEGIN_SRC C++
-pair<string, size_t> word_count = {"hello", 5};
+map<string, size_t> word_count = {{"hello", 5}, {"world", 10}};
 auto map_it = word_count.begin();
 ++map_it->second;
    #+END_SRC
@@ -618,15 +618,37 @@ v[0] = 1;
 
 ** Exercise 11.26
    #+BEGIN_QUOTE
-   What type can be used to subscript a map? What type does the subscript
-   operator return? Give a concrete example—that is, define a map and then write
-   the types that can be used to subscript the map and the type that would be
-   returned from the subscript operator.
+   What type can be used to subscript a ~map~? What type does the subscript
+   operator return? Give a concrete example—that is, define a ~map~ and then
+   write the types that can be used to subscript the ~map~ and the type that
+   would be returned from the subscript operator.
    #+END_QUOTE
+
+   Note: filter through ~c++filt -t~ if using gcc or similar.
    #+BEGIN_SRC C++
-set<int> iset = {0,1,2,3,4,5,6,7,8,9};
-iset.find(1); // returns an iterator that refers to the element with key == 1
-iset.find(11); // returns the iterator == iset.end()
-iset.count(1); // returns 1
-iset.count(11); // returns 0
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <map>
+using std::map;
+
+#include <typeinfo>
+
+int main()
+{
+  map<string, size_t> word_count = {{"hello", 5}, {"world", 10}};
+
+  cout << "type that can be used to subscript the map: "
+       << typeid(map<string, size_t>::key_type).name()
+       << endl;
+
+  cout << "type that would be returned from the subscript operator: "
+       << typeid(decltype(word_count["hello"])).name()
+       << endl;
+
+  return 0;
+}
    #+END_SRC
