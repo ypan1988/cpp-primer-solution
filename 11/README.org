@@ -536,9 +536,12 @@ while (cin >> word)
 
 ** Exercise 11.22
    #+BEGIN_QUOTE
-   Given a map<string, vector<int>>, write the types used as an argument and as
-   the return value for the version of insert that inserts one element.
+   Given a ~map<string, vector<int>>~, write the types used as an argument and
+   as the return value for the version of ~insert~ that inserts one element.
    #+END_QUOTE
+
+   + used as an argument: ~map<string, vector<int>>::value_type~;
+   + used as a return value: ~pair<map<string, vector<int>>::iterator, bool>~.
 
 ** Exercise 11.23
    #+BEGIN_QUOTE
