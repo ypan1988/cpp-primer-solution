@@ -614,6 +614,8 @@ vector<int> v;
 v[0] = 1;
    #+END_SRC
 
+   Undefined behaviour (UB) since it's trying to dereference an empty ~vector~.
+
 ** Exercise 11.26
    #+BEGIN_QUOTE
    What type can be used to subscript a map? What type does the subscript
