@@ -652,3 +652,49 @@ int main()
   return 0;
 }
    #+END_SRC
+
+* Exercises Section 11.3.5
+** Exercise 11.27
+   #+BEGIN_QUOTE
+   What kinds of problems would you use ~count~ to solve? When might you use
+   ~find~ instead?
+   #+END_QUOTE
+
+   Which operation to use depends on what problem we are trying to solve. If all
+   we care about is whether a particular element is in the container, it is
+   probably best to use ~find~. For the containers that can hold only unique
+   keys, it probably doesn’t matter whether we use ~find~ or ~count~. However,
+   for the containers with multiple keys, ~count~ has to do more work: If the
+   element is present, it still has to count how many elements have the same
+   key. If we don’t need the ~count~, it’s best to use ~find~.
+
+** Exercise 11.28
+   #+BEGIN_QUOTE
+   Define and initialize a variable to hold the result of calling find on a map
+   from string to vector of int.
+   #+END_QUOTE
+
+** Exercise 11.29
+   #+BEGIN_QUOTE
+   What do upper_bound, lower_bound, and equal_range return when you pass them a
+   key that is not in the container?
+   #+END_QUOTE
+
+** Exercise 11.30
+   #+BEGIN_QUOTE
+   Explain the meaning of the operand pos.first->second used in the output
+   expression of the final program in this section.
+   #+END_QUOTE
+
+** Exercise 11.31
+   #+BEGIN_QUOTE
+   Write a program that defines a multimap of authors and their works. Use find
+   to find an element in the multimap and erase that element. Be sure your
+   program works correctly if the element you look for is not in the map.
+   #+END_QUOTE
+
+** Exercise 11.32
+   #+BEGIN_QUOTE
+   Using the multimap from the previous exercise, write a program to print the
+   list of authors and their works alphabetically.
+   #+END_QUOTE
