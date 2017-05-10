@@ -933,9 +933,14 @@ int main(int argc, char **argv)
 
 ** Exercise 11.34
    #+BEGIN_QUOTE
-   What would happen if we used the subscript operator instead of find in the
-   transform function?
+   What would happen if we used the subscript operator instead of ~find~ in the
+   ~transform~ function?
    #+END_QUOTE
+   
+   It is illegal to use the subscript operator instead of ~find~ in the
+   ~transform~ function since ~m~ is a reference to ~const map<string, string>~
+   and the subscript operator may insert a new key-value pair when key of the
+   element is not found.
  
 ** Exercise 11.35
    #+BEGIN_QUOTE
