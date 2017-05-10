@@ -945,11 +945,14 @@ int main(int argc, char **argv)
 ** Exercise 11.35
    #+BEGIN_QUOTE
    In buildMap, what effect, if any, would there be from rewriting
+   ~trans_map[key] = value.substr(1);~ as ~trans_map.insert({key,
+   value.substr(1)})~?
    #+END_QUOTE
-   #+BEGIN_SRC C++
-trans_map[key] = value.substr(1);
-as trans_map.insert({key, value.substr(1)})?   
-   #+END_SRC
+
+   + If we use subscript operator and a word does appear multiple times, our
+     loops will put the *last* corresponding phrase into ~trans_map~.
+   + If we use ~insert~ operator and a word does appear multiple times, our
+     loops will put the *first* corresponding phrase into ~trans_map~.
  
 ** Exercise 11.36
    #+BEGIN_QUOTE
