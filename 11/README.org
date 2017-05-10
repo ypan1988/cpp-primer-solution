@@ -678,9 +678,17 @@ int main()
 
 ** Exercise 11.29
    #+BEGIN_QUOTE
-   What do upper_bound, lower_bound, and equal_range return when you pass them a
-   key that is not in the container?
+   What do ~upper_bound~, ~lower_bound~, and ~equal_range~ return when you pass
+   them a key that is not in the container?
    #+END_QUOTE
+
+   If the element is not in the ~multimap~, then ~lower_bound~ and ~upper_bound~
+   will return equal iterators; both will refer to the point at which the key
+   can be inserted without disrupting the order.
+
+   If no matching element is found in ~multimap~, then the ~pair~ of iterators
+   returned by ~equal_range~, including the first and second iterators, will
+   refer to the position where this key can be inserted.
 
 ** Exercise 11.30
    #+BEGIN_QUOTE
