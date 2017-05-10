@@ -965,3 +965,29 @@ int main(int argc, char **argv)
 
    If so, a key-value pair is going to be added into the ~map~: ~{key, ""}~. As
    a result, the key in text file would be replaced with empty ~string~.
+
+* Exercises Section 11.4
+** Exercise 11.37
+   #+BEGIN_QUOTE
+   What are the advantages of an unordered container as compared to the ordered
+   version of that container? What are the advantages of the ordered version?
+   #+END_QUOTE
+
+   The new standard defines four unordered associative containers. Rather than
+   using a comparison operation to organize their elements, these containers use
+   a hash function and the key type’s == operator. An unordered container is
+   most useful when we have a key type for which there is no obvious ordering
+   relationship among the elements. These containers are also useful for
+   applications in which the cost of maintaining the elements in order is
+   prohibitive.
+     
+   Although hashing gives better average case performance in principle,
+   achieving good results in practice often requires a fair bit of performance
+   testing and tweaking. As a result, it is usually easier (and often yields
+   better performance) to use an ordered container.
+
+** Exercise 11.38
+   #+BEGIN_QUOTE
+   Rewrite the word-counting (§ 11.1, p. 421) and word-transformation (§ 11.3.6,
+   p. 440) programs to use an unordered_map.
+   #+END_QUOTE
