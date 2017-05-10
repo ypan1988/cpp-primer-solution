@@ -962,3 +962,6 @@ int main(int argc, char **argv)
    then the end of the line? Predict the behavior and then check it against your
    version of the program.
    #+END_QUOTE
+
+   If so, a key-value pair is going to be added into the ~map~: ~{key, ""}~. As
+   a result, the key in text file would be replaced with empty ~string~.
