@@ -692,10 +692,26 @@ int main()
 
 ** Exercise 11.30
    #+BEGIN_QUOTE
-   Explain the meaning of the operand pos.first->second used in the output
+   Explain the meaning of the operand ~pos.first->second~ used in the output
    expression of the final program in this section.
    #+END_QUOTE
 
+   #+BEGIN_SRC C++ 
+// definitions of authors and search_item as above
+// pos holds iterators that denote the range of elements for this key
+for (auto pos = authors.equal_range(search_item);
+     pos.first != pos.second; ++pos.first)
+  cout << pos.first->second << endl; // print each title
+   #+END_SRC    
+   This program is essentially identical to the previous one that used
+   ~upper_bound~ and ~lower_bound~. Instead of using local variables, ~beg~ and
+   ~end~, to hold the iterator range, we use the ~pair~ returned by
+   ~equal_range~. The first member of that ~pair~ holds the same iterator as
+   ~lower_bound~ would have returned and second holds the iterator ~upper_bound~
+   would have returned. Thus, in this program ~pos.first~ is equivalent to
+   ~beg~, ~post.first->second~ refers to the mapped value of iterator ~beg~ and
+   ~pos.second~ is equivalent to ~end~.
+ 
 ** Exercise 11.31
    #+BEGIN_QUOTE
    Write a program that defines a multimap of authors and their works. Use find
