@@ -1,160 +1,148 @@
 * Exercises Section 12.1.1
 ** Exercise 12.1
-#+BEGIN_QUOTE
-How many elements do ~b1~ and ~b2~ have at the end of this code?
-#+END_QUOTE
-
-#+BEGIN_SRC 
+   #+BEGIN_QUOTE
+   How many elements do ~b1~ and ~b2~ have at the end of this code?
+   #+END_QUOTE
+   #+BEGIN_SRC C++
 StrBlob b1;
 {
     StrBlob b2 = {"a", "an", "the"};
     b1 = b2;
     b2.push_back("about");
-}
-#+END_SRC
+}   
+   #+END_SRC
 
 At the end of this code, ~b1~ has four elements and ~b2~ has been destroyed.
 
 ** Exercise 12.2
-#+BEGIN_QUOTE
-Write your own version of the ~StrBlob~ class including the ~const~ versions of
-~front~ and ~back~.
-#+END_QUOTE
+   #+BEGIN_QUOTE
+   Write your own version of the ~StrBlob~ class including the ~const~ versions
+   of ~front~ and ~back~.
+   #+END_QUOTE
 
-StrBlob.h
-#+BEGIN_SRC C++
-#ifndef STRBLOB_H
-#define STRBLOB_H
-
+   #+BEGIN_SRC C++
+#include <iostream>
 #include <vector>
 #include <string>
 #include <initializer_list>
-#include <memory>
 #include <exception>
-
-// forward declaration needed for friend declaration in StrBlob
-class StrBlobPtr;
+#include <memory>
 
 class StrBlob {
-    friend class StrBlobPtr;
+public:
+  typedef std::vector<std::string>::size_type size_type;
 
-  public:
-    typedef std::vector<std::string>::size_type size_type;
+  // constructors
+  StrBlob();
+  StrBlob(std::initializer_list<std::string> il);
 
-    // constructors
-    StrBlob();
-    StrBlob(std::initializer_list<std::string> il);
+  // size operations
+  size_type size() const { return data->size(); }
+  bool empty() const { return data->empty(); }
 
-    //size operations
-    size_type size() const { return data->size(); }
-    bool empty() const { return data->empty(); }
+  // add and remove elements
+  void push_back(const std::string &t) { data->push_back(t); }
+  void pop_back();
 
-    // add and remove elements
-    void push_back(const std::string &t) { data->push_back(t); }
-    void pop_back();
+  // element access
+  std::string& front();
+  std::string& back();
+    
+  const std::string& front() const;
+  const std::string& back() const;
 
-    // element access
-    std::string& front();
-    std::string& back();
-    const std::string& front() const;
-    const std::string& back() const;
-
-
-    // interface to StrBlobPtr
-    StrBlobPtr begin();         // can't be defined until StrBlobPtr is
-    StrBlobPtr end();
-
-  private:
-    std::shared_ptr<std::vector<std::string>> data;
-    // throws msg if data[i] isn't valid
-    void check(size_type i, const std::string &msg) const;
+private:
+  std::shared_ptr<std::vector<std::string>> data;
+  // throws msg if data[i] isn't valid
+  void check(size_type i, const std::string &msg) const;
 };
 
 // constructor
-inline StrBlob::StrBlob():
-               data(std::make_shared<std::vector<std::string>>()) { }
+inline StrBlob::StrBlob(): data(std::make_shared<std::vector<std::string>>()) { }
 inline StrBlob::StrBlob(std::initializer_list<std::string> il):
-               data(std::make_shared<std::vector<std::string>>(il)) { }
+  data(std::make_shared<std::vector<std::string>>(il)) { }
 
 std::string& StrBlob::front()
 {
-    // if the vector is empty, check will throws
-    check(0, "front on empty StrBlob");
-    return data->front();
-}
-
-std::string& StrBlob::back()
-{
-    check(0, "back on empty StrBlob");
-    return data->back();
+  // if the vector is empty, check will throw
+  check(0, "front on empty StrBlob");
+  return data->front();
 }
 
 const std::string& StrBlob::front() const
 {
-    // if the vector is empty, check will throws
-    check(0, "front on empty StrBlob");
-    return data->front();
+  // if the vector is empty, check will throws
+  check(0, "front on empty StrBlob");
+  return data->front();
+}
+
+std::string& StrBlob::back()
+{
+  check(0, "back on empty StrBlob");
+  return data->back();
 }
 
 const std::string& StrBlob::back() const
 {
-    check(0, "back on empty StrBlob");
-    return data->back();
+  check(0, "back on empty StrBlob");
+  return data->back();
 }
-
 
 void StrBlob::pop_back()
 {
-    check(0, "pop_back on empty StrBlob");
-    data->pop_back();
+  check(0, "pop_back on empty StrBlob");
+  data->pop_back();
 }
 
 void StrBlob::check(size_type i, const std::string &msg) const
 {
-    if (i >= data->size())
-      throw std::out_of_range(msg);
+  if (i >= data->size())
+    throw std::out_of_range(msg);
 }
-
-#endif
-#+END_SRC
-
-#+BEGIN_SRC C++
-#include <iostream>
-using std::cout;
-using std::endl;
-
-#include "StrBlob.h"
 
 int main()
 {
   const StrBlob b1 = {"a", "an", "the"};
   StrBlob b2 = {"Hello", "World", "!"};
 
-  cout << b1.front() << " " << b1.back() << endl;
+  std::cout << b1.front() << " " << b1.back() << std::endl;
   b2.back() = "!!!";
-  cout << b2.front() << " " << b2.back() << endl;
+  std::cout << b2.front() << " " << b2.back() << std::endl;
 
   return 0;
-}
-#+END_SRC
-** Exercise 12.3
-#+BEGIN_QUOTE
-Does this class need ~const~ versions of ~push_back~ and ~pop_back~? If so, add
-them. If not, why aren’t they needed?
-#+END_QUOTE
+}   
+   #+END_SRC
 
-No. "You can certainly do this if you want to, but there doesn't seem to be any
-logical reason. The compiler doesn't complain because this doesn't modify ~data~
-(which is a pointer) but rather the thing ~data~ points to, which is perfectly
-legal to do with a ~const~ pointer."
+** Exercise 12.3
+   #+BEGIN_QUOTE
+   Does this class need ~const~ versions of ~push_back~ and ~pop_back~? If so,
+   add them. If not, why aren’t they needed?
+   #+END_QUOTE
+
+   No. "You can certainly do this if you want to, but there doesn't seem to be
+   any logical reason. The compiler doesn't complain because this doesn't modify
+   ~data~ (which is a pointer) but rather the thing ~data~ points to, which is
+   perfectly legal to do with a ~const~ pointer."
 
 ** Exercise 12.4
-#+BEGIN_QUOTE
-In our ~check~ function we didn’t check whether ~i~ was greater than zero. Why
-is it okay to omit that check?
-#+END_QUOTE
-Because the type of ~i~ is ~std::vector<std::string>::size_type~ which is an
-~unsigned~, and it will ensure ~i~ is a positive number or 0.
+   #+BEGIN_QUOTE
+   In our ~check~ function we didn’t check whether ~i~ was greater than
+   zero. Why is it okay to omit that check?
+   #+END_QUOTE
+
+   Because the type of ~i~ is ~std::vector<std::string>::size_type~ which is an
+   ~unsigned~, and it will ensure ~i~ is a positive number or 0.
+
+** Exercise 12.5
+   #+BEGIN_QUOTE
+   We did not make the constructor that takes an ~initializer_list~ ~explicit~
+   (§ 7.5.4, p. 296). Discuss the pros and cons of this design choice.
+   #+END_QUOTE
+   
+   If we make the constructor ~explicit~, then program will prevents automatic
+   conversion from an ~initializer_list~ to ~StrBlob~ which makes it easy to
+   debug but hard to use.
+
 * Exercises Section 12.1.2
 ** Exercise 12.6
 #+BEGIN_QUOTE
