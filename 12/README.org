@@ -323,6 +323,12 @@ auto sp = make_shared<int>();
    + (d) ~process(shared_ptr<int>(p));~
    #+END_QUOTE
 
+   + (a) legal. copying ~sp~ increments its count; in process the reference
+     count is 2.
+   + (b) illegal. cannot convert ~int *~ to ~shared_ptr<int>~.
+   + (c) illegal. cannot convert ~int *~ to ~shared_ptr<int>~.
+   + (d) legal, but the memory will be deleted!
+
 ** Exercise 12.13
    #+BEGIN_QUOTE
    What happens if we execute the following code?
@@ -332,3 +338,7 @@ auto sp = make_shared<int>();
 auto p = sp.get();
 delete p;   
    #+END_SRC
+
+   In this case, both ~sp~ and ~p~ point to the same memory. Destroying ~p~
+   frees the memory to which ~p~ points. When ~sp~ is also destroyed, the
+   pointer to that memory will be deleted a second time.
