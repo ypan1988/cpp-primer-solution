@@ -380,5 +380,3 @@ void f(destination &d) {
   // when f exits, even if by an exception, the connection will be properly closed
 }   
    #+END_SRC
-
-
