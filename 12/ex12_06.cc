@@ -11,7 +11,7 @@ vector<int>* factory()
   return new vector<int>{};
 }
 
-vector<int>* read_factory(vector<int>* vec)
+vector<int>* read_factory(vector<int> *vec)
 {
   int value;
   while (cin >> value) {
@@ -21,7 +21,7 @@ vector<int>* read_factory(vector<int>* vec)
   return vec;
 }
 
-void print_factory(vector<int>* vec)
+void print_factory(vector<int> *vec)
 {
   for (auto i : *vec)
     cout << i << endl;

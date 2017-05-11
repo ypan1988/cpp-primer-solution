@@ -145,14 +145,15 @@ int main()
 
 * Exercises Section 12.1.2
 ** Exercise 12.6
-#+BEGIN_QUOTE
-Write a function that returns a dynamically allocated ~vector~ of ~int~s. Pass
-that ~vector~ to another function that reads the standard input to give values
-to the elements. Pass the ~vector~ to another function to print the values that
-were read. Remember to ~delete~ the ~vector~ at the appropriate time.
-#+END_QUOTE
+   #+BEGIN_QUOTE
+   Write a function that returns a dynamically allocated ~vector~ of
+   ~int~s. Pass that ~vector~ to another function that reads the standard input
+   to give values to the elements. Pass the ~vector~ to another function to
+   print the values that were read. Remember to ~delete~ the ~vector~ at the
+   appropriate time.
+   #+END_QUOTE
 
-#+BEGIN_SRC C++
+   #+BEGIN_SRC C++
 #include <iostream>
 using std::cin;
 using std::cout;
@@ -166,7 +167,7 @@ vector<int>* factory()
   return new vector<int>{};
 }
 
-vector<int>* read_factory(vector<int>* vec)
+vector<int>* read_factory(vector<int> *vec)
 {
   int value;
   while (cin >> value) {
@@ -176,7 +177,7 @@ vector<int>* read_factory(vector<int>* vec)
   return vec;
 }
 
-void print_factory(vector<int>* vec)
+void print_factory(vector<int> *vec)
 {
   for (auto i : *vec)
     cout << i << endl;
@@ -189,15 +190,15 @@ int main()
   delete vec;
 
   return 0;
-}
-#+END_SRC
+}   
+   #+END_SRC
 
 ** Exercise 12.7
-#+BEGIN_QUOTE
-Redo the previous exercise, this time using ~shared_ptr~.
-#+END_QUOTE
+   #+BEGIN_QUOTE
+   Redo the previous exercise, this time using ~shared_ptr~.
+   #+END_QUOTE
 
-#+BEGIN_SRC C++
+   #+BEGIN_SRC C++
 #include <iostream>
 using std::cin;
 using std::cout;
@@ -237,24 +238,47 @@ int main()
   print_factory(vec);
 
   return 0;
-}
-#+END_SRC
-** Exercise 12.8
-#+BEGIN_QUOTE
-Explain what if anything is wrong with the following function.
-#+END_QUOTE
+}   
+   #+END_SRC
 
-#+BEGIN_SRC C++
+** Exercise 12.8
+   #+BEGIN_QUOTE
+   Explain what if anything is wrong with the following function.
+   #+END_QUOTE
+   #+BEGIN_SRC C++
 bool b() {
     int* p = new int;
     // ...
     return p;
-}
-#+END_SRC
+}   
+   #+END_SRC
 
-In this question, ~p~ was the only pointer to the memory allocated. Once
-function ~b~ returns, ~p~ will be converted to a ~bool~ and the program has no
-way to free that memory. As a result, "memory leak" will occur.
+   In this question, ~p~ was the only pointer to the memory allocated. Once
+   function ~b~ returns, ~p~ will be converted to a ~bool~ and the program has
+   no way to free that memory. As a result, "memory leak" will occur.
+
+}
+ 
+** Exercise 12.9
+   #+BEGIN_QUOTE
+   Explain what happens in the following code:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+int *q = new int(42), *r = new int(100);
+r = q;
+auto q2 = make_shared<int>(42),
+r2 = make_shared<int>(100);
+r2 = q2;   
+   #+END_SRC
+
+   After ~r = q;~ , both ~r~ and ~q~ will points to the same memory and the
+   program has no way to free the memory to which ~r~ originally points which
+   result in memory leak.
+
+   ~r2 = q2;~ assign ~q2~ to ~r2~, increase the use count for the object to
+   which ~q2~ points, and reduce the use count of the object to which ~r2~ had
+   pointed. Now the object ~r2~ had pointed to has no users, and that object is
+   automatically freed.
 
 * Exercises Section 12.1.3
 ** Exercise 12.10
