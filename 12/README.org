@@ -272,8 +272,8 @@ r2 = q2;
    #+END_SRC
 
    After ~r = q;~ , both ~r~ and ~q~ will points to the same memory and the
-   program has no way to free the memory to which ~r~ originally points which
-   result in memory leak.
+   program has no way to free the memory to which ~r~ had pointed (result in
+   memory leak).
 
    ~r2 = q2;~ assign ~q2~ to ~r2~, increase the use count for the object to
    which ~q2~ points, and reduce the use count of the object to which ~r2~ had
