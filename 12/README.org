@@ -432,5 +432,8 @@ typedef unique_ptr<int> IntP;
 
 ** Exercise 12.18 
    #+BEGIN_QUOTE
-   Why doesn’t shared_ptr have a release member?
+   Why doesn’t ~shared_ptr~ have a ~release~ member?
    #+END_QUOTE
+   
+   ~shared_ptr~ cannot give away ownership unless it's unique() because the
+   other copy will still destroy the object.
