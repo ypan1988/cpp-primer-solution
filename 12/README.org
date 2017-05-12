@@ -418,14 +418,18 @@ int ix = 1024, *pi = &ix, *pi2 = new int(2048);
 typedef unique_ptr<int> IntP;   
    #+END_SRC
    #+BEGIN_QUOTE
-   + (a) IntP p0(ix);
-   + (b) IntP p1(pi);
-   + (c) IntP p2(pi2);
-   + (d) IntP p3(&ix); 
-   + (e) IntP p4(new int(2048));
-   + (f) IntP p5(p2.get());
+   + (a) ~IntP p0(ix);~
+   + (b) ~IntP p1(pi);~
+   + (c) ~IntP p2(pi2);~
+   + (d) ~IntP p3(&ix);~ 
+   + (e) ~IntP p4(new int(2048));~
+   + (f) ~IntP p5(p2.get());~
    #+END_QUOTE
  
+   When we define a ~unique_ptr~, we bind it to a pointer returned by ~new~. As
+   with ~shared_ptr~ s, we must use the direct form of initialization. Only (d)
+   and (e) will be illegal.
+
 ** Exercise 12.18 
    #+BEGIN_QUOTE
    Why doesn’t shared_ptr have a release member?
