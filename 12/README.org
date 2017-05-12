@@ -380,3 +380,53 @@ void f(destination &d) {
   // when f exits, even if by an exception, the connection will be properly closed
 }   
    #+END_SRC
+
+* Exercises Section 12.1.5
+** Exercise 12.16
+   #+BEGIN_QUOTE
+   Compilers don’t always give easy-to-understand error messages if we attempt
+   to copy or assign a ~unique_ptr~. Write a program that contains these errors
+   to see how your compiler diagnoses them.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <string>
+using std::string;
+
+#include <memory>
+using std::unique_ptr;
+
+int main()
+{   
+  unique_ptr<string> p1(new string("Stegosaurus"));
+  //unique_ptr<string> p2(p1); // error: no copy for unique_ptr
+  unique_ptr<string> p3;
+  //p3 = p2; // error: no assign for unique_ptr
+ 
+  return 0;
+}   
+   #+END_SRC
+
+** Exercise 12.17
+   #+BEGIN_QUOTE
+   Which of the following unique_ptr declarations are illegal or likely to
+   result in subsequent program error? Explain what the problem is with each
+   one.
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+int ix = 1024, *pi = &ix, *pi2 = new int(2048);
+typedef unique_ptr<int> IntP;   
+   #+END_SRC
+   #+BEGIN_QUOTE
+   + (a) IntP p0(ix);
+   + (b) IntP p1(pi);
+   + (c) IntP p2(pi2);
+   + (d) IntP p3(&ix); 
+   + (e) IntP p4(new int(2048));
+   + (f) IntP p5(p2.get());
+   #+END_QUOTE
+ 
+** Exercise 12.18 
+   #+BEGIN_QUOTE
+   Why doesn’t shared_ptr have a release member?
+   #+END_QUOTE
