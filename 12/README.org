@@ -1004,6 +1004,27 @@ int main()
    is longer than the array size you’ve allocated.
    #+END_QUOTE
  
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cin; using std::cout; using std::endl;
+
+int main()
+{
+  int size;
+  cout << "Input your string length: ";
+  cin >> size;
+
+  char *str = new char[size+1]();
+  cout << "Input your string: ";
+  cin >> str;
+
+  cout << str << endl;
+  delete [] str;
+
+  return 0;
+}   
+   #+END_SRC
+
 ** Exercise 12.25
    #+BEGIN_QUOTE
    Given the following new expression, how would you delete pa?
