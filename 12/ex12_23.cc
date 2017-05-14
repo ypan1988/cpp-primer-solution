@@ -10,10 +10,13 @@ int main()
 {
   string s1 = "hello ";
   string s2 = "world!";
+
   char *c = new char[s1.size() + s2.size() + 1];
   strcat(c, s1.c_str());
   strcat(c, s2.c_str());
   cout << c << endl;
+  delete [] c;
+
   cout << s1 + s2 << endl;
 
   return 0;

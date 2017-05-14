@@ -983,22 +983,25 @@ int main()
 {
   string s1 = "hello ";
   string s2 = "world!";
+
   char *c = new char[s1.size() + s2.size() + 1];
   strcat(c, s1.c_str());
   strcat(c, s2.c_str());
   cout << c << endl;
+  delete [] c;
+
   cout << s1 + s2 << endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 12.24
    #+BEGIN_QUOTE
-   Write a program that reads a string from the standard input n into a
+   Write a program that reads a ~string~ from the standard input into a
    dynamically allocated character array. Describe how your program handles
-   varying size inputs. Test your program by giving it a string of data that is
-   longer than the array size you’ve allocated.
+   varying size inputs. Test your program by giving it a ~string~ of data that
+   is longer than the array size you’ve allocated.
    #+END_QUOTE
  
 ** Exercise 12.25
