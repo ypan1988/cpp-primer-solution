@@ -792,6 +792,8 @@ std::string& deref() const
    Which version do you think is better and why?
    #+END_QUOTE
 
+   The original one is better, because the code is more readable.
+
 ** Exercise 12.22
    #+BEGIN_QUOTE
    What changes would need to be made to StrBlobPtr to create a class that can
