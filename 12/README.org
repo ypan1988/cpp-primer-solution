@@ -9,7 +9,7 @@ StrBlob b1;
     StrBlob b2 = {"a", "an", "the"};
     b1 = b2;
     b2.push_back("about");
-}   
+}
    #+END_SRC
 
 At the end of this code, ~b1~ has four elements and ~b2~ has been destroyed.
@@ -47,7 +47,7 @@ public:
   // element access
   std::string& front();
   std::string& back();
-    
+
   const std::string& front() const;
   const std::string& back() const;
 
@@ -110,7 +110,7 @@ int main()
   std::cout << b2.front() << " " << b2.back() << std::endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 12.3
@@ -138,7 +138,7 @@ int main()
    We did not make the constructor that takes an ~initializer_list~ ~explicit~
    (§ 7.5.4, p. 296). Discuss the pros and cons of this design choice.
    #+END_QUOTE
-   
+
    If we make the constructor ~explicit~, then program will prevents automatic
    conversion from an ~initializer_list~ to ~StrBlob~ which makes it easy to
    debug but hard to use.
@@ -190,7 +190,7 @@ int main()
   delete vec;
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 12.7
@@ -238,7 +238,7 @@ int main()
   print_factory(vec);
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 12.8
@@ -250,7 +250,7 @@ bool b() {
     int* p = new int;
     // ...
     return p;
-}   
+}
    #+END_SRC
 
    In this question, ~p~ was the only pointer to the memory allocated. Once
@@ -258,7 +258,7 @@ bool b() {
    no way to free that memory. As a result, "memory leak" will occur.
 
 }
- 
+
 ** Exercise 12.9
    #+BEGIN_QUOTE
    Explain what happens in the following code:
@@ -268,7 +268,7 @@ int *q = new int(42), *r = new int(100);
 r = q;
 auto q2 = make_shared<int>(42),
 r2 = make_shared<int>(100);
-r2 = q2;   
+r2 = q2;
    #+END_SRC
 
    After ~r = q;~ , both ~r~ and ~q~ will points to the same memory and the
@@ -288,7 +288,7 @@ r2 = q2;
    #+END_QUOTE
    #+BEGIN_SRC C++
 shared_ptr<int> p(new int(42));
-process(shared_ptr<int>(p));   
+process(shared_ptr<int>(p));
    #+END_SRC
 
    Correct.
@@ -298,7 +298,7 @@ process(shared_ptr<int>(p));
    What would happen if we called ~process~ as follows?
    #+END_QUOTE
    #+BEGIN_SRC C++
-process(shared_ptr<int>(p.get()));   
+process(shared_ptr<int>(p.get()));
    #+END_SRC
 
    In this call, we passed a temporary ~shared_ptr~ to ~process~. That temporary
@@ -314,7 +314,7 @@ process(shared_ptr<int>(p.get()));
    #+END_QUOTE
    #+BEGIN_SRC C++
 auto p = new int();
-auto sp = make_shared<int>();   
+auto sp = make_shared<int>();
    #+END_SRC
    #+BEGIN_QUOTE
    + (a) ~process(sp);~
@@ -336,7 +336,7 @@ auto sp = make_shared<int>();
    #+BEGIN_SRC C++
 auto sp = make_shared<int>();
 auto p = sp.get();
-delete p;   
+delete p;
    #+END_SRC
 
    In this case, both ~sp~ and ~p~ point to the same memory. Destroying ~p~
@@ -360,7 +360,7 @@ void f(destination &d) {
   shared_ptr<connection> c(&d, end_connection);
   // use the connection
   // when f exits, even if by an exception, the connection will be properly closed
-}   
+}
    #+END_SRC
 
 ** Exercise 12.15
@@ -378,7 +378,7 @@ void f(destination &d) {
   shared_ptr<connection> c(&d, [](connnection *c) { disconnect(*c); });
   // use the connection
   // when f exits, even if by an exception, the connection will be properly closed
-}   
+}
    #+END_SRC
 
 * Exercises Section 12.1.5
@@ -397,14 +397,14 @@ using std::string;
 using std::unique_ptr;
 
 int main()
-{   
+{
   unique_ptr<string> p1(new string("Stegosaurus"));
   //unique_ptr<string> p2(p1); // error: no copy for unique_ptr
   unique_ptr<string> p3;
   //p3 = p2; // error: no assign for unique_ptr
- 
+
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 12.17
@@ -415,25 +415,222 @@ int main()
    #+END_QUOTE
    #+BEGIN_SRC C++
 int ix = 1024, *pi = &ix, *pi2 = new int(2048);
-typedef unique_ptr<int> IntP;   
+typedef unique_ptr<int> IntP;
    #+END_SRC
    #+BEGIN_QUOTE
    + (a) ~IntP p0(ix);~
    + (b) ~IntP p1(pi);~
    + (c) ~IntP p2(pi2);~
-   + (d) ~IntP p3(&ix);~ 
+   + (d) ~IntP p3(&ix);~
    + (e) ~IntP p4(new int(2048));~
    + (f) ~IntP p5(p2.get());~
    #+END_QUOTE
- 
+
    When we define a ~unique_ptr~, we bind it to a pointer returned by ~new~. As
    with ~shared_ptr~ s, we must use the direct form of initialization. Only (d)
    and (e) will be illegal.
 
-** Exercise 12.18 
+** Exercise 12.18
    #+BEGIN_QUOTE
    Why doesn’t ~shared_ptr~ have a ~release~ member?
    #+END_QUOTE
-   
+
    ~shared_ptr~ cannot give away ownership unless it's unique() because the
    other copy will still destroy the object.
+
+* Exercises Section 12.1.6
+** Exercise 12.19
+   #+BEGIN_QUOTE
+   Define your own version of ~StrBlobPtr~ and update your ~StrBlob~ class with
+   the appropriate ~friend~ declaration and ~begin~ and ~end~ members.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+#include <vector>
+#include <string>
+#include <initializer_list>
+#include <memory>
+#include <stdexcept>
+
+// forward declaration needed for friend declaration in StrBlob
+class StrBlobPtr;
+
+class StrBlob {
+  friend class StrBlobPtr;
+ public:
+  typedef std::vector<std::string>::size_type size_type;
+
+  // constructors
+  StrBlob();
+  StrBlob(std::initializer_list<std::string> il);
+
+  // size operation
+  size_type size() const { return data->size(); }
+  bool empty() const { return data->empty(); }
+
+  // add and remove elements
+  void push_back(const std::string &t) { data->push_back(t); }
+  void pop_back();
+
+  // element access
+  std::string& front();
+  std::string& back();
+
+  // interface to StrBlobPtr
+  StrBlobPtr begin();
+  StrBlobPtr end();
+
+ private:
+  std::shared_ptr<std::vector<std::string>> data;
+  // throws msg if data[i] isn't valid
+  void check(size_type i, const std::string &msg) const;
+};
+
+StrBlob::StrBlob(): data(std::make_shared<std::vector<std::string>>()) { }
+StrBlob::StrBlob(std::initializer_list<std::string> il):
+data(std::make_shared<std::vector<std::string>>(il)) { };
+
+void StrBlob::check(size_type i, const std::string &msg) const
+{
+  if (i >= data->size())
+    throw std::out_of_range(msg);
+}
+
+std::string& StrBlob::front()
+{
+  // if the vector is empty, check will throw
+  check(0, "front on empty StrBlob");
+  return data->front();
+}
+
+std::string& StrBlob::back()
+{
+  check(0, "back on empty StrBlob");
+  return data->back();
+}
+
+void StrBlob::pop_back()
+{
+  check(0, "pop_back on empty StrBlob");
+  data->pop_back();
+}
+
+// StrBlobPtr throws an exception on attempts to access a nonexistent element
+class StrBlobPtr {
+  friend bool eq(const StrBlobPtr &, const StrBlobPtr &);
+ public:
+ StrBlobPtr(): curr(0) { }
+ StrBlobPtr(StrBlob &a, size_t sz = 0): wptr(a.data), curr(sz) { }
+
+  std::string& deref() const;
+  StrBlobPtr& incr();		// prefix version
+
+ private:
+  // check returns a shared_ptr to the vector if the check succeeds
+  std::shared_ptr<std::vector<std::string>>
+    check(std::size_t, const std::string &) const;
+
+  // store a weak_ptr, which means the underlying vector might be destroyed
+  std::weak_ptr<std::vector<std::string>> wptr;
+  std::size_t curr;		// current position within the array
+};
+
+std::shared_ptr<std::vector<std::string>>
+StrBlobPtr::check(std::size_t i, const std::string &msg)
+const
+{
+  auto ret = wptr.lock();	// is the vector still around
+  if (!ret)
+    throw std::runtime_error("unbound StrBlobPtr");
+
+  if (i >= ret->size())
+    throw std::out_of_range(msg);
+
+  return ret;			// otherwise, return a shared_ptr to the vector
+}
+
+std::string& StrBlobPtr::deref() const
+{
+  auto p = check(curr, "dereference past end");
+  return (*p)[curr];		// (*p) is the vector to which this object points
+}
+
+// prefix: return a reference to the incremented object
+StrBlobPtr& StrBlobPtr::incr()
+{
+  // if curr already points past the end of the container, can't increment it
+  check(curr, "increment past end of StrBlobPtr");
+  ++curr;			// advance the current state
+  return *this;
+}
+
+StrBlobPtr
+StrBlob::begin() { return StrBlobPtr(*this); }
+
+StrBlobPtr
+StrBlob::end() {
+  auto ret = StrBlobPtr(*this, data->size());
+  return ret;
+}
+
+// named equality operators for StrBlobPtr
+bool eq(const StrBlobPtr &lhs, const StrBlobPtr &rhs)
+{
+	auto l = lhs.wptr.lock(), r = rhs.wptr.lock();
+	// if the underlying vector is the same
+	if (l == r)
+		// then they're equal if they're both null or
+		// if they point to the same element
+		return (!r || lhs.curr == rhs.curr);
+	else
+		return false; // if they point to difference vectors, they're not equal
+}
+
+bool neq(const StrBlobPtr &lhs, const StrBlobPtr &rhs)
+{
+	return !eq(lhs, rhs);
+}
+
+int main()
+{
+	StrBlob b1;
+	{
+    StrBlob b2 = { "a", "an", "the" };
+    b1 = b2;
+    b2.push_back("about");
+    std::cout << b2.size() << std::endl;
+	}
+	std::cout << b1.size() << std::endl;
+
+	for (auto it = b1.begin(); neq(it, b1.end()); it.incr())
+		std::cout << it.deref() << std::endl;
+
+	return 0;
+}
+   #+END_SRC
+
+** Exercise 12.20
+   #+BEGIN_QUOTE
+   Write a program that reads an input file a line at a time into a StrBlob and
+   uses a StrBlobPtr to print each element in that StrBlob.
+   #+END_QUOTE
+
+** Exercise 12.21
+   #+BEGIN_QUOTE
+   We could have written StrBlobPtr’s deref member as follows:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+std::string& deref() const
+{ return (*check(curr, "dereference past end"))[curr]; }
+   #+END_SRC
+   #+BEGIN_QUOTE
+   Which version do you think is better and why?
+   #+END_QUOTE
+
+** Exercise 12.22
+   #+BEGIN_QUOTE
+   What changes would need to be made to StrBlobPtr to create a class that can
+   be used with a const StrBlob? Define a class named ConstStrBlobPtr that can
+   point to a const StrBlob.
+   #+END_QUOTE
