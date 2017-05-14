@@ -10,7 +10,7 @@ class StrBlobPtr;
 
 class StrBlob {
   friend class StrBlobPtr;
- public:
+public:
   typedef std::vector<std::string>::size_type size_type;
 
   // constructors
@@ -33,7 +33,7 @@ class StrBlob {
   StrBlobPtr begin();
   StrBlobPtr end();
 
- private:
+private:
   std::shared_ptr<std::vector<std::string>> data;
   // throws msg if data[i] isn't valid
   void check(size_type i, const std::string &msg) const;
@@ -41,7 +41,7 @@ class StrBlob {
 
 StrBlob::StrBlob(): data(std::make_shared<std::vector<std::string>>()) { }
 StrBlob::StrBlob(std::initializer_list<std::string> il):
-data(std::make_shared<std::vector<std::string>>(il)) { };
+  data(std::make_shared<std::vector<std::string>>(il)) { };
 
 void StrBlob::check(size_type i, const std::string &msg) const
 {
@@ -71,17 +71,17 @@ void StrBlob::pop_back()
 // StrBlobPtr throws an exception on attempts to access a nonexistent element
 class StrBlobPtr {
   friend bool eq(const StrBlobPtr &, const StrBlobPtr &);
- public:
- StrBlobPtr(): curr(0) { }
- StrBlobPtr(StrBlob &a, size_t sz = 0): wptr(a.data), curr(sz) { }
+public:
+  StrBlobPtr(): curr(0) { }
+  StrBlobPtr(StrBlob &a, size_t sz = 0): wptr(a.data), curr(sz) { }
 
   std::string& deref() const;
   StrBlobPtr& incr();		// prefix version
 
- private:
+private:
   // check returns a shared_ptr to the vector if the check succeeds
   std::shared_ptr<std::vector<std::string>>
-    check(std::size_t, const std::string &) const;
+  check(std::size_t, const std::string &) const;
 
   // store a weak_ptr, which means the underlying vector might be destroyed
   std::weak_ptr<std::vector<std::string>> wptr;
@@ -90,7 +90,7 @@ class StrBlobPtr {
 
 std::shared_ptr<std::vector<std::string>>
 StrBlobPtr::check(std::size_t i, const std::string &msg)
-const
+  const
 {
   auto ret = wptr.lock();	// is the vector still around
   if (!ret)
