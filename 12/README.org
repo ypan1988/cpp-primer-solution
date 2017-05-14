@@ -960,3 +960,52 @@ int main()
 	return 0;
 }
    #+END_SRC
+
+* Exercises Section 12.2.1
+** Exercise 12.23
+   #+BEGIN_QUOTE
+   Write a program to concatenate two string literals, putting the result in a
+   dynamically allocated array of ~char~. Write a program to concatenate two
+   library ~string~ s that have the same value as the literals used in the first
+   program.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <cstring>
+
+int main()
+{
+  string s1 = "hello ";
+  string s2 = "world!";
+  char *c = new char[s1.size() + s2.size() + 1];
+  strcat(c, s1.c_str());
+  strcat(c, s2.c_str());
+  cout << c << endl;
+  cout << s1 + s2 << endl;
+
+  return 0;
+}   
+   #+END_SRC
+
+** Exercise 12.24
+   #+BEGIN_QUOTE
+   Write a program that reads a string from the standard input n into a
+   dynamically allocated character array. Describe how your program handles
+   varying size inputs. Test your program by giving it a string of data that is
+   longer than the array size you’ve allocated.
+   #+END_QUOTE
+ 
+** Exercise 12.25
+   #+BEGIN_QUOTE
+   Given the following new expression, how would you delete pa?
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+int *pa = new int[10];   
+   #+END_SRC
+ 
