@@ -1073,3 +1073,154 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 12.3.1
+** Exercise 12.27
+   #+BEGIN_QUOTE
+   The ~TextQuery~ and ~QueryResult~ classes use only capabilities that we have
+   already covered. Without looking ahead, write your own versions of these
+   classes.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+class QueryResult {
+  friend std::ostream& print(std::ostream&, const QueryResult&);
+ public:
+  typedef std::vector<std::string>::size_type line_no;
+  typedef std::set<line_no>::const_iterator line_it;
+ QueryResult(std::string s,
+	     std::shared_ptr<std::set<line_no>> p,
+	     std::shared_ptr<std::vector<std::string>> f):
+  sought(s), lines(p), file(f) { }
+
+  std::set<line_no>::size_type size() const { return lines->size(); }
+  line_it begin() const { return lines->cbegin(); }
+  line_it end() const { return lines->cend(); }
+
+  std::shared_ptr<std::vector<std::string>> get_file() { return file; }
+ private:
+  std::string sought;		// word this query represents
+  std::shared_ptr<std::set<line_no>> lines; // lines it's on
+  std::shared_ptr<std::vector<std::string>> file; // input file
+};
+
+class TextQuery {
+ public:
+  using line_no = std::vector<std::string>::size_type;
+  TextQuery(std::ifstream&);
+  QueryResult query(const std::string&) const;
+  void display_map();		// debugging aid: print the map
+ private:
+  std::shared_ptr<std::vector<std::string>> file; // input file
+  // map each word to the set of the lines in which that word appears
+  std::map<std::string,
+    std::shared_ptr<std::set<line_no>>> wm;
+
+  // canonicalizes text: removes punctuation and makes everything lower case
+  static std::string cleanup_str(const std::string&);
+};   
+
+// read the input file and build the map of lines to line numbers
+TextQuery::TextQuery(ifstream &is): file(new vector<string>)
+{
+  string text;
+  while (getline(is, text)) {   // for each line in the file
+    file->push_back(text);      // remember this line of text
+    int n = file->size() - 1;   // the current line number
+    istringstream line(text);   // separate the line into words
+    string word;
+    while (line >> word) {      // for each word in that line
+      word = cleanup_str(word);
+      // if word isn't already in wm, subscripting adds a new entry
+      auto &lines = wm[word];   // lines is a shared_ptr
+      if (!lines)               // that pointer is null the first time we see word
+        lines.reset(new set<line_no>); // allocate a new set
+      lines->insert(n);                // insert this line number
+    }
+  }
+}
+
+// not covered in the book -- cleanup_str removes
+// punctuation and converts all text to lowercase so that
+// the queries operate in a case insensitive manner
+string TextQuery::cleanup_str(const string &word)
+{
+  string ret;
+  for (auto it = word.begin(); it != word.end(); ++it) {
+    if (!ispunct(*it))
+      ret += tolower(*it);
+  }
+  return ret;
+}
+
+QueryResult
+TextQuery::query(const string &sought) const
+{
+  // we'll return a pointer to this set if we don't find sought
+  static shared_ptr<set<line_no>> nodata(new set<line_no>);
+
+  // use find and not a subscript to avoid adding words to wm!
+  auto loc = wm.find(cleanup_str(sought));
+  if (loc == wm.end())
+    return QueryResult(sought, nodata, file); // not found
+  else
+    return QueryResult(sought, loc->second, file);
+}
+
+ostream &print(ostream &os, const QueryResult &qr)
+{
+  // if the word was found, print the count and all occurrences
+  os << qr.sought << " occurs " << qr.lines->size() << " "
+     << (qr.lines->size() ? "time" : "times") << endl;
+
+  // print each line in which the word appeared
+  for (auto num : *qr.lines)	// for every element in the set
+    // don't confound the user with text lines starting at 0
+    os << "\t(line " << num + 1 << ") "
+       << *(qr.file->begin() + num) << endl;
+
+  return os;
+}
+
+// debugging routine, not covered in the book
+void TextQuery::display_map()
+{
+  auto iter = wm.cbegin(), iter_end = wm.cend();
+
+  // for each word in the map
+  for ( ; iter != iter_end; ++iter) {
+    cout << "word: " << iter->first << " {";
+
+    // fetch location vector as a const reference to avoid copying it
+    auto text_locs = iter->second;
+    auto loc_iter = text_locs->cbegin(),
+      loc_iter_end = text_locs->cend();
+
+    // print all line numbers for this word
+    while (loc_iter != loc_iter_end) {
+      cout << *loc_iter;
+
+      if (++loc_iter != loc_iter_end)
+	cout << ", ";
+    }
+
+    cout << "}\n";		// end list of output this word
+  }
+  cout << endl;			// finished printing entire map
+}
+   #+END_SRC
+
+** Exercise 12.28
+   #+BEGIN_QUOTE
+   Write a program to implement text queries without defining classes to manage
+   the data. Your program should take a file and interact with a user to query
+   for words in that file. Use vector, map, and set containers to hold the data
+   for the file and to generate the results for the queries.
+   #+END_QUOTE
+
+** Exercise 12.29
+   #+BEGIN_QUOTE
+   We could have written the loop to manage the interaction with the user as a
+   do while (§ 5.4.4, p. 189) loop. Rewrite the loop to use a do while. Explain
+   which version you prefer and why.
+   #+END_QUOTE
