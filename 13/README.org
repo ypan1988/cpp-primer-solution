@@ -85,3 +85,30 @@ class HasPtr {
 HasPtr::HasPtr(const HasPtr &orig): 
   ps(new std::string(*orig.ps)), i(orig.i) { }   
    #+END_SRC
+
+* Exercises Section 13.1.2
+** Exercise 13.6
+   #+BEGIN_QUOTE
+   What is a copy-assignment operator? When is this operator used? What does the
+   synthesized copy-assignment operator do? When is it synthesized?
+   #+END_QUOTE
+
+   copy-assignment operator: Version of the assignment operator that takes an
+   object of the same type as its type. Ordinarily, the copy-assignment operator
+   has a parameter that is a reference to const and returns a reference to its
+   object. The compiler synthesizes the copy-assignment operator if the class
+   does not explicitly provide one.
+
+** Exercise 13.7
+   #+BEGIN_QUOTE
+   What happens when we assign one StrBlob to another?
+   What about StrBlobPtrs?
+   #+END_QUOTE
+ 
+** Exercise 13.8
+   #+BEGIN_QUOTE
+   Write the assignment operator for the HasPtr class from exercise 13.5 in §
+   13.1.1 (p. 499). As with the copy constructor, your assignment operator
+   should copy the object to which ps points.
+   #+END_QUOTE
+ 
