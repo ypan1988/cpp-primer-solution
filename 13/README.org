@@ -101,9 +101,21 @@ HasPtr::HasPtr(const HasPtr &orig):
 
 ** Exercise 13.7
    #+BEGIN_QUOTE
-   What happens when we assign one StrBlob to another?
-   What about StrBlobPtrs?
+   What happens when we assign one ~StrBlob~ to another?  What about
+   ~StrBlobPtrs~?
    #+END_QUOTE
+    
+   Just as it does for the copy constructor, the compiler generates a
+   synthesized copy- assignment operator for a class if the class does not
+   define its own. Analogously to the copy constructor, for some classes the
+   synthesized copy-assignment operator disallows assignment (§ 13.1.6,
+   p. 508). Otherwise, it assigns each nonstatic member of the right-hand object
+   to the corresponding member of the left-hand object using the copy-assignment
+   operator for the type of that member. Array members are assigned by assigning
+   each element of the array. The synthesized copy-assignment operator returns a
+   reference to its left-hand object.  As an example, the following is
+   equivalent to the synthesized copy-
+
  
 ** Exercise 13.8
    #+BEGIN_QUOTE
