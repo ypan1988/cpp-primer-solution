@@ -115,12 +115,23 @@ HasPtr::HasPtr(const HasPtr &orig):
    each element of the array. The synthesized copy-assignment operator returns a
    reference to its left-hand object.  As an example, the following is
    equivalent to the synthesized copy-
-
  
 ** Exercise 13.8
    #+BEGIN_QUOTE
-   Write the assignment operator for the HasPtr class from exercise 13.5 in §
+   Write the assignment operator for the ~HasPtr~ class from exercise 13.5 in §
    13.1.1 (p. 499). As with the copy constructor, your assignment operator
-   should copy the object to which ps points.
+   should copy the object to which ~ps~ points.
    #+END_QUOTE
  
+   #+BEGIN_SRC C++
+HasPtr&
+HasPtr::operator=(const HasPtr &orig) {
+  if(this != &orig) {
+    std::string *ps_tmp = new std::string(*orig.ps);
+    delete ps;
+    ps = ps_tmp;
+    i = orig.i;
+  }
+  return *this;
+}   
+   #+END_SRC
