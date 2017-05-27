@@ -422,8 +422,10 @@ int Employee::unique_identifier_ = 0;
 ** Exercise 13.20
    #+BEGIN_QUOTE
    Explain what happens when we copy, assign, or destroy objects of our
-   TextQuery and QueryResult classes from § 12.3 (p. 484).
+   ~TextQuery~ and ~QueryResult~ classes from § 12.3 (p. 484).
    #+END_QUOTE
+
+   The synthesized version will take care of the process.
 
 ** Exercise 13.21
    #+BEGIN_QUOTE
