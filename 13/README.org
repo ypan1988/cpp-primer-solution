@@ -239,3 +239,46 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 13.1.4
+** Exercise 13.14
+   #+BEGIN_QUOTE
+   Assume that ~numbered~ is a class with a default constructor that generates a
+   unique serial number for each object, which is stored in a data member named
+   ~mysn~. Assuming ~numbered~ uses the synthesized copy- control members and
+   given the following function:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+void f (numbered s) { cout << s.mysn << endl; }   
+   #+END_SRC
+   #+BEGIN_QUOTE
+   what output does the following code produce?
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+numbered a, b = a, c = b;
+f(a); f(b); f(c);   
+   #+END_SRC
+
+   Three identical serial number.
+
+** Exercise 13.15
+   #+BEGIN_QUOTE
+   Assume numbered has a copy constructor that generates a new serial
+   number. Does that change the output of the calls in the previous exercise? If
+   so, why? What output gets generated?
+   #+END_QUOTE
+
+** Exercise 13.16
+   #+BEGIN_QUOTE
+   What if the parameter in f were const numbered&?  Does that change the
+   output? If so, why? What output gets generated?
+   #+END_QUOTE
+
+** Exercise 13.17
+   #+BEGIN_QUOTE
+   Write versions of numbered and f corresponding to the previous three
+   exercises and check whether you correctly predicted the output.
+   #+END_QUOTE
+
+
+ 
