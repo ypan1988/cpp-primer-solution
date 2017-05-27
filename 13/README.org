@@ -419,7 +419,6 @@ struct Employee {
 int Employee::unique_identifier_ = 0;
    #+END_SRC
 
-
 ** Exercise 13.20
    #+BEGIN_QUOTE
    Explain what happens when we copy, assign, or destroy objects of our
@@ -432,3 +431,33 @@ int Employee::unique_identifier_ = 0;
    versions of the copy-control members? If so, why?  If not, why not? Implement
    whichever copy-control operations you think these classes require.
    #+END_QUOTE
+* Exercises Section 13.2
+** Exercise 13.22
+   #+BEGIN_QUOTE
+   Assume that we want ~HasPtr~ to behave like a value. That is, each object
+   should have its own copy of the string to which the objects point. We’ll show
+   the definitions of the copy-control members in the next section. However, you
+   already know everything you need to know to implement these members. Write
+   the ~HasPtr~ copy constructor and copy-assignment operator before reading on.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+class HasPtr {
+ public:
+  HasPtr(const std::string &s = std::string()):
+    ps(new std::string(s)), i(0) { }
+  // each HasPtr has its own copy of the string to which ps points
+  HasPtr(const HasPtr &p):
+    ps(new std::string(*p.ps)), i(p.i) { }
+  HasPtr& operator=(const HasPtr &rhs) {
+    auto newp = new std::string(*rhs.ps);
+    delete ps;
+    ps = newp;
+    return *this;
+  }
+  ~HasPtr() { delete ps; }
+ private:
+  std::string *ps;
+  int i;
+};
+   #+END_SRC
