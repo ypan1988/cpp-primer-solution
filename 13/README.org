@@ -230,6 +230,8 @@ void f(X x, const X &rx) {
 
 int main()
 {
+  X x1, x2 = x1, x3;
+  x3 = x1;
   X *px = new X;
   std::cout << "before f()" << std::endl;
   f(*px, *px);
@@ -268,14 +270,19 @@ f(a); f(b); f(c);
    so, why? What output gets generated?
    #+END_QUOTE
 
-   Yes, the output will be changed since the copy constructor will generate a
-   new serial number.
+   Yes, the output will be changed with three different serial number since the
+   copy constructor will generate a new serial number when passing the object as
+   the argument to the non-reference parameter.
 
 ** Exercise 13.16
    #+BEGIN_QUOTE
    What if the parameter in ~f~ were ~const numbered&~?  Does that change the
    output? If so, why? What output gets generated?
    #+END_QUOTE
+
+   Yes, the output will be changed with three different serial number since the
+   copy constructor will generate a new serial number when defining the
+   variables using an =.
 
 ** Exercise 13.17
    #+BEGIN_QUOTE
