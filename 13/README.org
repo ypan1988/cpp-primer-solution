@@ -466,3 +466,35 @@ class HasPtr {
   int i;
 };
    #+END_SRC
+
+* Exercises Section 13.2.1
+** Exercise 13.23
+   #+BEGIN_QUOTE
+   Compare the copy-control members that you wrote for the solutions to the
+   previous section’s exercises to the code presented here. Be sure you
+   understand the differences, if any, between your code and ours.
+   #+END_QUOTE
+
+   Okay.
+
+** Exercise 13.24
+   #+BEGIN_QUOTE
+   What would happen if the version of ~HasPtr~ in this section didn’t define a
+   destructor? What if ~HasPtr~ didn’t define the copy constructor?
+   #+END_QUOTE
+   
+** Exercise 13.25
+   #+BEGIN_QUOTE
+   Assume we want to define a version of StrBlob that acts like a value. Also
+   assume that we want to continue to use a shared_ptr so that our StrBlobPtr
+   class can still use a weak_ptr to the vector. Your revised class will need a
+   copy constructor and copy-assignment operator but will not need a
+   destructor. Explain what the copy constructor and copy- assignment operators
+   must do. Explain why the class does not need a destructor.
+   #+END_QUOTE
+
+** Exercise 13.26
+   #+BEGIN_QUOTE
+   Write your own version of the StrBlob class described in the previous
+   exercise.
+   #+END_QUOTE
