@@ -379,6 +379,9 @@ struct Employee {
   Employee(const std::string &name): name_(name) {
     id_ = unique_identifier_;
   }
+
+  int get_id() const { return id_; } 
+
  private:
   std::string name_;
   int id_;
@@ -390,10 +393,32 @@ int Employee::unique_identifier_ = 0;
 
 ** Exercise 13.19
    #+BEGIN_QUOTE
-   Does your Employee class need to define its own versions of the copy-control
-   members? If so, why? If not, why not? Implement whatever copy-control members
-   you think Employee needs.
+   Does your ~Employee~ class need to define its own versions of the
+   copy-control members? If so, why? If not, why not? Implement whatever
+   copy-control members you think ~Employee~ needs.
    #+END_QUOTE
+
+   there is no sensible meaning for these operation.
+   #+BEGIN_SRC C++
+struct Employee {
+  Employee() { id_ = unique_identifier_; }
+  Employee(const std::string &name): name_(name) {
+    id_ = unique_identifier_;
+  }
+  Employee(const Employee &) = delete;
+  Emplyee& operator=(const Employee &) = delete;
+
+  int get_id() const { return id_; } 
+
+ private:
+  std::string name_;
+  int id_;
+  static int unique_identifier_;
+};
+
+int Employee::unique_identifier_ = 0;
+   #+END_SRC
+
 
 ** Exercise 13.20
    #+BEGIN_QUOTE
