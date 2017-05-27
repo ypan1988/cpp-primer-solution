@@ -20,6 +20,8 @@ void f(X x, const X &rx) {
 
 int main()
 {
+  X x1, x2 = x1, x3;
+  x3 = x1;
   X *px = new X;
   std::cout << "before f()" << std::endl;
   f(*px, *px);
