@@ -263,14 +263,17 @@ f(a); f(b); f(c);
 
 ** Exercise 13.15
    #+BEGIN_QUOTE
-   Assume numbered has a copy constructor that generates a new serial
+   Assume ~numbered~ has a copy constructor that generates a new serial
    number. Does that change the output of the calls in the previous exercise? If
    so, why? What output gets generated?
    #+END_QUOTE
 
+   Yes, the output will be changed since the copy constructor will generate a
+   new serial number.
+
 ** Exercise 13.16
    #+BEGIN_QUOTE
-   What if the parameter in f were const numbered&?  Does that change the
+   What if the parameter in ~f~ were ~const numbered&~?  Does that change the
    output? If so, why? What output gets generated?
    #+END_QUOTE
 
