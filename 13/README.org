@@ -812,3 +812,28 @@ int main()
   return 0;
 }   
    #+END_SRC
+* Exercises Section 13.3
+** Exercise 13.29
+   #+BEGIN_QUOTE
+   Explain why the calls to ~swap~ inside ~swap(HasPtr&, HasPtr&)~ do not cause
+   a recursion loop.
+   #+END_QUOTE
+
+** Exercise 13.30
+   #+BEGIN_QUOTE
+   Write and test a ~swap~ function for your valuelike version of ~HasPtr~. Give
+   your ~swap~ a print statement that notes when it is executed.
+   #+END_QUOTE
+
+** Exercise 13.31
+   #+BEGIN_QUOTE
+   Give your class a < operator and define a vector of ~HasPtrs~. Give that
+   ~vector~ some elements and then ~sort~ the ~vector~.  Note when ~swap~ is
+   called.
+   #+END_QUOTE
+
+** Exercise 13.32
+   #+BEGIN_QUOTE
+   Would the pointerlike version of ~HasPtr~ benefit from defining a ~swap~
+   function? If so, what is the benefit? If not, why not?
+   #+END_QUOTE
