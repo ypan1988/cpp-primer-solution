@@ -455,10 +455,11 @@ class HasPtr {
   HasPtr(const HasPtr &p):
     ps(new std::string(*p.ps)), i(p.i) { }
   HasPtr& operator=(const HasPtr &rhs) {
-    auto newp = new std::string(*rhs.ps);
-    delete ps;
-    ps = newp;
-    return *this;
+    auto newp = new std::string(*rhs.ps);  // copy the underlying string
+    delete ps;    // free the old memory
+    ps = newp;    // copy data from rhs into this object
+    i = rhs.i;
+    return *this; // return this object
   }
   ~HasPtr() { delete ps; }
  private:
