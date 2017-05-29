@@ -689,3 +689,32 @@ int main()
   return 0;
 }   
    #+END_SRC
+
+* Exercises Section 13.2.2
+** Exercise 13.27
+   #+BEGIN_QUOTE
+   Define your own reference-counted version of ~HasPtr~.
+   #+END_QUOTE
+
+** Exercise 13.28
+   #+BEGIN_QUOTE
+   Given the following classes, implement a default constructor and the
+   necessary copy-control members.
+   + (a)
+     #+BEGIN_SRC C++
+class TreeNode {
+ private:
+  std::string value;
+  int count;
+  TreeNode *left;
+  TreeNode *right;
+};     
+     #+END_SRC
+   + (b)
+     #+BEGIN_SRC C++
+class BinStrTree {
+ private:
+  TreeNode *root;
+};     
+     #+END_SRC
+   #+END_QUOTE
