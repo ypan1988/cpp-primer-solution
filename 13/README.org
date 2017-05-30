@@ -819,6 +819,10 @@ int main()
    a recursion loop.
    #+END_QUOTE
 
+   In the ~HasPtr~ function, the data members have built-in types. There is no
+   type-specific version of ~swap~ for the built-in types. In this case, these
+   calls will invoke the library ~std::swap~.
+
 ** Exercise 13.30
    #+BEGIN_QUOTE
    Write and test a ~swap~ function for your valuelike version of ~HasPtr~. Give
