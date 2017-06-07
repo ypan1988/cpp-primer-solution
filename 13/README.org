@@ -1,5 +1,5 @@
 * Exercises Section 13.1.1
-** Exercise 13.1 
+** Exercise 13.1
    #+BEGIN_QUOTE
    What is a copy constructor? When is it used?
    #+END_QUOTE
@@ -39,14 +39,14 @@
    #+BEGIN_QUOTE
    What happens when we copy a ~StrBlob~? What about ~StrBlobPtr~ s?
    #+END_QUOTE
-    
+
    The type of each member determines how that member is copied: Members of
    class type are copied by the copy constructor for that class; members of
    built-in type are copied directly. Although we cannot directly copy an array
    (§ 3.5.1, p. 114), the synthesized copy constructor copies members of array
    type by copying each element.  Elements of class type are copied by using the
    elements’ copy constructor.
- 
+
 ** Exercise 13.4
    #+BEGIN_QUOTE
    Assuming ~Point~ is a class type with a public copy constructor, identify each
@@ -60,9 +60,9 @@ Point foo_bar(Point arg) // Pass an object as an argument to a parameter of nonr
   *heap = local;
   Point pa[ 4 ] = { local, *heap }; // Brace initialize the elements in an array
   return *heap; // Return an object from a function that has a nonreference return type
-}   
+}
    #+END_SRC
- 
+
 ** Exercise 13.5
    #+BEGIN_QUOTE
    Given the following sketch of a class, write a copy constructor that copies
@@ -78,12 +78,12 @@ class HasPtr {
  private:
   std::string *ps;
   int i;
-};   
+};
    #+END_SRC
 
    #+BEGIN_SRC C++
-HasPtr::HasPtr(const HasPtr &orig): 
-  ps(new std::string(*orig.ps)), i(orig.i) { }   
+HasPtr::HasPtr(const HasPtr &orig):
+  ps(new std::string(*orig.ps)), i(orig.i) { }
    #+END_SRC
 
 * Exercises Section 13.1.2
@@ -104,7 +104,7 @@ HasPtr::HasPtr(const HasPtr &orig):
    What happens when we assign one ~StrBlob~ to another?  What about
    ~StrBlobPtrs~?
    #+END_QUOTE
-    
+
    Just as it does for the copy constructor, the compiler generates a
    synthesized copy- assignment operator for a class if the class does not
    define its own. Analogously to the copy constructor, for some classes the
@@ -115,14 +115,14 @@ HasPtr::HasPtr(const HasPtr &orig):
    each element of the array. The synthesized copy-assignment operator returns a
    reference to its left-hand object.  As an example, the following is
    equivalent to the synthesized copy-
- 
+
 ** Exercise 13.8
    #+BEGIN_QUOTE
    Write the assignment operator for the ~HasPtr~ class from exercise 13.5 in §
    13.1.1 (p. 499). As with the copy constructor, your assignment operator
    should copy the object to which ~ps~ points.
    #+END_QUOTE
- 
+
    #+BEGIN_SRC C++
 HasPtr&
 HasPtr::operator=(const HasPtr &orig) {
@@ -133,7 +133,7 @@ HasPtr::operator=(const HasPtr &orig) {
     i = orig.i;
   }
   return *this;
-}   
+}
    #+END_SRC
 
 * Exercises Section 13.1.3
@@ -147,7 +147,7 @@ HasPtr::operator=(const HasPtr &orig) {
    initialize the nonstatic data members of an object and may do other work;
    destructors do whatever work is needed to free the resources used by an
    object and destroy the nonstatic data members of the object.
-    
+
    The compiler defines a synthesized destructor for any class that does not
    define its own destructor. As with the copy constructor and the
    copy-assignment operator, for some classes, the synthesized destructor is
@@ -158,7 +158,7 @@ HasPtr::operator=(const HasPtr &orig) {
    #+BEGIN_QUOTE
    What happens when a ~StrBlob~ object is destroyed? What about a ~StrBlobPtr~?
    #+END_QUOTE
- 
+
    When a ~StrBlob~ object is destroyed, the ~shared_ptr~ destructor will
    decrement the reference count of the object. It will be freed if the count go
    to zero.
@@ -172,7 +172,7 @@ HasPtr::operator=(const HasPtr &orig) {
    #+END_QUOTE
 
    #+BEGIN_SRC C++
-HasPtr::~HasPtr() { delete ps; }   
+HasPtr::~HasPtr() { delete ps; }
    #+END_SRC
 
 ** Exercise 13.12
@@ -184,10 +184,10 @@ bool fcn(const Sales_data *trans, Sales_data accum)
 {
   Sales_data item1(*trans), item2(accum);
   return item1.isbn() != item2.isbn();
-}   
+}
    #+END_SRC
 
-   Three destructor calls occur (item1, item2, accum). 
+   Three destructor calls occur (item1, item2, accum).
 
 ** Exercise 13.13
    #+BEGIN_QUOTE
@@ -198,15 +198,15 @@ bool fcn(const Sales_data *trans, Sales_data accum)
 struct X {
   X() { std::cout << "X()" << std::endl; }
   X(const X&) { std::cout << "X(const X&)" << std::endl; }
-};   
-   #+END_SRC    
+};
+   #+END_SRC
    Add the copy-assignment operator and destructor to ~X~ and write a program
    using ~X~ objects in various ways: Pass them as nonreference and reference
    parameters; dynamically allocate them; put them in containers; and so
    forth. Study the output until you are certain you understand when and why
    each copy-control member is used. As you read the output, remember that the
    compiler can omit calls to the copy constructor.
- 
+
    #+BEGIN_SRC C++
 #include <iostream>
 #include <vector>
@@ -214,13 +214,13 @@ struct X {
 struct X {
   X() { std::cout << "X()" << std::endl; }
   X(const X&) { std::cout << "X(const X&)" << std::endl; }
-  X& operator=(const X&) { 
+  X& operator=(const X&) {
     std::cout << "X& operator=(const X&)" << std::endl;
     return *this;
   }
   ~X() { std::cout << "~X()" << std::endl; }
 };
- 
+
 void f(X x, const X &rx) {
   std::cout << "inside f()" << std::endl;
   std::vector<X> vec;
@@ -239,7 +239,7 @@ int main()
   delete px;
 
   return 0;
-}   
+}
    #+END_SRC
 
 * Exercises Section 13.1.4
@@ -251,14 +251,14 @@ int main()
    given the following function:
    #+END_QUOTE
    #+BEGIN_SRC C++
-void f (numbered s) { cout << s.mysn << endl; }   
+void f (numbered s) { cout << s.mysn << endl; }
    #+END_SRC
    #+BEGIN_QUOTE
    what output does the following code produce?
    #+END_QUOTE
    #+BEGIN_SRC C++
 numbered a, b = a, c = b;
-f(a); f(b); f(c);   
+f(a); f(b); f(c);
    #+END_SRC
 
    Three identical serial number.
@@ -311,7 +311,7 @@ int main ()
   f(a); f(b); f(c);
 
   return 0;
-}   
+}
    #+END_SRC
 
    ex13_17b.cc (Exercise 13.15):
@@ -336,10 +336,10 @@ int main ()
   f(a); f(b); f(c);
 
   return 0;
-}   
+}
    #+END_SRC
 
-   ex13_17c.cc (Exercise 13.16):  
+   ex13_17c.cc (Exercise 13.16):
    #+BEGIN_SRC C++
 #include <iostream>
 using std::cout; using std::endl;
@@ -361,7 +361,7 @@ int main ()
   f(a); f(b); f(c);
 
   return 0;
-}   
+}
    #+END_SRC
 
 * Exercises Section 13.1.6
@@ -380,7 +380,7 @@ struct Employee {
     id_ = unique_identifier_;
   }
 
-  int get_id() const { return id_; } 
+  int get_id() const { return id_; }
 
  private:
   std::string name_;
@@ -408,7 +408,7 @@ struct Employee {
   Employee(const Employee &) = delete;
   Emplyee& operator=(const Employee &) = delete;
 
-  int get_id() const { return id_; } 
+  int get_id() const { return id_; }
 
  private:
   std::string name_;
@@ -483,7 +483,7 @@ class HasPtr {
    What would happen if the version of ~HasPtr~ in this section didn’t define a
    destructor? What if ~HasPtr~ didn’t define the copy constructor?
    #+END_QUOTE
-   
+
    If ~HasPtr~ didn’t define a destructor, the memory allocated in its
    constructors will never be freed. If ~HasPtr~ didn’t define the copy
    constructor, the synthesized version will only copy the pointer, not the
@@ -688,7 +688,7 @@ int main()
     std::cout << it.deref() << std::endl;
 
   return 0;
-}   
+}
    #+END_SRC
 
 * Exercises Section 13.2.2
@@ -696,7 +696,7 @@ int main()
    #+BEGIN_QUOTE
    Define your own reference-counted version of ~HasPtr~.
    #+END_QUOTE
-   
+
    #+BEGIN_SRC C++
 class HasPtr {
  public:
@@ -714,7 +714,7 @@ class HasPtr {
     }
     ps = rhs.ps;
     i = rhs.i;
-    use = rhs.use; 
+    use = rhs.use;
 
     return *this;
   }
@@ -722,13 +722,13 @@ class HasPtr {
     if (--*use == 0) {  // if the reference count goes to 0
       delete ps;        // delete the string
       delete use;       // and the counter
-    } 
+    }
   }
  private:
   std::string *ps;
   int i;
   std::size_t *use;  // member to keep track of how many objects share *ps
-};   
+};
    #+END_SRC
 
 ** Exercise 13.28
@@ -743,14 +743,14 @@ class TreeNode {
   int count;
   TreeNode *left;
   TreeNode *right;
-};     
+};
      #+END_SRC
    + (b)
      #+BEGIN_SRC C++
 class BinStrTree {
  private:
   TreeNode *root;
-};     
+};
      #+END_SRC
    #+END_QUOTE
 
@@ -760,7 +760,7 @@ class BinStrTree {
 class TreeNode {
 public:
   TreeNode(): count(new int(1)), left(nullptr), right(nullptr) { }
-  TreeNode(const TreeNode &rhs): 
+  TreeNode(const TreeNode &rhs):
     value(rhs.value), count(rhs.count), left(rhs.left), right(rhs.right) { ++*count; }
   TreeNode& operator=(const TreeNode &rhs) {
     ++*rhs.count;
@@ -788,7 +788,7 @@ private:
   int *count;
   TreeNode *left;
   TreeNode *right;
-};   
+};
 
 class BinStrTree {
 public:
@@ -804,13 +804,13 @@ public:
 
 private:
   TreeNode *root;
-};     
+};
 
 
 int main()
 {
   return 0;
-}   
+}
    #+END_SRC
 * Exercises Section 13.3
 ** Exercise 13.29
@@ -855,7 +855,7 @@ class HasPtr {
   int i;
 };
 
-inline 
+inline
 void swap(HasPtr &lhs, HasPtr &rhs)
 {
   std::cout << "inside swap(HasPtr &lhs, HasPtr &rhs)" << std::endl;
@@ -890,7 +890,7 @@ int main()
    ~vector~ some elements and then ~sort~ the ~vector~.  Note when ~swap~ is
    called.
    #+END_QUOTE
-   
+
    #+BEGIN_SRC C++
 #include <iostream>
 #include <string>
@@ -920,7 +920,7 @@ class HasPtr {
   int i;
 };
 
-inline 
+inline
 void swap(HasPtr &lhs, HasPtr &rhs)
 {
   std::cout << "inside swap(HasPtr &lhs, HasPtr &rhs)" << std::endl;
@@ -951,7 +951,7 @@ int main()
   }
 
   return 0;
-}   
+}
    #+END_SRC
 
 ** Exercise 13.32
@@ -961,3 +961,44 @@ int main()
    #+END_QUOTE
 
    No, it will not improve the performance since there is no dynamic allocation.
+
+* Exercises Section 13.4
+** Exercise 13.33
+   #+BEGIN_QUOTE
+   Why is the parameter to the ~save~ and ~remove~ members of ~Message~ a
+   ~Folder&~? Why didn’t we define that parameter as ~Folder~? Or ~const
+   Folder&~?
+   #+END_QUOTE
+
+   it is because these operations will update the given ~Folder~.
+
+** Exercise 13.34
+   #+BEGIN_QUOTE
+   Write the ~Message~ class as described in this section.
+   #+END_QUOTE
+
+** Exercise 13.35
+   #+BEGIN_QUOTE
+   What would happen if ~Message~ used the synthesized versions of the
+   copy-control members?
+   #+END_QUOTE
+
+** Exercise 13.36
+   #+BEGIN_QUOTE
+   Design and implement the corresponding ~Folder~ class. That class should hold
+   a ~set~ that points to the ~Message~ s in that ~Folder~.
+   #+END_QUOTE
+
+** Exercise 13.37
+   #+BEGIN_QUOTE
+   Add members to the ~Message~ class to insert or remove a given ~Folder*~ into
+   ~folder~ s. These members are analogous to ~Folder~ ’s ~addMsg~ and ~remMsg~
+   operations.
+   #+END_QUOTE
+
+** Exercise 13.38
+   #+BEGIN_QUOTE
+   We did not use copy and swap to define the ~Message~ assignment operator. Why
+   do you suppose this is so?
+
+   #+END_QUOTE
