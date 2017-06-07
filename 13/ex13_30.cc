@@ -17,6 +17,7 @@ class HasPtr {
     return *this; // return this object
   }
   ~HasPtr() { delete ps; }
+  void print() const { std::cout << *ps << std::endl; }
  private:
   std::string *ps;
   int i;
@@ -34,7 +35,18 @@ void swap(HasPtr &lhs, HasPtr &rhs)
 int main()
 {
   HasPtr hp1("hello"), hp2("world");
+
+  std::cout << "hp1: " << std::endl;
+  hp1.print();
+  std::cout << "hp2: " << std::endl;
+  hp2.print();
+
   swap(hp1, hp2);
+
+  std::cout << "hp1: " << std::endl;
+  hp1.print();
+  std::cout << "hp2: " << std::endl;
+  hp2.print();
 
   return 0;
 }

@@ -20,6 +20,7 @@ class HasPtr {
     return *this; // return this object
   }
   ~HasPtr() { delete ps; }
+  void print() const { std::cout << *ps << std::endl; }
  private:
   std::string *ps;
   int i;
@@ -43,13 +44,17 @@ bool operator<(const HasPtr &lhs, const HasPtr &rhs)
 int main()
 {
   std::vector<HasPtr> hpvec;
-  hpvec.emplace_back("Hello");
+  hpvec.emplace_back("hello");
   hpvec.emplace_back("world");
   hpvec.emplace_back("ccc");
   hpvec.emplace_back("aaa");
   hpvec.emplace_back("bbb");
 
   std::sort(hpvec.begin(), hpvec.end());
+
+  for (const auto &hp : hpvec) {
+    hp.print();
+  }
 
   return 0;
 }
