@@ -49,11 +49,45 @@ int main()
 
 ** Exercise 16.4
    #+BEGIN_QUOTE
-   Write a template that acts like the library find algorithm.  The function
+   Write a template that acts like the library ~find~ algorithm. The function
    will need two template type parameters, one to represent the function’s
    iterator parameters and the other for the type of the value. Use your
-   function to find a given value in a vector<int> and in a list<string>.
+   function to find a given value in a ~vector<int>~ and in a ~list<string>~.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+#include <vector>
+using std::vector;
+
+#include <list>
+using std::list;
+
+template <typename Iterator, typename Valuetype>
+Iterator find(Iterator first, Iterator last, const Valuetype &value)
+{
+  while (*first != value && first != last) ++first;
+  return first;
+}
+
+int main()
+{
+  vector<int> ivec = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+  cout << (ivec.cend() != find(ivec.begin(), ivec.end(), 5) ? "found" : "not found")
+       << endl;
+  
+  list<string> slst = {"aa", "bb", "cc", "dd", "ee", "ff", "gg"};
+  cout << (slst.cend() != find(slst.begin(), slst.end(), "zz") ? "found" : "not found")
+       << endl;
+  
+  return 0;
+}   
+   #+END_SRC
 
 ** Exercise 16.5
    #+BEGIN_QUOTE
