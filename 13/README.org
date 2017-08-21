@@ -255,7 +255,7 @@ HasPtr::HasPtr(const HasPtr &orig):
    synthesized copy-assignment operator do? When is it synthesized?
    #+END_QUOTE
 
-   copy-assignment operator: Version of the assignment operator that takes an
+   copy-assignment operator: version of the assignment operator that takes an
    object of the same type as its type. Ordinarily, the copy-assignment operator
    has a parameter that is a reference to const and returns a reference to its
    object. The compiler synthesizes the copy-assignment operator if the class
@@ -267,16 +267,8 @@ HasPtr::HasPtr(const HasPtr &orig):
    ~StrBlobPtrs~?
    #+END_QUOTE
 
-   Just as it does for the copy constructor, the compiler generates a
-   synthesized copy- assignment operator for a class if the class does not
-   define its own. Analogously to the copy constructor, for some classes the
-   synthesized copy-assignment operator disallows assignment (§ 13.1.6,
-   p. 508). Otherwise, it assigns each nonstatic member of the right-hand object
-   to the corresponding member of the left-hand object using the copy-assignment
-   operator for the type of that member. Array members are assigned by assigning
-   each element of the array. The synthesized copy-assignment operator returns a
-   reference to its left-hand object.  As an example, the following is
-   equivalent to the synthesized copy-
+   In both case, shallow copy will take place and all pointers will point to the
+   same address. The result of use_count will be the same as we see in ex13_03.
 
 ** Exercise 13.8
    #+BEGIN_QUOTE
