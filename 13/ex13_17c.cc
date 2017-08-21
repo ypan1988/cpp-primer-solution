@@ -3,7 +3,6 @@ using std::cout; using std::endl;
 
 struct numbered {
   numbered() { mysn = unique_serial_number++; }
-  numbered(const numbered& s) { mysn = unique_serial_number++; }
   int mysn;
   static int unique_serial_number;
 };

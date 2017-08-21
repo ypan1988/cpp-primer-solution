@@ -498,7 +498,6 @@ using std::cout; using std::endl;
 
 struct numbered {
   numbered() { mysn = unique_serial_number++; }
-  numbered(const numbered& s) { mysn = unique_serial_number++; }
   int mysn;
   static int unique_serial_number;
 };
@@ -513,7 +512,7 @@ int main ()
   f(a); f(b); f(c);
 
   return 0;
-}
+}   
    #+END_SRC
 
 * Exercises Section 13.1.6
