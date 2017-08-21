@@ -424,18 +424,17 @@ f(a); f(b); f(c);
    so, why? What output gets generated?
    #+END_QUOTE
 
-   Yes, the output will be changed with three different serial number since the
-   copy constructor will generate a new serial number for b and c.
+   Yes, the output will be changed to three different serial number. The newly
+   defined copy constructor can handle situations as expected.
 
 ** Exercise 13.16
    #+BEGIN_QUOTE
-   What if the parameter in ~f~ were ~const numbered&~?  Does that change the
+   What if the parameter in ~f~ were ~const numbered&~? Does that change the
    output? If so, why? What output gets generated?
    #+END_QUOTE
 
-   Yes, the output will be changed with three different serial number since the
-   copy constructor will generate a new serial number when defining the
-   variables using an =.
+   Yes, the output will be changed to three same serial number since no copy
+   operation happens in function ~f~.
 
 ** Exercise 13.17
    #+BEGIN_QUOTE
