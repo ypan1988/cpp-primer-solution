@@ -314,8 +314,8 @@ HasPtr::operator=(const HasPtr &orig) {
    #+END_QUOTE
 
    When a ~StrBlob~ object is destroyed, the ~shared_ptr~ destructor will
-   decrement the reference count of the object. It will be freed if the count go
-   to zero.
+   decrement the reference count of the object. It will be freed if the count
+   goes to zero.
 
    When a ~StrBlobPtr~ object is destroyed, the reference count will not be
    changed and object dynamically allocated will not be freed.
@@ -425,8 +425,7 @@ f(a); f(b); f(c);
    #+END_QUOTE
 
    Yes, the output will be changed with three different serial number since the
-   copy constructor will generate a new serial number when passing the object as
-   the argument to the non-reference parameter.
+   copy constructor will generate a new serial number for b and c.
 
 ** Exercise 13.16
    #+BEGIN_QUOTE
