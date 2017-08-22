@@ -526,9 +526,9 @@ int main ()
 
    #+BEGIN_SRC C++
 struct Employee {
-  Employee() { id_ = unique_identifier_; }
+  Employee() { id_ = unique_identifier_++; }
   Employee(const std::string &name): name_(name) {
-    id_ = unique_identifier_;
+    id_ = unique_identifier_++;
   }
 
   int get_id() const { return id_; }
