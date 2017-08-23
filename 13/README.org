@@ -638,7 +638,7 @@ class HasPtr {
    If ~HasPtr~ didn’t define a destructor, the memory allocated in its
    constructors will never be freed. If ~HasPtr~ didn’t define the copy
    constructor, the synthesized version will only copy the pointer, not the
-   ~string~ and ~ps~ in lhs and rhs would point to the same string on the heap.
+   ~string~ and ~ps~ in lhs and rhs will point to the same string on the heap.
 
 ** Exercise 13.25
    #+BEGIN_QUOTE
