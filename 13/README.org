@@ -1416,3 +1416,38 @@ void Message::remFldr(Folder *f) { folders.erase(f); }
 
    Not efficient. The copy and swap is an elegant way when working with
    dynamicly allocated memory.
+
+* Exercises Section 13.6.3
+** Exercise 13.55
+   #+BEGIN_QUOTE
+   Add an rvalue reference version of ~push_back~ to your ~StrBlob~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+void StrBlob::push_back(string &&s) { data->push_back(std::move(s)); }   
+   #+END_SRC
+
+** Exercise 13.56
+   #+BEGIN_QUOTE
+   What would happen if we defined sorted as:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+Foo Foo::sorted() const & {
+  Foo ret(*this);
+  return ret.sorted();
+} 
+   #+END_SRC
+
+** Exercise 13.57
+   #+BEGIN_QUOTE
+   What if we defined sorted as:
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+Foo Foo::sorted() const & { return Foo(*this).sorted(); }   
+   #+END_SRC
+
+** Exercise 13.58
+   #+BEGIN_QUOTE
+   Write versions of class Foo with print statements in their sorted functions
+   to test your answers to the previous two exercises.
+   #+END_QUOTE
