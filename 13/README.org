@@ -1417,6 +1417,71 @@ void Message::remFldr(Folder *f) { folders.erase(f); }
    Not efficient. The copy and swap is an elegant way when working with
    dynamicly allocated memory.
 
+* Exercises Section 13.5
+** Exercise 13.39
+   #+BEGIN_QUOTE
+   Write your own version of ~StrVec~, including versions of ~reserve~,
+   ~capacity~ (§ 9.4, p. 356), and ~resize~ (§ 9.3.5, p. 352).
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+void StrVec::reserve(size_t n) {
+  if (n > capacity()) {
+    // allocate new memory
+    auto newdata = alloc.allocate(n);
+    // move the data from the old memory to the new
+    auto dest = newdata;  // points to the next free position in the new array
+    auto elem = elements; // points to the next element in the old array
+    for (size_t i = 0; i != size(); ++i)
+        alloc.construct(dest++, std::move(*elem++));
+    free();  // free the old space once we've moved the elements
+    elements = newdata;
+    first_free = dest;
+    cap = elements + n;
+  } else { return; }
+}
+
+size_t StrVec::capacity() const {
+  return cap - elements;
+}
+
+void StrVec::resize(size_t n) {
+}
+   #+END_SRC
+
+** Exercise 13.40
+   #+BEGIN_QUOTE
+   Add a constructor that takes an ~initializer_list<string>~ to your ~StrVec~
+   class.
+   #+END_QUOTE
+
+** Exercise 13.41
+   #+BEGIN_QUOTE
+   Why did we use postfix increment in the call to construct inside push_back?
+   What would happen if it used the prefix increment?
+   #+END_QUOTE
+
+** Exercise 13.42
+   #+BEGIN_QUOTE
+   Test your StrVec class by using it in place of the vector<string> in your
+   TextQuery and QueryResult classes (§ 12.3, p. 484).
+   #+END_QUOTE
+
+** Exercise 13.43
+   #+BEGIN_QUOTE
+   Rewrite the free member to use for_each and a lambda (§ 10.3.2, p. 388) in
+   place of the for loop to destroy the elements. Which implementation do you
+   prefer, and why?
+   #+END_QUOTE
+
+** Exercise 13.44
+   #+BEGIN_QUOTE
+   Write a class named String that is a simplified version of the library string
+   class. Your class should have at least a default constructor and a
+   constructor that takes a pointer to a C-style string. Use an allocator to
+   allocate memory that your String class uses.
+   #+END_QUOTE
+
 * Exercises Section 13.6.3
 ** Exercise 13.55
    #+BEGIN_QUOTE
@@ -1424,7 +1489,7 @@ void Message::remFldr(Folder *f) { folders.erase(f); }
    #+END_QUOTE
 
    #+BEGIN_SRC C++
-void StrBlob::push_back(string &&s) { data->push_back(std::move(s)); }   
+void StrBlob::push_back(string &&s) { data->push_back(std::move(s)); }
    #+END_SRC
 
 ** Exercise 13.56
@@ -1435,7 +1500,7 @@ void StrBlob::push_back(string &&s) { data->push_back(std::move(s)); }
 Foo Foo::sorted() const & {
   Foo ret(*this);
   return ret.sorted();
-} 
+}
    #+END_SRC
 
    infinite recursion
@@ -1445,7 +1510,7 @@ Foo Foo::sorted() const & {
    What if we defined ~sorted~ as:
    #+END_QUOTE
    #+BEGIN_SRC C++
-Foo Foo::sorted() const & { return Foo(*this).sorted(); }   
+Foo Foo::sorted() const & { return Foo(*this).sorted(); }
    #+END_SRC
 
    Okay. ~Foo Foo::sorted() &&~ will be called here.
@@ -1502,6 +1567,6 @@ int main()
   Foo f;
   f.sorted();
 
-  return 0;  
-}   
+  return 0;
+}
    #+END_SRC
