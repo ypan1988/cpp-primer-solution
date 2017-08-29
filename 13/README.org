@@ -1429,7 +1429,7 @@ void StrBlob::push_back(string &&s) { data->push_back(std::move(s)); }
 
 ** Exercise 13.56
    #+BEGIN_QUOTE
-   What would happen if we defined sorted as:
+   What would happen if we defined ~sorted~ as:
    #+END_QUOTE
    #+BEGIN_SRC C++
 Foo Foo::sorted() const & {
@@ -1438,16 +1438,70 @@ Foo Foo::sorted() const & {
 } 
    #+END_SRC
 
+   infinite recursion
+
 ** Exercise 13.57
    #+BEGIN_QUOTE
-   What if we defined sorted as:
+   What if we defined ~sorted~ as:
    #+END_QUOTE
    #+BEGIN_SRC C++
 Foo Foo::sorted() const & { return Foo(*this).sorted(); }   
    #+END_SRC
 
+   Okay. ~Foo Foo::sorted() &&~ will be called here.
+
 ** Exercise 13.58
    #+BEGIN_QUOTE
-   Write versions of class Foo with print statements in their sorted functions
-   to test your answers to the previous two exercises.
+   Write versions of class ~Foo~ with print statements in their ~sorted~
+   functions to test your answers to the previous two exercises.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <vector>
+using std::vector;
+
+#include <algorithm>
+using std::sort;
+
+class Foo {
+public:
+  Foo sorted() &&;
+  Foo sorted() const &;
+
+private:
+  vector<int> data;
+};
+
+// this object is an rvalue, so we can sort in place
+Foo Foo::sorted() &&
+{
+  cout << "Foo sorted() &&;" << endl;
+  sort(data.begin(), data.end());
+  return *this;
+}
+
+// ex13_56
+// Foo Foo::sorted() const & {
+//   Foo ret(*this);
+//   return ret.sorted();
+// }
+
+// ex13_57
+Foo Foo::sorted() const & {
+  cout << "Foo sorted() const &;" << endl;
+  return Foo(*this).sorted();
+}
+
+int main()
+{
+  Foo().sorted();
+
+  Foo f;
+  f.sorted();
+
+  return 0;  
+}   
+   #+END_SRC
