@@ -14,3 +14,16 @@
    Similarity:
    - An overloaded operator has the same precedence and associativity as the
      corresponding built-in operator.
+
+** Exercise 14.2
+   #+BEGIN_QUOTE
+   Write declarations for the overloaded input, output, addition, and
+   compound-assignment operators for ~Sales_data~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+istream& operator>>(istream &is, Sales_data &item);
+ostream& operator<<(ostream &os, const Sales_data &item);
+Sales_data operator+(const Sales_item &lhs, const Sales_item &rhs);
+Sales_data& Sales_data::operator+=(const Sales_item &rhs);
+   #+END_SRC
