@@ -44,3 +44,16 @@ Sales_data& Sales_data::operator+=(const Sales_item &rhs);
    + (b) overloaded ~operator==~ in ~string~
    + (c) overloaded ~operator==~ in ~vector~
    + (d) overloaded ~operator==~ in ~string~
+
+** Exercise 14.4
+   #+BEGIN_QUOTE
+   Explain how to decide whether the following should be class members:
+   + (a) %
+   + (b) %=
+   + (c) ++
+   + (d) ->
+   + (e) <<
+   + (f) &&
+   + (g) ==
+   + (h) ()
+   #+END_QUOTE
