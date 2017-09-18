@@ -183,8 +183,33 @@ int main()
 
 ** Exercise 16.7
    #+BEGIN_QUOTE
-   Write a constexpr template that returns the size of a given array.
+   Write a ~constexpr~ template that returns the size of a given array.
    #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+using std::cout; using std::endl;
+
+#include <string>
+using std::string;
+
+template <typename T, unsigned N>
+constexpr unsigned get_array_size(const T (&arr)[N])
+{
+  return N;
+}
+
+int main()
+{
+  char ca[] = "abcd";
+  cout << get_array_size(ca) << endl; // 5
+
+  string sa[] = {"aa", "bb", "cc", "dd"};
+  cout << get_array_size(sa) << endl; // 4
+
+  return 0;
+}
+   #+END_SRC
 
 ** Exercise 16.8
    #+BEGIN_QUOTE
