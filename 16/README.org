@@ -93,8 +93,8 @@ using std::vector;
 #include <list>
 using std::list;
 
-template <typename Iterator, typename Valuetype>
-Iterator find(Iterator first, Iterator last, const Valuetype &value)
+template <typename iterator, typename value_type>
+iterator find(iterator first, iterator last, const value_type &value)
 {
   while (*first != value && first != last) ++first;
   return first;
