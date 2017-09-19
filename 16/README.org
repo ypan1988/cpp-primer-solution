@@ -239,6 +239,9 @@ int main()
    What happens when a class template is instantiated?
    #+END_QUOTE
 
+   The compiler uses the template arguments to instantiate a specific class from
+   the template.
+
 ** Exercise 16.11
    #+BEGIN_QUOTE
    The following definition of List is incorrect. How would you fix it?
