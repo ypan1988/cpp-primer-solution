@@ -265,8 +265,8 @@ template <typename elemType> class List {
 
 ** Exercise 16.12
    #+BEGIN_QUOTE
-   Write your own version of the Blob and BlobPtr templates. including the
-   various const members that were not shown in the text.
+   Write your own version of the ~Blob~ and ~BlobPtr~ templates. including the
+   various ~const~ members that were not shown in the text.
    #+END_QUOTE
 
 ** Exercise 16.13
