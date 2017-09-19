@@ -260,6 +260,9 @@ template <typename elemType> class List {
 };
    #+END_SRC
 
+   Replace ~ListItem~ with ~ListItem<elemType>~ inside class template ~List~
+   since template ~ListItem~ is not the name of a type.
+
 ** Exercise 16.12
    #+BEGIN_QUOTE
    Write your own version of the Blob and BlobPtr templates. including the
