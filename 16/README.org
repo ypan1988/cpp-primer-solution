@@ -219,3 +219,70 @@ int main()
 
    The reason is that more class defines "!=" rather than "<". Doing so can
    reduce the number of requirement of the class used with a template class.
+
+* Exercises Section 16.1.2
+** Exercise 16.9
+   #+BEGIN_QUOTE
+   What is a function template? What is a class template?
+   #+END_QUOTE
+
+   A *function template* is a formula from which we can generate type-specific
+   versions of that function. A *class template* is a blueprint for generating
+   classes. Class templates diff from function template in that the compiler
+   cannot deduce the template parameter type(s) for a class template. Instead,
+   to use a class template we must supply additional information inside angle
+   brackets following the template's name. That extra information is the list of
+   template arguments to use in place of the template parameters.
+
+** Exercise 16.10
+   #+BEGIN_QUOTE
+   What happens when a class template is instantiated?
+   #+END_QUOTE
+
+** Exercise 16.11
+   #+BEGIN_QUOTE
+   The following definition of List is incorrect. How would you fix it?
+   #+END_QUOTE
+   #+BEGIN_SRC C++
+template <typename elemType> class ListItem;
+template <typename elemType> class List {
+ public:
+  List<elemType>();
+  List<elemType>(const List<elemType> &);
+  List<elemType>& operator=(const List<elemType> &);
+  ~List();
+  void insert(ListItem *ptr, elemType value);
+ private:
+  ListItem *front, *end;
+};
+   #+END_SRC
+
+** Exercise 16.12
+   #+BEGIN_QUOTE
+   Write your own version of the Blob and BlobPtr templates. including the
+   various const members that were not shown in the text.
+   #+END_QUOTE
+
+** Exercise 16.13
+   #+BEGIN_QUOTE
+   Explain which kind of friendship you chose for the equality and relational
+   operators for BlobPtr.
+   #+END_QUOTE
+
+** Exercise 16.14
+   #+BEGIN_QUOTE
+   Write a Screen class template that uses nontype parameters to define the
+   height and width of the Screen.
+   #+END_QUOTE
+
+** Exercise 16.15
+   #+BEGIN_QUOTE
+   Implement input and output operators for your Screen template. Which, if any,
+   friends are necessary in class Screen to make the input and output operators
+   work? Explain why each friend declaration, if any, was needed.
+   #+END_QUOTE
+
+** Exercise 16.16
+   #+BEGIN_QUOTE
+   Rewrite the StrVec class (§ 13.5, p. 526) as a template named Vec.
+   #+END_QUOTE
