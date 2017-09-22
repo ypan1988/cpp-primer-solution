@@ -464,8 +464,10 @@ int main()
 ** Exercise 16.13
    #+BEGIN_QUOTE
    Explain which kind of friendship you chose for the equality and relational
-   operators for BlobPtr.
+   operators for ~BlobPtr~.
    #+END_QUOTE
+
+   One-to-One friendship.
 
 ** Exercise 16.14
    #+BEGIN_QUOTE
