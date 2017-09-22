@@ -484,5 +484,43 @@ int main()
 
 ** Exercise 16.16
    #+BEGIN_QUOTE
-   Rewrite the StrVec class (§ 13.5, p. 526) as a template named Vec.
+   Rewrite the ~StrVec~ class (§ 13.5, p. 526) as a template named Vec.
+   #+END_QUOTE
+
+* Exercises Section 16.1.3
+** Exercise 16.17
+   #+BEGIN_QUOTE
+   What, if any, are the differences between a type parameter that is declared
+   as a ~typename~ and one that is declared as a ~class~? When must ~typename~
+   be used?
+   #+END_QUOTE
+
+   The key word ~class~ or ~typename~ have the same meaning and can be used
+   interchangeably inside a template parameter list.
+
+   When we want to inform the compiler that a name represents a type, we must
+   use the keyword ~typename~, not ~class~.
+
+** Exercise 16.18
+   #+BEGIN_QUOTE
+   Explain each of the following function template declarations and identify
+   whether any are illegal. Correct each error that you find.
+   + (a) ~template <typename T, U, typename V> void f1(T, U, V);~
+   + (b) ~template <typename T> T f2(int &T);~
+   + (c) ~inline template <typename T> T foo(T, unsigned int*);~
+   + (d) ~template <typename T> f4(T, T);~
+   + (e) ~typedef char Ctype; template <typename Ctype> Ctype f5(Ctype a);~
+   #+END_QUOTE
+
+** Exercise 16.19
+   #+BEGIN_QUOTE
+   Write a function that takes a reference to a container and prints the
+   elements in that container. Use the container’s size_type and size members to
+   control the loop that prints the elements.
+   #+END_QUOTE
+
+** Exercise 16.20
+   #+BEGIN_QUOTE
+   Rewrite the function from the previous exercise to use iterators returned
+   from begin and end to control the loop.
    #+END_QUOTE
