@@ -625,3 +625,109 @@ int main()
    A declaration for the nonvariadic version of ~print~ must be in scope when
    the variadic version is defined. Otherwise, the variadic function will
    recurse indefinitely.
+
+* Exercises Section 16.4.2
+** Exercise 16.56
+   #+BEGIN_QUOTE
+   Write and test a variadic version of ~errorMsg~.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+#include <sstream>
+#include <string>
+
+// print any type we don't otherwise handle
+template <typename T>
+std::string debug_rep(const T &t)
+{
+  std::ostringstream ret;
+  ret << t;
+  return ret.str();
+}
+
+// print pointers as their pointer value, followed by the object to which the
+// pointer points
+//
+// NB: this function will not work properly with char*
+template <typename T>
+std::string debug_rep(T *p)
+{
+  std::ostringstream ret;
+  ret << "pointer: " << p;  // print the pointer's own value
+  if (p) ret << " " << debug_rep(*p);  // print the value to which p points
+  else ret << " null pointer";  // or indicate that the p is null
+  return ret.str();  // return a copy of the string to which ret is bound
+}
+
+// print strings inside double quotes
+std::string debug_rep(const std::string &s)
+{
+  return '"' + s + '"';
+}
+
+// convert the character pointers to string and call the string version of
+// debug_rep
+std::string debug_rep(char *p)
+{
+  return debug_rep(std::string(p));
+}
+
+std::string debug_rep(const char *p)
+{
+  return debug_rep(std::string(p));
+}
+
+
+// function to end the recursion and print the last element. this function must
+// be declared before the variadic version of print is defined
+template <typename T>
+std::ostream& print(std::ostream &os, const T &t)
+{
+  return os << t;  // no separator after the last element in the pack
+}
+
+// this version of print will be called for all but the last element in the pack
+template <typename T, typename... Args>
+std::ostream& print(std::ostream &os, const T &t, const Args& ... rest)
+{
+  os << t << ", ";
+  return print(os, rest...);
+}
+
+// call debug_rep on each argument in the call to print
+template <typename... Args>
+std::ostream& errorMsg(std::ostream &os, const Args& ... rest)
+{
+  // print(os, debug_rep(a1), debug_rep(a2),...,debug_rep(an))
+  return print(os, debug_rep(rest)...);
+}
+
+
+int main()
+{
+  int i = 0;
+  double d = 3.14;
+  char c[] = "hello";
+  std::string s = "Hello world";
+  bool b = true;
+
+  errorMsg(std::cout, i, d, c, s, b);
+
+  return 0;
+}
+   #+END_SRC
+
+** Exercise 16.57
+   #+BEGIN_QUOTE
+   Compare your variadic version of ~errorMsg~ to the ~error_msg~ function in §
+   6.2.6 (p. 220). What are the advantages and disadvantages of each approach?
+   #+END_QUOTE
+
+   In § 6.2.6 (p. 220) we saw that we can use an ~initializer_list~ to define a
+   function that can take a varying number of arguments. However, the arguments
+   must have the same type (or types that are convertible to a common
+   type). Variadic functions are used when we know neither the number nor the
+   types of the arguments we want to process. As an example, we’ll define a
+   function like our earlier error_msg function, only this time we’ll allow the
+   argument types to vary as well.
