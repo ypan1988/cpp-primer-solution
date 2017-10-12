@@ -524,3 +524,44 @@ int main()
    Rewrite the function from the previous exercise to use iterators returned
    from begin and end to control the loop.
    #+END_QUOTE
+
+* Exercises Section 16.4
+** Exercise 16.51
+   #+BEGIN_QUOTE
+   Determine what ~sizeof...(Args)~ and ~sizeof...(rest)~ return for each call
+   to ~foo~ in this section.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+foo(i, s, 42, d);  // 3 3
+foo(s, 42, "hi");  // 2 2
+foo(d, s);         // 1 1
+foo("hi");         // 0 0
+   #+END_SRC
+
+** Exercise 16.52
+   #+BEGIN_QUOTE
+   Write a program to check your answer to the previous question.
+   #+END_QUOTE
+
+   #+BEGIN_SRC C++
+#include <iostream>
+
+template <typename T, typename... Args>
+void foo(const T &t, const Args& ... rest)
+{
+  std::cout << sizeof...(Args) << " "
+	    << sizeof...(rest) << std::endl;
+}
+
+int main()
+{
+  int i = 0; double d = 3.14; std::string s = "how now brown cow";
+  foo(i, s, 42, d);
+  foo(s, 42, "hi");
+  foo(d, s);
+  foo("hi");
+
+  return 0;
+}
+   #+END_SRC
